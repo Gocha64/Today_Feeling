@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="..\static\assets\css\style.css">
+    <title>로그인</title>
+</head>
+
+<body class="main">
+    <div class = "main">
+        <div>
+            <h2>아이디</h2>
+            <span><input type="text" id = "user_name" placeholder="아이디를 입력하세요"></span>
+    
+            <h2>패스워드</h2>
+            <span><input type="password" id = "user_password" placeholder="패스워드를 입력하세요"></span>
+
+            <br>
+            <br>
+            <button onclick="login()" id = "loginBtn">로그인</button>
+        </div>
+        
+    </div>
+    <button class = 'mainBtn' onclick="window.location.href='/'">메인페이지</button>
+
+</body>
+<script>
+    async function login(){
+
+        let userName = document.querySelector("#user_name").value;
+        let userPassword = document.querySelector("#user_password").value;   
+
+        let urlParams = new URLSearchParams({
+            userName: userName,
+            userPassword: userPassword,
+        });
+
+        let fetchOptions = {
+            method: "POST",
+            body: urlParams,
+        }
+
+        let response = await fetch("/login", fetchOptions);
+        console.log(response);
+        let data = await response.json();
+        if( data.result == "success" ){
+            window.location.href="/";
+        }else if( data.result == "fail" ){
+        alert("아이디 또는 비밀번호가 올바르지 않습니다.");
+        window.location.href="/login";
+        }
+}
+</script>
+</html>

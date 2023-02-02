@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="..\static\assets\css\style.css">
+    <title>회원가입</title>
+</head>
+<body class="main">
+    <div class = "main">
+        <div>
+            <h1>회원가입</h1>
+            <h2>아이디</h2>
+            <span><input type="text" id = "user_name" placeholder="아이디를 입력하세요"></span>
+    
+            <h2>패스워드</h2>
+            <span><input type="password" id = "user_password" placeholder="패스워드를 입력하세요"></span>
+    
+            <h2>이메일</h2>
+            <span><input type="email" id = "user_email" placeholder="이메일을 입력하세요"></span>
+
+            <br>
+            <br>
+        </div>
+            
+            <button id="btnRegister" onclick="register()">회원가입</button>
+
+        <button class = 'mainBtn' onclick="window.location.href='/'">메인페이지</button>
+        
+    </div>
+    
+
+</body>
+
+<script>
+    async function register() {
+   
+    var userName = document.querySelector("#user_name").value;
+    var userPassword = document.querySelector("#user_password").value;   
+    var userEmail = document.querySelector("#user_email").value;   
+    
+    let urlParams = new URLSearchParams({
+        userName: userName,
+        userEmail: userEmail,
+        userPassword: userPassword,
+        });
+    
+    let fetchOptions = {
+            method: "POST",
+            body: urlParams,
+        }
+    
+        let response = await fetch("/register_process", fetchOptions);
+        console.log(response);
+        let data = await response.json();
+        if( data.result == "success" ){
+        alert('회원가입을 축하합니다. 로그인 페이지로 이동합니다.');
+        window.location.href="/login";
+        }else if( data.result == "fail" ){
+        alert("회원가입에 실패했습니다.");
+        window.location.href="/register";
+    }
+}
+</script>
+</html>
