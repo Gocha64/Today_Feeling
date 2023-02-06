@@ -17,3 +17,12 @@ docker pull mysql
 
 2. mysql 실행
 docker run --name <컨테이너명> -e MYSQL_ROOT_PASSWORD=<비밀번호> -d -p <포트번호>:<포트번호> <이미지명>
+
+
+DB세팅
+1. TIMEZONE 설정
+SET GLOBAL time_zone='Asia/Seoul';
+SET time_zone='Asia/Seoul';
+
+2. TIME확인
+SELECT NOW();
