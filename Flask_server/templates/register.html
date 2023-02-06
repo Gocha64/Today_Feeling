@@ -12,13 +12,16 @@
         <div>
             <h1>회원가입</h1>
             <h2>아이디</h2>
-            <span><input type="text" id = "user_name" placeholder="아이디를 입력하세요"></span>
+            <span><input type="text" id = "userId" placeholder="아이디를 입력하세요"></span>
     
             <h2>패스워드</h2>
-            <span><input type="password" id = "user_password" placeholder="패스워드를 입력하세요"></span>
+            <span><input type="password" id = "userPw" placeholder="패스워드를 입력하세요"></span>
     
-            <h2>이메일</h2>
-            <span><input type="email" id = "user_email" placeholder="이메일을 입력하세요"></span>
+            <h2>닉네임</h2>
+            <span><input type="text" id = "userName" placeholder="닉네임을 입력하세요"></span>
+
+            <h2>성별</h2>
+            <span><input type="text" id = "userSex" placeholder="성별을 입력하세요 남자:1, 여자:2"></span>
 
             <br>
             <br>
@@ -36,14 +39,17 @@
 <script>
     async function register() {
    
-    var userName = document.querySelector("#user_name").value;
-    var userPassword = document.querySelector("#user_password").value;   
-    var userEmail = document.querySelector("#user_email").value;   
-    
+    var userId = document.querySelector("#userId").value;
+    var userPw = document.querySelector("#userPw").value;   
+    var userName = document.querySelector("#userName").value;   
+    var userSex = document.querySelector("#userSex").value;  
+
+
     let urlParams = new URLSearchParams({
+        userId: userId,
+        userPw: userPw,
         userName: userName,
-        userEmail: userEmail,
-        userPassword: userPassword,
+        userSex: userSex
         });
     
     let fetchOptions = {
@@ -51,16 +57,17 @@
             body: urlParams,
         }
     
-        let response = await fetch("/register_process", fetchOptions);
+        let response = await fetch("/member/register", fetchOptions);
         console.log(response);
         let data = await response.json();
         if( data.result == "success" ){
         alert('회원가입을 축하합니다. 로그인 페이지로 이동합니다.');
         window.location.href="/login";
-        }else if( data.result == "fail" ){
+        }else{
         alert("회원가입에 실패했습니다.");
-        window.location.href="/register";
+        alert(data.result)
+        window.location.href="/member/register";
+        }
     }
-}
 </script>
 </html>

@@ -1,37 +1,53 @@
 from flask import Flask, render_template, request, redirect, url_for, g, jsonify
 from flask_bcrypt import Bcrypt
-import UserProto
+import User
+import hashlib
 
 from __main__ import app
 
-@app.route('/register')
+
+
+@app.route('/member/register', methods=["GET", "POST"])
 def register():
-    #이미 로그인 했다면 메인페이지
-    if g.user != None:
-        return redirect(url_for("hello"))
+    if request.method == "GET":
+        #이미 로그인 했다면 메인페이지
+        if g.user != None:
+            return redirect(url_for("hello"))
 
-    return render_template("register.html")
+        return render_template("register.html")
 
-
-@app.route('/register_process', methods=["POST"])
-def register_process():
     if request.method == "POST":
-        bcrypt = Bcrypt(app)
-        userName = request.form.get('userName')
-        userPw = request.form.get('userPassword')
-        userPwHash = bcrypt.generate_password_hash(userPw)
-        userEmail = request.form.get('userEmail')
-        user = UserProto.UserProto(userName, userPwHash, userEmail)
-        if UserProto.select_user_with_name(userName) == None and UserProto.select_user_with_email(userEmail) == None:
-            print("register success!")
-            UserProto.insert_user(user)
-            return jsonify({'result' : 'success'})
-        else:
-            print("register fail..")
-            return jsonify({'result' : 'fail'})
+        #bcrypt = Bcrypt(app)
 
-    # print(f'비동기 테스트 {userName}')
-    # return jsonify({'result' : 'success'})
+        print(request.form)
+
+        userId = request.form.get('userId')
+        userPw = request.form.get('userPw')
+        userName = request.form.get('userName')
+        userSex = request.form.get('userSex')
+
+        #print(userId, userPw, userName, userSex)
+
+
+        # sha1으로 해싱됨
+        userPwHash = str(hashlib.sha1(userPw.encode('utf-8')).hexdigest())
+        #userPwHash = bcrypt.generate_password_hash(userPw)
+
+        user = User.User(userId, userPwHash, userName, userSex)
+        if User.select_user_with_id(userId) != None:
+            return jsonify({'result' : 'overlaped ID'})
+        
+        elif User.select_user_with_name(userName) != None:
+            return jsonify({'result' : 'overlaped Name'})
+        
+        else:
+            try:
+                User.insert_user(user)
+                print(f"{userId} registered")
+                return jsonify({'result' : 'success'})
+            except:
+                return jsonify({'result' : 'undifiend Error'})
+
     
     
     
