@@ -22,7 +22,7 @@ def hello():
 def redirectTest():
     return redirect(url_for('hello'))
 
-@app.route("/helloTest")
+@app.route("/member/login")
 def helloTest():
     
     return jsonify({"result" : "helloTest"})

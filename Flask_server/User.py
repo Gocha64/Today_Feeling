@@ -4,7 +4,6 @@ from datetime import datetime
 from dotenv import load_dotenv
 import os
 
-
 # create the extension
 db = SQLAlchemy()
 # create the app
@@ -18,12 +17,12 @@ db_ip = os.getenv("DB_IP")
 db_port = os.getenv("DB_PORT")
 db_schema = os.getenv("DB_SCHEMA")
 
-app.config["SQLALCHEMY_DATABASE_URI"] = f"mariadb+pymysql://{db_userName}:{db_pw}@{db_ip}:{db_port}/{db_schema}"
+app.config["SQLALCHEMY_DATABASE_URI"] = f'mysql+pymysql://{db_userName}:{db_pw}@{db_ip}:{db_port}/{db_schema}'
 # initialize the app with the extension
 db.init_app(app)
 
 class User(db.Model):
-    __tablename__ = 'users'
+    __tablename__ = 'Users'
     uid = db.Column(db.Integer, primary_key=True, nullable=False, autoincrement=True)
     id = db.Column(db.String(50), unique=True, nullable=False)
     password = db.Column(db.String(50), nullable=False)
@@ -39,7 +38,7 @@ class User(db.Model):
 
 
     def __str__(self):
-        return f" uid: {self.uid}\n id: {self.id}\n name: {self.name}\n sex: {self.sex}"
+        return f" uid: {self.uid}\n id: {self.id}\n name: {self.name}\n sex: {self.sex}\n"
     
 
 def create_table():
@@ -79,8 +78,9 @@ def insert_user(user):
 
 if __name__ == "__main__":
     #create_table()
-    #user = User("flaskName22", "123123", "name", 1)
-    #insert_user(user)
+    user = User("Test", "1234", "insertTestName", 1)
+    insert_user(user)
     #print_all_users_list()
-    user1 = select_user_with_uid(1)
-    print(user1)
+    #user1 = select_user_with_uid(1)
+    #print(user1)
+    print_all_users_list()
