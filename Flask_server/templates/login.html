@@ -11,7 +11,7 @@
 
 <body class="main">
     <div class = "main">
-        <div>
+        <div id = "loginBox">
             <h2>아이디</h2>
             <span><input type="text" id = "user_name" placeholder="아이디를 입력하세요"></span>
     
@@ -47,10 +47,13 @@
         console.log(response);
         let data = await response.json();
         if( data.result == "success" ){
+            // document.querySelector("#loginBox").insertAdjacentHTML("beforeend",
+            // `<div>로그인 성공~</div>`
+            // )
             window.location.href="/";
         }else if( data.result == "fail" ){
-        alert("아이디 또는 비밀번호가 올바르지 않습니다.");
-        window.location.href="/login";
+            alert("아이디 또는 비밀번호가 올바르지 않습니다.");
+            window.location.href="/login";
         }
 }
 </script>

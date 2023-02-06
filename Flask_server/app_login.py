@@ -6,13 +6,17 @@ from datetime import timedelta
 from __main__ import app
 
 
-app.config["PERMANENT_SESSION_LIFETIME"] = timedelta(minutes=3)
+#app.config["PERMANENT_SESSION_LIFETIME"] = timedelta(minutes=3)
+app.config['SESSION_PERMANENT'] = True
+
 
 @app.route("/login", methods = ['GET', 'POST'])
 def login():
     #이미 로그인 했다면 메인페이지
     if g.user != None:
+        session.modified = True
         return redirect(url_for("hello"))
+        
 
     if request.method == "GET":
         return render_template("login.html")
@@ -38,7 +42,8 @@ def logout():
 @app.before_request
 def load_logged_in_user():
     user_name = session.get('username')
-    #print(session)
+    print(session)
+    session.permanent = True
     if user_name is None:
         g.user = None
     else:

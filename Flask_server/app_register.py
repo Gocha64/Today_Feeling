@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for, g, jsonify
 from flask_bcrypt import Bcrypt
-import User
+import UserProto
 
 from __main__ import app
 
@@ -21,10 +21,10 @@ def register_process():
         userPw = request.form.get('userPassword')
         userPwHash = bcrypt.generate_password_hash(userPw)
         userEmail = request.form.get('userEmail')
-        user = User.User(userName, userPwHash, userEmail)
-        if User.select_user_with_name(userName) == None and User.select_user_with_email(userEmail) == None:
+        user = UserProto.UserProto(userName, userPwHash, userEmail)
+        if UserProto.select_user_with_name(userName) == None and UserProto.select_user_with_email(userEmail) == None:
             print("register success!")
-            User.insert_user(user)
+            UserProto.insert_user(user)
             return jsonify({'result' : 'success'})
         else:
             print("register fail..")
