@@ -38,7 +38,7 @@ class User(db.Model):
 
 
     def __str__(self):
-        return f" uid: {self.uid}\n id: {self.id}\n name: {self.name}\n sex: {self.sex}\n"
+        return f" uid: {self.uid}\n id: {self.id}\n name: {self.name}\n password: {self.password}\n sex: {self.sex}\n"
     
 
 def create_table():
@@ -67,6 +67,11 @@ def select_user_with_id(id):
         user = db.session.query(User).filter(User.id == id).first()
     return user
 
+def select_user_with_name(name):
+    with app.app_context():
+        user = db.session.query(User).filter(User.name == name).first()
+    return user
+
 def insert_user(user):
     try:
         with app.app_context():
@@ -74,12 +79,14 @@ def insert_user(user):
             db.session.commit()
     except Exception as e:
         print(e.args)
+        raise e
+
 
 
 if __name__ == "__main__":
     #create_table()
     user = User("Test", "1234", "insertTestName", 1)
-    insert_user(user)
+    #insert_user(user)
     #print_all_users_list()
     #user1 = select_user_with_uid(1)
     #print(user1)

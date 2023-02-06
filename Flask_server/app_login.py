@@ -1,7 +1,8 @@
 from flask import Flask, render_template, request, redirect, url_for, session, g, jsonify
-import User
+import UserProto
 from flask_bcrypt import Bcrypt
 from datetime import timedelta
+import hashlib
 
 from __main__ import app
 
@@ -25,7 +26,7 @@ def login():
         bcrypt = Bcrypt(app)
         user_name = request.form.get('userName')
         user_pw = request.form.get('userPassword')
-        user = User.select_user_with_name(user_name)
+        user = UserProto.select_user_with_name(user_name)
 
         if user != None and bcrypt.check_password_hash(user.user_password, user_pw):
             session['username'] = user_name
@@ -47,7 +48,7 @@ def load_logged_in_user():
     if user_name is None:
         g.user = None
     else:
-        g.user = User.select_user_with_name(user_name)
+        g.user = UserProto.select_user_with_name(user_name)
     
     #print(g.user)
 
