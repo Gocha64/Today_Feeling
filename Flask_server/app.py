@@ -22,6 +22,11 @@ def hello():
 def redirectTest():
     return redirect(url_for('hello'))
 
+@app.route("/helloTest")
+def helloTest():
+    
+    return jsonify({"result" : "helloTest"})
+
 
 if __name__ == "__main__":
     app.run(debug=True)
