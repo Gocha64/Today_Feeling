@@ -1912,6 +1912,7 @@ color switch_thumb_normal_material_dark
 color switch_thumb_normal_material_light
 color teal_200
 color teal_700
+color textInputLayout
 color tooltip_background_dark
 color tooltip_background_light
 color white
@@ -2711,17 +2712,21 @@ drawable btn_radio_off_mtrl
 drawable btn_radio_off_to_on_mtrl_animation
 drawable btn_radio_on_mtrl
 drawable btn_radio_on_to_off_mtrl_animation
+drawable buttonshapewhitebg
 drawable design_fab_background
 drawable design_ic_visibility
 drawable design_ic_visibility_off
 drawable design_password_eye
 drawable design_snackbar_background
+drawable good_morning_img
 drawable ic_arrow_back_black_24
 drawable ic_clear_black_24
 drawable ic_clock_black_24dp
+drawable ic_email_white_24dp
 drawable ic_keyboard_black_24dp
 drawable ic_launcher_background
 drawable ic_launcher_foreground
+drawable ic_lock_white_24dp
 drawable ic_m3_chip_check
 drawable ic_m3_chip_checked_circle
 drawable ic_m3_chip_close
@@ -2902,6 +2907,8 @@ id bounce
 id bounceBoth
 id bounceEnd
 id bounceStart
+id btn_sign_in
+id btn_sign_up
 id buttonPanel
 id cache_measures
 id callMeasure
@@ -2974,6 +2981,8 @@ id easeIn
 id easeInOut
 id easeOut
 id east
+id edit_id
+id edit_pw
 id edit_query
 id elastic
 id embed
@@ -3021,6 +3030,7 @@ id ifRoom
 id ignore
 id ignoreRequest
 id image
+id imageView
 id immediateStop
 id included
 id indeterminate
@@ -3039,6 +3049,7 @@ id legacy
 id line1
 id line3
 id linear
+id linearLayout
 id listMode
 id list_item
 id m3_side_sheet
@@ -3241,6 +3252,7 @@ id tag_transition_group
 id tag_unhandled_key_event_manager
 id tag_unhandled_key_listeners
 id tag_window_insets_animation_callback
+id test
 id text
 id text2
 id textEnd
@@ -3248,6 +3260,7 @@ id textSpacerNoButtons
 id textSpacerNoTitle
 id textStart
 id textTop
+id textView
 id text_input_end_icon
 id text_input_error_icon
 id text_input_start_icon
@@ -3402,7 +3415,9 @@ layout abc_search_dropdown_item_icons_2line
 layout abc_search_view
 layout abc_select_dialog_material
 layout abc_tooltip
+layout activity_login
 layout activity_main
+layout activity_sign_up
 layout activity_splash_screen
 layout custom_dialog
 layout design_bottom_navigation_item
@@ -3923,6 +3938,7 @@ style Base_Widget_MaterialComponents_TextView
 style CardView
 style CardView_Dark
 style CardView_Light
+style EditScreenTextInputLayoutStyle
 style MaterialAlertDialog_Material3
 style MaterialAlertDialog_Material3_Animation
 style MaterialAlertDialog_Material3_Body_Text

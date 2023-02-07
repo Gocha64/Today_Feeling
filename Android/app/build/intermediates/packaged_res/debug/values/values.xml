@@ -6,15 +6,24 @@
     <color name="purple_700">#FF3700B3</color>
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
+    <color name="textInputLayout">#96ffffff</color>
     <color name="white">#FFFFFFFF</color>
     <string name="app_name">Today Feeling</string>
+    <style name="EditScreenTextInputLayoutStyle" parent="Theme.AppCompat.DayNight.NoActionBar">
+        <item name="boxStrokeColor">@color/textInputLayout</item>
+        <item name="colorControlNormal">@color/textInputLayout</item>
+        <item name="colorControlActivated">@color/textInputLayout</item>
+        <item name="colorControlHighlight">@color/textInputLayout</item>
+        <item name="colorAccent">@color/textInputLayout</item>
+        <item name="android:textColorHint">@color/textInputLayout</item>
+    </style>
     <style name="SplashTheme" parent="Theme.AppCompat.NoActionBar">
         <item name="android:windowSplashScreenBackground" ns1:targetApi="S">@color/white</item>
         <item name="android:windowSplashScreenIconBackgroundColor" ns1:targetApi="S">@color/white</item>
         <item name="android:windowSplashScreenAnimationDuration" ns1:targetApi="S">5000</item>
         <item name="android:windowSplashScreenAnimatedIcon" ns1:targetApi="S">@drawable/app_logo</item>
     </style>
-    <style name="Theme.TodayFeeling" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+    <style name="Theme.TodayFeeling" parent="Theme.AppCompat.Light">
         
         <item name="colorPrimary">@color/purple_500</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>

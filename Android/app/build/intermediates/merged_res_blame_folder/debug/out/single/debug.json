@@ -4,10 +4,6 @@
         "source": "com.example.todayfeeling.app-main-31:/mipmap-mdpi/ic_launcher_round.webp"
     },
     {
-        "merged": "com.example.todayfeeling.app-merged_res-29:/drawable-v24_ic_launcher_foreground.xml.flat",
-        "source": "com.example.todayfeeling.app-main-31:/drawable-v24/ic_launcher_foreground.xml"
-    },
-    {
         "merged": "com.example.todayfeeling.app-merged_res-29:/mipmap-xxxhdpi_ic_launcher.webp.flat",
         "source": "com.example.todayfeeling.app-main-31:/mipmap-xxxhdpi/ic_launcher.webp"
     },
@@ -18,10 +14,6 @@
     {
         "merged": "com.example.todayfeeling.app-merged_res-29:/drawable_ic_launcher_background.xml.flat",
         "source": "com.example.todayfeeling.app-main-31:/drawable/ic_launcher_background.xml"
-    },
-    {
-        "merged": "com.example.todayfeeling.app-merged_res-29:/mipmap-xxhdpi_ic_launcher_round.webp.flat",
-        "source": "com.example.todayfeeling.app-main-31:/mipmap-xxhdpi/ic_launcher_round.webp"
     },
     {
         "merged": "com.example.todayfeeling.app-merged_res-29:/mipmap-mdpi_ic_launcher.webp.flat",
@@ -40,8 +32,56 @@
         "source": "com.example.todayfeeling.app-main-31:/xml/data_extraction_rules.xml"
     },
     {
+        "merged": "com.example.todayfeeling.app-merged_res-29:/mipmap-hdpi_ic_launcher.webp.flat",
+        "source": "com.example.todayfeeling.app-main-31:/mipmap-hdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.example.todayfeeling.app-merged_res-29:/drawable_good_morning_img.png.flat",
+        "source": "com.example.todayfeeling.app-main-31:/drawable/good_morning_img.png"
+    },
+    {
+        "merged": "com.example.todayfeeling.app-merged_res-29:/mipmap-hdpi_ic_launcher_round.webp.flat",
+        "source": "com.example.todayfeeling.app-main-31:/mipmap-hdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.example.todayfeeling.app-merged_res-29:/layout_activity_main.xml.flat",
+        "source": "com.example.todayfeeling.app-main-31:/layout/activity_main.xml"
+    },
+    {
+        "merged": "com.example.todayfeeling.app-merged_res-29:/mipmap-xxhdpi_ic_launcher.webp.flat",
+        "source": "com.example.todayfeeling.app-main-31:/mipmap-xxhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.example.todayfeeling.app-merged_res-29:/drawable_ic_email_white_24dp.xml.flat",
+        "source": "com.example.todayfeeling.app-main-31:/drawable/ic_email_white_24dp.xml"
+    },
+    {
+        "merged": "com.example.todayfeeling.app-merged_res-29:/drawable-v24_ic_launcher_foreground.xml.flat",
+        "source": "com.example.todayfeeling.app-main-31:/drawable-v24/ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "com.example.todayfeeling.app-merged_res-29:/layout_activity_login.xml.flat",
+        "source": "com.example.todayfeeling.app-main-31:/layout/activity_login.xml"
+    },
+    {
+        "merged": "com.example.todayfeeling.app-merged_res-29:/mipmap-xxhdpi_ic_launcher_round.webp.flat",
+        "source": "com.example.todayfeeling.app-main-31:/mipmap-xxhdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.example.todayfeeling.app-merged_res-29:/drawable_buttonshapewhitebg.xml.flat",
+        "source": "com.example.todayfeeling.app-main-31:/drawable/buttonshapewhitebg.xml"
+    },
+    {
+        "merged": "com.example.todayfeeling.app-merged_res-29:/drawable_ic_lock_white_24dp.xml.flat",
+        "source": "com.example.todayfeeling.app-main-31:/drawable/ic_lock_white_24dp.xml"
+    },
+    {
         "merged": "com.example.todayfeeling.app-merged_res-29:/mipmap-xhdpi_ic_launcher.webp.flat",
         "source": "com.example.todayfeeling.app-main-31:/mipmap-xhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.example.todayfeeling.app-merged_res-29:/layout_activity_sign_up.xml.flat",
+        "source": "com.example.todayfeeling.app-main-31:/layout/activity_sign_up.xml"
     },
     {
         "merged": "com.example.todayfeeling.app-merged_res-29:/drawable_app_logo.png.flat",
@@ -56,27 +96,11 @@
         "source": "com.example.todayfeeling.app-main-31:/mipmap-xxxhdpi/ic_launcher_round.webp"
     },
     {
-        "merged": "com.example.todayfeeling.app-merged_res-29:/mipmap-hdpi_ic_launcher.webp.flat",
-        "source": "com.example.todayfeeling.app-main-31:/mipmap-hdpi/ic_launcher.webp"
-    },
-    {
         "merged": "com.example.todayfeeling.app-merged_res-29:/xml_backup_rules.xml.flat",
         "source": "com.example.todayfeeling.app-main-31:/xml/backup_rules.xml"
     },
     {
-        "merged": "com.example.todayfeeling.app-merged_res-29:/mipmap-hdpi_ic_launcher_round.webp.flat",
-        "source": "com.example.todayfeeling.app-main-31:/mipmap-hdpi/ic_launcher_round.webp"
-    },
-    {
         "merged": "com.example.todayfeeling.app-merged_res-29:/mipmap-anydpi-v26_ic_launcher.xml.flat",
         "source": "com.example.todayfeeling.app-main-31:/mipmap-anydpi-v26/ic_launcher.xml"
-    },
-    {
-        "merged": "com.example.todayfeeling.app-merged_res-29:/layout_activity_main.xml.flat",
-        "source": "com.example.todayfeeling.app-main-31:/layout/activity_main.xml"
-    },
-    {
-        "merged": "com.example.todayfeeling.app-merged_res-29:/mipmap-xxhdpi_ic_launcher.webp.flat",
-        "source": "com.example.todayfeeling.app-main-31:/mipmap-xxhdpi/ic_launcher.webp"
     }
 ]
