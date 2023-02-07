@@ -1,3 +1,3 @@
 # Today_Feeling
 
-Face Emotion Recognitioin
+Face Emotion Recognition
