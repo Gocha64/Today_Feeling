@@ -13,10 +13,10 @@
     <div class = "main">
         <div id = "loginBox">
             <h2>아이디</h2>
-            <span><input type="text" id = "user_name" placeholder="아이디를 입력하세요"></span>
+            <span><input type="text" id = "userId" placeholder="아이디를 입력하세요"></span>
     
             <h2>패스워드</h2>
-            <span><input type="password" id = "user_password" placeholder="패스워드를 입력하세요"></span>
+            <span><input type="password" id = "userPw" placeholder="패스워드를 입력하세요"></span>
 
             <br>
             <br>
@@ -30,12 +30,12 @@
 <script>
     async function login(){
 
-        let userName = document.querySelector("#user_name").value;
-        let userPassword = document.querySelector("#user_password").value;   
+        let userId = document.querySelector("#userId").value;
+        let userPw = document.querySelector("#userPw").value;   
 
         let urlParams = new URLSearchParams({
-            userName: userName,
-            userPassword: userPassword,
+            userId: userId,
+            userPw: userPw,
         });
 
         let fetchOptions = {
@@ -43,17 +43,18 @@
             body: urlParams,
         }
 
-        let response = await fetch("/login", fetchOptions);
+        let response = await fetch("/member/login", fetchOptions);
         console.log(response);
         let data = await response.json();
         if( data.result == "success" ){
             // document.querySelector("#loginBox").insertAdjacentHTML("beforeend",
             // `<div>로그인 성공~</div>`
             // )
-            window.location.href="/";
-        }else if( data.result == "fail" ){
+            alert("로그인 성공!");
+            // window.location.href="/";
+        }else{
             alert("아이디 또는 비밀번호가 올바르지 않습니다.");
-            window.location.href="/login";
+            // window.location.href="/login";
         }
 }
 </script>

@@ -1,54 +1,54 @@
 from flask import Flask, render_template, request, redirect, url_for, session, g, jsonify
-import UserProto
-from flask_bcrypt import Bcrypt
+import User
 from datetime import timedelta
 import hashlib
 
 from __main__ import app
 
 
-#app.config["PERMANENT_SESSION_LIFETIME"] = timedelta(minutes=3)
-app.config['SESSION_PERMANENT'] = True
 
-
-@app.route("/login", methods = ['GET', 'POST'])
+@app.route("/member/login", methods = ['GET', 'POST'])
 def login():
     #이미 로그인 했다면 메인페이지
-    if g.user != None:
-        session.modified = True
-        return redirect(url_for("hello"))
-        
-
     if request.method == "GET":
+        if g.user != None:
+            #session.modified = True
+            return redirect(url_for("hello"))
         return render_template("login.html")
 
+
     if request.method == 'POST':
-        bcrypt = Bcrypt(app)
-        user_name = request.form.get('userName')
-        user_pw = request.form.get('userPassword')
-        user = UserProto.select_user_with_name(user_name)
+        #print(request.form)
+        userId = request.form.get('userId')
+        userPw = request.form.get('userPw')
+        userPwHash = str(hashlib.sha1(userPw.encode('utf-8')).hexdigest())
 
-        if user != None and bcrypt.check_password_hash(user.user_password, user_pw):
-            session['username'] = user_name
+
+        user = User.select_user_with_id(userId)
+
+        if user != None and user.password == userPwHash:
+            session['userUid'] = user.uid
             return jsonify({'result' : 'success'})
+        else:
+            return jsonify({'result' : 'fail'})
 
-        return jsonify({'result' : 'fail'})
 
-
-@app.route("/logout")
+# 브라우저에서 세션 쿠키를 제거함
+@app.route("/member/logout")
 def logout():
-    session.pop('username', None)
+    session.pop('userUid', None)
     return redirect(url_for('hello'))
+
 
 @app.before_request
 def load_logged_in_user():
-    user_name = session.get('username')
+    userUid = session.get('userUid')
     print(session)
-    session.permanent = True
-    if user_name is None:
+    if userUid is None:
         g.user = None
     else:
-        g.user = UserProto.select_user_with_name(user_name)
+        session.permanent = True
+        g.user = User.select_user_with_uid(userUid)
     
     #print(g.user)
 
