@@ -62,7 +62,7 @@
         let data = await response.json();
         if( data.result == "success" ){
         alert('회원가입을 축하합니다. 로그인 페이지로 이동합니다.');
-        window.location.href="/login";
+        window.location.href="/member/login";
         }else{
         alert("회원가입에 실패했습니다.");
         alert(data.result)

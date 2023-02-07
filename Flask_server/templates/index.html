@@ -11,11 +11,11 @@
 
     {% if userName %}
     <h2>환영합니다. {{userName}}</h2>
-    <button class = 'loginBtn' onclick="window.location.href='/logout'">로그아웃</button>
+    <button class = 'loginBtn' onclick="window.location.href='/member/logout'">로그아웃</button>
     
     {% else %}
     <h2>사이트를 이용하려면 로그인하세요.</h2>
-    <button class = 'loginBtn' onclick="window.location.href='/login'">로그인</button>
+    <button class = 'loginBtn' onclick="window.location.href='/member/login'">로그인</button>
     <button class = 'registerBtn' onclick="window.location.href='/member/register'">회원가입</button>
 
     {% endif %}
