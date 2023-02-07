@@ -1,9 +1,9 @@
 FROM python:latest
-RUN mkdir myapp/
+RUN mkdir Flask_server/
+RUN pip install --upgrade pip
 COPY app.py Flask_server/app.py
 COPY requirements.txt Flask_server/requirements.txt
 WORKDIR /Flask_server/
 RUN pip install -r requirements.txt
-RUN pip install --upgrade pip
 EXPOSE 10081
 CMD ["python", "app.py"]
