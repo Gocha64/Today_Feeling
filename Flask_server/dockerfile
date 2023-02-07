@@ -1,8 +1,7 @@
 FROM python:latest
 RUN mkdir Flask_server/
 RUN pip install --upgrade pip
-COPY app.py Flask_server/app.py
-COPY requirements.txt Flask_server/requirements.txt
+COPY ./ Flask_server
 WORKDIR /Flask_server/
 RUN pip install -r requirements.txt
 EXPOSE 10081
