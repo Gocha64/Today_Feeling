@@ -27,7 +27,13 @@
         android:testOnly="true"
         android:theme="@style/Theme.TodayFeeling" >
         <activity
-            android:name="com.example.todayfeeling.SplashScreen"
+            android:name="com.example.todayfeeling.sign.SignUpActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.example.todayfeeling.sign.LoginActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.example.todayfeeling.splash.SplashScreen"
             android:exported="true"
             android:theme="@style/SplashTheme" >
             <intent-filter>
@@ -38,8 +44,7 @@
         </activity>
         <activity
             android:name="com.example.todayfeeling.MainActivity"
-            android:exported="false" >
-        </activity>
+            android:exported="false" />
 
         <provider
             android:name="androidx.startup.InitializationProvider"
