@@ -6,7 +6,7 @@ import os
 app = Flask(__name__)
 
 load_dotenv()
-app.secret_key = os.urandom(24)
+app.secret_key = os.getenv("APP_SECRETKEY")
 
 import app_register
 import app_login
