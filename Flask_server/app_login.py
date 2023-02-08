@@ -18,9 +18,12 @@ def login():
 
 
     if request.method == 'POST':
-        #print(request.form)
-        userId = request.form.get('userId')
-        userPw = request.form.get('userPw')
+
+        get_json_data = request.get_json(True)
+        #print(get_json_data)
+
+        userId = get_json_data['userId']
+        userPw = get_json_data['userPw']
         userPwHash = str(hashlib.sha1(userPw.encode('utf-8')).hexdigest())
 
 
@@ -31,6 +34,8 @@ def login():
             return jsonify({'result' : 'success'})
         else:
             return jsonify({'result' : 'fail'})
+
+
 
 
 # 브라우저에서 세션 쿠키를 제거함

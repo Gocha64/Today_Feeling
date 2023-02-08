@@ -33,14 +33,16 @@
         let userId = document.querySelector("#userId").value;
         let userPw = document.querySelector("#userPw").value;   
 
-        let urlParams = new URLSearchParams({
+        let urlParams = {
             userId: userId,
             userPw: userPw,
-        });
+        };
+
+        let urlParamsjson = JSON.stringify(urlParams)
 
         let fetchOptions = {
             method: "POST",
-            body: urlParams,
+            body: urlParamsjson,
         }
 
         let response = await fetch("/member/login", fetchOptions);
