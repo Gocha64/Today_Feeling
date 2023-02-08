@@ -2907,6 +2907,7 @@ id bounce
 id bounceBoth
 id bounceEnd
 id bounceStart
+id btn_register
 id btn_sign_in
 id btn_sign_up
 id buttonPanel
@@ -2984,6 +2985,10 @@ id east
 id edit_id
 id edit_pw
 id edit_query
+id edit_signup_id
+id edit_signup_name
+id edit_signup_pw
+id edit_signup_sex
 id elastic
 id embed
 id end
@@ -3317,6 +3322,7 @@ integer cancel_button_image_alpha
 integer config_tooltipAnimTime
 integer design_snackbar_text_max_lines
 integer design_tab_indicator_anim_duration_ms
+integer google_play_services_version
 integer hide_password_duration
 integer m3_btn_anim_delay_ms
 integer m3_btn_anim_duration_ms
@@ -3539,6 +3545,7 @@ string character_counter_content_description
 string character_counter_overflowed_content_description
 string character_counter_pattern
 string clear_text_end_icon_content_description
+string common_google_play_services_unknown_issue
 string error_a11y_label
 string error_icon_content_description
 string exposed_dropdown_menu_content_description

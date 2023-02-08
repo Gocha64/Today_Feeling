@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.todayfeeling.app-mergeDebugResources-27:/values-en-rAU/values-en-rAU.xml",
+            "outputFile": "com.example.todayfeeling.app-mergeDebugResources-28:/values-en-rAU/values-en-rAU.xml",
             "map": [
                 {
                     "source": "/Users/anseongjun/.gradle/caches/transforms-3/a4522fe6b275a4534bfc0eadc1a8e0f8/transformed/core-1.9.0/res/values-en-rAU/values-en-rAU.xml",

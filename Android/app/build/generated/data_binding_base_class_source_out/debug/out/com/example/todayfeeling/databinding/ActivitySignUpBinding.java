@@ -4,25 +4,51 @@ package com.example.todayfeeling.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.LinearLayout;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.viewbinding.ViewBinding;
+import androidx.viewbinding.ViewBindings;
 import com.example.todayfeeling.R;
 import java.lang.NullPointerException;
 import java.lang.Override;
+import java.lang.String;
 
 public final class ActivitySignUpBinding implements ViewBinding {
   @NonNull
-  private final ConstraintLayout rootView;
+  private final LinearLayout rootView;
 
-  private ActivitySignUpBinding(@NonNull ConstraintLayout rootView) {
+  @NonNull
+  public final Button btnRegister;
+
+  @NonNull
+  public final EditText editSignupId;
+
+  @NonNull
+  public final EditText editSignupName;
+
+  @NonNull
+  public final EditText editSignupPw;
+
+  @NonNull
+  public final EditText editSignupSex;
+
+  private ActivitySignUpBinding(@NonNull LinearLayout rootView, @NonNull Button btnRegister,
+      @NonNull EditText editSignupId, @NonNull EditText editSignupName,
+      @NonNull EditText editSignupPw, @NonNull EditText editSignupSex) {
     this.rootView = rootView;
+    this.btnRegister = btnRegister;
+    this.editSignupId = editSignupId;
+    this.editSignupName = editSignupName;
+    this.editSignupPw = editSignupPw;
+    this.editSignupSex = editSignupSex;
   }
 
   @Override
   @NonNull
-  public ConstraintLayout getRoot() {
+  public LinearLayout getRoot() {
     return rootView;
   }
 
@@ -43,10 +69,44 @@ public final class ActivitySignUpBinding implements ViewBinding {
 
   @NonNull
   public static ActivitySignUpBinding bind(@NonNull View rootView) {
-    if (rootView == null) {
-      throw new NullPointerException("rootView");
-    }
+    // The body of this method is generated in a way you would not otherwise write.
+    // This is done to optimize the compiled bytecode for size and performance.
+    int id;
+    missingId: {
+      id = R.id.btn_register;
+      Button btnRegister = ViewBindings.findChildViewById(rootView, id);
+      if (btnRegister == null) {
+        break missingId;
+      }
 
-    return new ActivitySignUpBinding((ConstraintLayout) rootView);
+      id = R.id.edit_signup_id;
+      EditText editSignupId = ViewBindings.findChildViewById(rootView, id);
+      if (editSignupId == null) {
+        break missingId;
+      }
+
+      id = R.id.edit_signup_name;
+      EditText editSignupName = ViewBindings.findChildViewById(rootView, id);
+      if (editSignupName == null) {
+        break missingId;
+      }
+
+      id = R.id.edit_signup_pw;
+      EditText editSignupPw = ViewBindings.findChildViewById(rootView, id);
+      if (editSignupPw == null) {
+        break missingId;
+      }
+
+      id = R.id.edit_signup_sex;
+      EditText editSignupSex = ViewBindings.findChildViewById(rootView, id);
+      if (editSignupSex == null) {
+        break missingId;
+      }
+
+      return new ActivitySignUpBinding((LinearLayout) rootView, btnRegister, editSignupId,
+          editSignupName, editSignupPw, editSignupSex);
+    }
+    String missingId = rootView.getResources().getResourceName(id);
+    throw new NullPointerException("Missing required view with ID: ".concat(missingId));
   }
 }
