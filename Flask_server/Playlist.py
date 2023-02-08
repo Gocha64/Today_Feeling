@@ -18,33 +18,37 @@ db_ip = os.getenv("DB_IP")
 db_port = os.getenv("DB_PORT")
 db_schema = os.getenv("DB_SCHEMA")
 
-app.config["SQLALCHEMY_DATABASE_URI"] = f"mariadb+pymysql://{db_userName}:{db_pw}@{db_ip}:{db_port}/{db_schema}"
+app.config["SQLALCHEMY_DATABASE_URI"] = f"mysql+pymysql://{db_userName}:{db_pw}@{db_ip}:{db_port}/{db_schema}"
 # initialize the app with the extension
 db.init_app(app)
 
 class Playlist(db.Model):
-    __tablename__ = 'playlists'
+    __tablename__ = 'Playlists'
     uid = db.Column(db.Integer, primary_key=True, nullable=False, autoincrement=True)
-    title = db.Column(db.String(50), unique=True, nullable=False)
-    genre = db.Column(db.String(50), nullable=False)
+    urlWeb = db.Column(db.String(50))
+    urlApp = db.Column(db.String(50))
+    title = db.Column(db.String(50))
     mode = db.Column(db.Integer, nullable=False)
+    emotion = db.Column(db.String(50), nullable=False)
     
 
-    def __init__(self, title, genre, mode):
+    def __init__(self, urlWeb, urlApp, title, mode, emotion):
+        self.urlWeb =urlWeb
+        self.urlApp = urlApp
         self.title = title
-        self.genre = genre
         self.mode = mode
+        self.emotion = emotion
 
 
     def __str__(self):
-        return f" uid: {self.uid}\n title: {self.title}\n genre: {self.genre}\n mode: {self.mode}"
+        return f" uid: {self.uid}\n urlWeb: {self.urlWeb}\n urlApp: {self.urlApp}\n title: {self.title}\n mode: {self.mode}\n emotion: {self.emotion}\n"
     
 
 def create_table():
     with app.app_context():
         db.create_all()
 
-def print_all_users_list():
+def print_all_playlist_list():
     with app.app_context():
         playlists = db.session.query(Playlist).all()
         for playlist in playlists:
@@ -61,6 +65,16 @@ def select_playlist_with_uid(uid):
         playlist = db.session.query(Playlist).filter(Playlist.uid == uid).first()
     return playlist
 
+def select_playlist_with_title(title):
+    with app.app_context():
+        playlist = db.session.query(Playlist).filter(Playlist.title == title).first()
+    return playlist
+
+def select_playlists_with_mode(mode):
+    with app.app_context():
+        playlists = db.session.query(Playlist).filter(Playlist.mode == mode).all()
+    return playlists
+
 
 def insert_playlist(playlist):
     try:
@@ -70,10 +84,41 @@ def insert_playlist(playlist):
     except Exception as e:
         print(e.args)
 
+def delete_playlist_with_uid(uid):
+    try:
+        with app.app_context():
+            playlist = db.session.query(Playlist).filter(Playlist.uid == uid).first()
+            if playlist == None:
+                return None
+            
+            db.session.delete(playlist)
+            db.session.commit()
+    except Exception as e:
+        print(e.args)
+
+def update_playlist_with_uid(uid, playlistModi):
+    try:
+        with app.app_context():
+            playlist = db.session.query(Playlist).filter(Playlist.uid == uid).first()
+            if playlist == None:
+                return None
+
+            playlist.urlWeb = playlistModi.urlWeb
+            playlist.urlApp = playlistModi.urlApp
+            playlist.title = playlistModi.title
+            playlist.mode = playlistModi.mode
+            playlist.emotion = playlistModi.emotion
+            db.session.commit()
+    except Exception as e:
+        print(e.args)
 
 if __name__ == "__main__":
-    playlist = Playlist("titleEx", "genreEx", 1)
-    insert_playlist(playlist)
-    playlist1 = select_playlist_with_uid(1)
-    print(playlist1)
+    #playlist = Playlist("urlTest", "titleTest", 1, "000001")
+    #modiTest = Playlist("urlEx","appEx", "titleEx", 1, "000111")
+    #delete_playlist_with_uid(4)
+    #update_playlist_with_uid(3, modiTest)
+    print_all_playlist_list()
+
+    #playlist1 = select_playlist_with_uid(3)
+    #print(playlist1)
     

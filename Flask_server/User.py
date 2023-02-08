@@ -81,13 +81,47 @@ def insert_user(user):
         print(e.args)
         raise e
 
+def delete_user_with_uid(uid):
+    try:
+        with app.app_context():
+            user = db.session.query(User).filter(User.uid == uid).first()
+            if user == None:
+                return None
+
+            db.session.delete(user)
+            db.session.commit()
+    except Exception as e:
+        print(e.args)
+
+def update_user_with_uid(uid, userModi):
+    # id 중복 같은건 사용할 떄 걸러낼 것
+
+    try:
+        with app.app_context():
+            user = db.session.query(User).filter(User.uid == uid).first()
+            if user == None:
+                return None
+            
+            user.id = userModi.id
+            user.password = userModi.password
+            user.name = userModi.name
+            user.sex = userModi.sex
+            
+            db.session.commit()
+    except Exception as e:
+        print(e.args)
+
+
 
 
 if __name__ == "__main__":
     #create_table()
-    user = User("Test", "1234", "insertTestName", 1)
+    #user = User("UpdateTest", "1234", "UpdateTestName", 1)
+    #userModi = User("myID", "1234", "insertTestName123", 1)
     #insert_user(user)
     #print_all_users_list()
     #user1 = select_user_with_uid(1)
     #print(user1)
+    #delete_user_with_uid(6)
+    #update_user_with_uid(9, userModi)
     print_all_users_list()
