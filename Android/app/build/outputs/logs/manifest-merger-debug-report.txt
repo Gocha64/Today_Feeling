@@ -1,9 +1,10 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /Users/anseongjun/Project/Today_Feeling/Android/app/src/main/AndroidManifest.xml:2:1-30:12
-INJECTED from /Users/anseongjun/Project/Today_Feeling/Android/app/src/main/AndroidManifest.xml:2:1-30:12
-INJECTED from /Users/anseongjun/Project/Today_Feeling/Android/app/src/main/AndroidManifest.xml:2:1-30:12
-INJECTED from /Users/anseongjun/Project/Today_Feeling/Android/app/src/main/AndroidManifest.xml:2:1-30:12
+ADDED from /Users/anseongjun/Project/Today_Feeling/Android/app/src/main/AndroidManifest.xml:2:1-35:12
+INJECTED from /Users/anseongjun/Project/Today_Feeling/Android/app/src/main/AndroidManifest.xml:2:1-35:12
+INJECTED from /Users/anseongjun/Project/Today_Feeling/Android/app/src/main/AndroidManifest.xml:2:1-35:12
+INJECTED from /Users/anseongjun/Project/Today_Feeling/Android/app/src/main/AndroidManifest.xml:2:1-35:12
+MERGED from [androidx.databinding:viewbinding:7.4.0] /Users/anseongjun/.gradle/caches/transforms-3/f9edf4dca65c74a4081fbed3a1f00a4b/transformed/viewbinding-7.4.0/AndroidManifest.xml:2:1-7:12
 MERGED from [com.google.android.material:material:1.8.0] /Users/anseongjun/.gradle/caches/transforms-3/5bf45942ca19c8e30bdd0366b1495316/transformed/material-1.8.0/AndroidManifest.xml:17:1-26:12
 MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] /Users/anseongjun/.gradle/caches/transforms-3/998332c3da749ba8481cab353fa677b8/transformed/constraintlayout-2.1.4/AndroidManifest.xml:2:1-11:12
 MERGED from [androidx.appcompat:appcompat-resources:1.6.0] /Users/anseongjun/.gradle/caches/transforms-3/0b94369ef47b0383f958bd39b139d46c/transformed/appcompat-resources-1.6.0/AndroidManifest.xml:17:1-22:12
@@ -28,11 +29,10 @@ MERGED from [androidx.recyclerview:recyclerview:1.1.0] /Users/anseongjun/.gradle
 MERGED from [androidx.customview:customview:1.1.0] /Users/anseongjun/.gradle/caches/transforms-3/05d64bf9417690afc4fe8b245e5e6d06/transformed/customview-1.1.0/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.core:core:1.9.0] /Users/anseongjun/.gradle/caches/transforms-3/a4522fe6b275a4534bfc0eadc1a8e0f8/transformed/core-1.9.0/AndroidManifest.xml:17:1-30:12
 MERGED from [androidx.core:core-ktx:1.9.0] /Users/anseongjun/.gradle/caches/transforms-3/407f04c038b08e7c69adff0833973fb6/transformed/core-ktx-1.9.0/AndroidManifest.xml:2:1-7:12
-MERGED from [androidx.savedstate:savedstate:1.2.0] /Users/anseongjun/.gradle/caches/transforms-3/e770780cb47c29236eb0a4798ce6e924/transformed/savedstate-1.2.0/AndroidManifest.xml:17:1-24:12
-MERGED from [androidx.annotation:annotation-experimental:1.3.0] /Users/anseongjun/.gradle/caches/transforms-3/b46646453c391fe6a706b89dc8b50dc4/transformed/annotation-experimental-1.3.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /Users/anseongjun/.gradle/caches/transforms-3/b741823985dfe2c1afae313f01efbd36/transformed/cursoradapter-1.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.lifecycle:lifecycle-process:2.4.1] /Users/anseongjun/.gradle/caches/transforms-3/528f10946969151ddeecc9c08cbfcbae/transformed/lifecycle-process-2.4.1/AndroidManifest.xml:17:1-37:12
 MERGED from [androidx.lifecycle:lifecycle-runtime:2.5.1] /Users/anseongjun/.gradle/caches/transforms-3/057661c3a9b24eec0956006e37b29ef3/transformed/lifecycle-runtime-2.5.1/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.savedstate:savedstate:1.2.0] /Users/anseongjun/.gradle/caches/transforms-3/e770780cb47c29236eb0a4798ce6e924/transformed/savedstate-1.2.0/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.cardview:cardview:1.0.0] /Users/anseongjun/.gradle/caches/transforms-3/f7dffa55bd3b8c6d7559cf87e7e15b04/transformed/cardview-1.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /Users/anseongjun/.gradle/caches/transforms-3/b4380f2bee82def908dc06db2056934d/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:17:1-27:12
 MERGED from [androidx.startup:startup-runtime:1.1.1] /Users/anseongjun/.gradle/caches/transforms-3/5b8eb6b1037b8e306d304c613bf9978c/transformed/startup-runtime-1.1.1/AndroidManifest.xml:17:1-33:12
@@ -44,27 +44,28 @@ MERGED from [androidx.interpolator:interpolator:1.0.0] /Users/anseongjun/.gradle
 MERGED from [androidx.documentfile:documentfile:1.0.0] /Users/anseongjun/.gradle/caches/transforms-3/0c762dcd43e00657e4f192a0a2e02fcb/transformed/documentfile-1.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] /Users/anseongjun/.gradle/caches/transforms-3/114327bbf1c6af7593b0a1a8e245bb1a/transformed/localbroadcastmanager-1.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.print:print:1.0.0] /Users/anseongjun/.gradle/caches/transforms-3/a6089ce1869f340ea741d9b9e92ce46d/transformed/print-1.0.0/AndroidManifest.xml:17:1-22:12
-INJECTED from /Users/anseongjun/Project/Today_Feeling/Android/app/src/main/AndroidManifest.xml:2:1-30:12
-INJECTED from /Users/anseongjun/Project/Today_Feeling/Android/app/src/main/AndroidManifest.xml:2:1-30:12
-INJECTED from /Users/anseongjun/Project/Today_Feeling/Android/app/src/main/AndroidManifest.xml:2:1-30:12
+MERGED from [androidx.annotation:annotation-experimental:1.3.0] /Users/anseongjun/.gradle/caches/transforms-3/b46646453c391fe6a706b89dc8b50dc4/transformed/annotation-experimental-1.3.0/AndroidManifest.xml:17:1-22:12
+INJECTED from /Users/anseongjun/Project/Today_Feeling/Android/app/src/main/AndroidManifest.xml:2:1-35:12
+INJECTED from /Users/anseongjun/Project/Today_Feeling/Android/app/src/main/AndroidManifest.xml:2:1-35:12
+INJECTED from /Users/anseongjun/Project/Today_Feeling/Android/app/src/main/AndroidManifest.xml:2:1-35:12
 	package
 		INJECTED from /Users/anseongjun/Project/Today_Feeling/Android/app/src/main/AndroidManifest.xml
-		ADDED from /Users/anseongjun/Project/Today_Feeling/Android/app/src/main/AndroidManifest.xml:2:1-30:12
+		ADDED from /Users/anseongjun/Project/Today_Feeling/Android/app/src/main/AndroidManifest.xml:2:1-35:12
 		INJECTED from /Users/anseongjun/Project/Today_Feeling/Android/app/src/main/AndroidManifest.xml
 	android:versionName
 		INJECTED from /Users/anseongjun/Project/Today_Feeling/Android/app/src/main/AndroidManifest.xml
-		ADDED from /Users/anseongjun/Project/Today_Feeling/Android/app/src/main/AndroidManifest.xml:2:1-30:12
+		ADDED from /Users/anseongjun/Project/Today_Feeling/Android/app/src/main/AndroidManifest.xml:2:1-35:12
 		INJECTED from /Users/anseongjun/Project/Today_Feeling/Android/app/src/main/AndroidManifest.xml
 	xmlns:tools
 		ADDED from /Users/anseongjun/Project/Today_Feeling/Android/app/src/main/AndroidManifest.xml:3:5-51
 	android:versionCode
 		INJECTED from /Users/anseongjun/Project/Today_Feeling/Android/app/src/main/AndroidManifest.xml
-		ADDED from /Users/anseongjun/Project/Today_Feeling/Android/app/src/main/AndroidManifest.xml:2:1-30:12
+		ADDED from /Users/anseongjun/Project/Today_Feeling/Android/app/src/main/AndroidManifest.xml:2:1-35:12
 		INJECTED from /Users/anseongjun/Project/Today_Feeling/Android/app/src/main/AndroidManifest.xml
 	xmlns:android
 		ADDED from /Users/anseongjun/Project/Today_Feeling/Android/app/src/main/AndroidManifest.xml:2:11-69
 application
-ADDED from /Users/anseongjun/Project/Today_Feeling/Android/app/src/main/AndroidManifest.xml:5:5-28:19
+ADDED from /Users/anseongjun/Project/Today_Feeling/Android/app/src/main/AndroidManifest.xml:5:5-33:19
 MERGED from [com.google.android.material:material:1.8.0] /Users/anseongjun/.gradle/caches/transforms-3/5bf45942ca19c8e30bdd0366b1495316/transformed/material-1.8.0/AndroidManifest.xml:24:5-20
 MERGED from [com.google.android.material:material:1.8.0] /Users/anseongjun/.gradle/caches/transforms-3/5bf45942ca19c8e30bdd0366b1495316/transformed/material-1.8.0/AndroidManifest.xml:24:5-20
 MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] /Users/anseongjun/.gradle/caches/transforms-3/998332c3da749ba8481cab353fa677b8/transformed/constraintlayout-2.1.4/AndroidManifest.xml:9:5-20
@@ -97,34 +98,48 @@ MERGED from [androidx.startup:startup-runtime:1.1.1] /Users/anseongjun/.gradle/c
 		ADDED from /Users/anseongjun/Project/Today_Feeling/Android/app/src/main/AndroidManifest.xml:12:9-50
 	android:dataExtractionRules
 		ADDED from /Users/anseongjun/Project/Today_Feeling/Android/app/src/main/AndroidManifest.xml:7:9-65
-activity#com.example.todayfeeling.SplashScreen
-ADDED from /Users/anseongjun/Project/Today_Feeling/Android/app/src/main/AndroidManifest.xml:14:9-23:20
+activity#com.example.todayfeeling.sign.SignUpActivity
+ADDED from /Users/anseongjun/Project/Today_Feeling/Android/app/src/main/AndroidManifest.xml:14:9-16:40
 	android:exported
-		ADDED from /Users/anseongjun/Project/Today_Feeling/Android/app/src/main/AndroidManifest.xml:16:13-36
+		ADDED from /Users/anseongjun/Project/Today_Feeling/Android/app/src/main/AndroidManifest.xml:16:13-37
+	android:name
+		ADDED from /Users/anseongjun/Project/Today_Feeling/Android/app/src/main/AndroidManifest.xml:15:13-48
+activity#com.example.todayfeeling.sign.LoginActivity
+ADDED from /Users/anseongjun/Project/Today_Feeling/Android/app/src/main/AndroidManifest.xml:17:9-19:40
+	android:exported
+		ADDED from /Users/anseongjun/Project/Today_Feeling/Android/app/src/main/AndroidManifest.xml:19:13-37
+	android:name
+		ADDED from /Users/anseongjun/Project/Today_Feeling/Android/app/src/main/AndroidManifest.xml:18:13-47
+activity#com.example.todayfeeling.splash.SplashScreen
+ADDED from /Users/anseongjun/Project/Today_Feeling/Android/app/src/main/AndroidManifest.xml:20:9-29:20
+	android:exported
+		ADDED from /Users/anseongjun/Project/Today_Feeling/Android/app/src/main/AndroidManifest.xml:22:13-36
 	android:theme
-		ADDED from /Users/anseongjun/Project/Today_Feeling/Android/app/src/main/AndroidManifest.xml:17:13-47
+		ADDED from /Users/anseongjun/Project/Today_Feeling/Android/app/src/main/AndroidManifest.xml:23:13-47
 	android:name
-		ADDED from /Users/anseongjun/Project/Today_Feeling/Android/app/src/main/AndroidManifest.xml:15:13-41
+		ADDED from /Users/anseongjun/Project/Today_Feeling/Android/app/src/main/AndroidManifest.xml:21:13-48
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from /Users/anseongjun/Project/Today_Feeling/Android/app/src/main/AndroidManifest.xml:18:13-22:29
+ADDED from /Users/anseongjun/Project/Today_Feeling/Android/app/src/main/AndroidManifest.xml:24:13-28:29
 action#android.intent.action.MAIN
-ADDED from /Users/anseongjun/Project/Today_Feeling/Android/app/src/main/AndroidManifest.xml:19:17-69
+ADDED from /Users/anseongjun/Project/Today_Feeling/Android/app/src/main/AndroidManifest.xml:25:17-69
 	android:name
-		ADDED from /Users/anseongjun/Project/Today_Feeling/Android/app/src/main/AndroidManifest.xml:19:25-66
+		ADDED from /Users/anseongjun/Project/Today_Feeling/Android/app/src/main/AndroidManifest.xml:25:25-66
 category#android.intent.category.LAUNCHER
-ADDED from /Users/anseongjun/Project/Today_Feeling/Android/app/src/main/AndroidManifest.xml:21:17-77
+ADDED from /Users/anseongjun/Project/Today_Feeling/Android/app/src/main/AndroidManifest.xml:27:17-77
 	android:name
-		ADDED from /Users/anseongjun/Project/Today_Feeling/Android/app/src/main/AndroidManifest.xml:21:27-74
+		ADDED from /Users/anseongjun/Project/Today_Feeling/Android/app/src/main/AndroidManifest.xml:27:27-74
 activity#com.example.todayfeeling.MainActivity
-ADDED from /Users/anseongjun/Project/Today_Feeling/Android/app/src/main/AndroidManifest.xml:24:9-27:20
+ADDED from /Users/anseongjun/Project/Today_Feeling/Android/app/src/main/AndroidManifest.xml:30:9-32:40
 	android:exported
-		ADDED from /Users/anseongjun/Project/Today_Feeling/Android/app/src/main/AndroidManifest.xml:26:13-37
+		ADDED from /Users/anseongjun/Project/Today_Feeling/Android/app/src/main/AndroidManifest.xml:32:13-37
 	android:name
-		ADDED from /Users/anseongjun/Project/Today_Feeling/Android/app/src/main/AndroidManifest.xml:25:13-41
+		ADDED from /Users/anseongjun/Project/Today_Feeling/Android/app/src/main/AndroidManifest.xml:31:13-41
 uses-sdk
 INJECTED from /Users/anseongjun/Project/Today_Feeling/Android/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from /Users/anseongjun/Project/Today_Feeling/Android/app/src/main/AndroidManifest.xml
 INJECTED from /Users/anseongjun/Project/Today_Feeling/Android/app/src/main/AndroidManifest.xml
+MERGED from [androidx.databinding:viewbinding:7.4.0] /Users/anseongjun/.gradle/caches/transforms-3/f9edf4dca65c74a4081fbed3a1f00a4b/transformed/viewbinding-7.4.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.databinding:viewbinding:7.4.0] /Users/anseongjun/.gradle/caches/transforms-3/f9edf4dca65c74a4081fbed3a1f00a4b/transformed/viewbinding-7.4.0/AndroidManifest.xml:5:5-44
 MERGED from [com.google.android.material:material:1.8.0] /Users/anseongjun/.gradle/caches/transforms-3/5bf45942ca19c8e30bdd0366b1495316/transformed/material-1.8.0/AndroidManifest.xml:20:5-22:41
 MERGED from [com.google.android.material:material:1.8.0] /Users/anseongjun/.gradle/caches/transforms-3/5bf45942ca19c8e30bdd0366b1495316/transformed/material-1.8.0/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] /Users/anseongjun/.gradle/caches/transforms-3/998332c3da749ba8481cab353fa677b8/transformed/constraintlayout-2.1.4/AndroidManifest.xml:5:5-7:41
@@ -173,16 +188,14 @@ MERGED from [androidx.core:core:1.9.0] /Users/anseongjun/.gradle/caches/transfor
 MERGED from [androidx.core:core:1.9.0] /Users/anseongjun/.gradle/caches/transforms-3/a4522fe6b275a4534bfc0eadc1a8e0f8/transformed/core-1.9.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.core:core-ktx:1.9.0] /Users/anseongjun/.gradle/caches/transforms-3/407f04c038b08e7c69adff0833973fb6/transformed/core-ktx-1.9.0/AndroidManifest.xml:5:5-44
 MERGED from [androidx.core:core-ktx:1.9.0] /Users/anseongjun/.gradle/caches/transforms-3/407f04c038b08e7c69adff0833973fb6/transformed/core-ktx-1.9.0/AndroidManifest.xml:5:5-44
-MERGED from [androidx.savedstate:savedstate:1.2.0] /Users/anseongjun/.gradle/caches/transforms-3/e770780cb47c29236eb0a4798ce6e924/transformed/savedstate-1.2.0/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.savedstate:savedstate:1.2.0] /Users/anseongjun/.gradle/caches/transforms-3/e770780cb47c29236eb0a4798ce6e924/transformed/savedstate-1.2.0/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.annotation:annotation-experimental:1.3.0] /Users/anseongjun/.gradle/caches/transforms-3/b46646453c391fe6a706b89dc8b50dc4/transformed/annotation-experimental-1.3.0/AndroidManifest.xml:20:5-44
-MERGED from [androidx.annotation:annotation-experimental:1.3.0] /Users/anseongjun/.gradle/caches/transforms-3/b46646453c391fe6a706b89dc8b50dc4/transformed/annotation-experimental-1.3.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /Users/anseongjun/.gradle/caches/transforms-3/b741823985dfe2c1afae313f01efbd36/transformed/cursoradapter-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /Users/anseongjun/.gradle/caches/transforms-3/b741823985dfe2c1afae313f01efbd36/transformed/cursoradapter-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.lifecycle:lifecycle-process:2.4.1] /Users/anseongjun/.gradle/caches/transforms-3/528f10946969151ddeecc9c08cbfcbae/transformed/lifecycle-process-2.4.1/AndroidManifest.xml:21:5-23:41
 MERGED from [androidx.lifecycle:lifecycle-process:2.4.1] /Users/anseongjun/.gradle/caches/transforms-3/528f10946969151ddeecc9c08cbfcbae/transformed/lifecycle-process-2.4.1/AndroidManifest.xml:21:5-23:41
 MERGED from [androidx.lifecycle:lifecycle-runtime:2.5.1] /Users/anseongjun/.gradle/caches/transforms-3/057661c3a9b24eec0956006e37b29ef3/transformed/lifecycle-runtime-2.5.1/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.lifecycle:lifecycle-runtime:2.5.1] /Users/anseongjun/.gradle/caches/transforms-3/057661c3a9b24eec0956006e37b29ef3/transformed/lifecycle-runtime-2.5.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.savedstate:savedstate:1.2.0] /Users/anseongjun/.gradle/caches/transforms-3/e770780cb47c29236eb0a4798ce6e924/transformed/savedstate-1.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.savedstate:savedstate:1.2.0] /Users/anseongjun/.gradle/caches/transforms-3/e770780cb47c29236eb0a4798ce6e924/transformed/savedstate-1.2.0/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.cardview:cardview:1.0.0] /Users/anseongjun/.gradle/caches/transforms-3/f7dffa55bd3b8c6d7559cf87e7e15b04/transformed/cardview-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.cardview:cardview:1.0.0] /Users/anseongjun/.gradle/caches/transforms-3/f7dffa55bd3b8c6d7559cf87e7e15b04/transformed/cardview-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /Users/anseongjun/.gradle/caches/transforms-3/b4380f2bee82def908dc06db2056934d/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:20:5-22:41
@@ -205,6 +218,8 @@ MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] /Users/
 MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] /Users/anseongjun/.gradle/caches/transforms-3/114327bbf1c6af7593b0a1a8e245bb1a/transformed/localbroadcastmanager-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.print:print:1.0.0] /Users/anseongjun/.gradle/caches/transforms-3/a6089ce1869f340ea741d9b9e92ce46d/transformed/print-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.print:print:1.0.0] /Users/anseongjun/.gradle/caches/transforms-3/a6089ce1869f340ea741d9b9e92ce46d/transformed/print-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.annotation:annotation-experimental:1.3.0] /Users/anseongjun/.gradle/caches/transforms-3/b46646453c391fe6a706b89dc8b50dc4/transformed/annotation-experimental-1.3.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.annotation:annotation-experimental:1.3.0] /Users/anseongjun/.gradle/caches/transforms-3/b46646453c391fe6a706b89dc8b50dc4/transformed/annotation-experimental-1.3.0/AndroidManifest.xml:20:5-44
 INJECTED from /Users/anseongjun/Project/Today_Feeling/Android/app/src/main/AndroidManifest.xml
 INJECTED from /Users/anseongjun/Project/Today_Feeling/Android/app/src/main/AndroidManifest.xml
 	android:targetSdkVersion
