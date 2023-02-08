@@ -19,12 +19,13 @@ def register():
     if request.method == "POST":
         #bcrypt = Bcrypt(app)
 
-        print(request.form)
+        get_json_data = request.get_json(True)
+        #print(get_json_data)
 
-        userId = request.form.get('userId')
-        userPw = request.form.get('userPw')
-        userName = request.form.get('userName')
-        userSex = request.form.get('userSex')
+        userId = get_json_data['userId']
+        userPw = get_json_data['userPw']
+        userName = get_json_data['userName']
+        userSex = get_json_data['userSex']
 
         #print(userId, userPw, userName, userSex)
 

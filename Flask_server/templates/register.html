@@ -45,16 +45,18 @@
     var userSex = document.querySelector("#userSex").value;  
 
 
-    let urlParams = new URLSearchParams({
+    let urlParams = {
         userId: userId,
         userPw: userPw,
         userName: userName,
-        userSex: userSex
-        });
+        userSex: userSex,
+        };
     
+    let urlParamsjson = JSON.stringify(urlParams)
+
     let fetchOptions = {
             method: "POST",
-            body: urlParams,
+            body: urlParamsjson,
         }
     
         let response = await fetch("/member/register", fetchOptions);
