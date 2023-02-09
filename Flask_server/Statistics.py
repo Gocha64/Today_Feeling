@@ -5,6 +5,7 @@ from dotenv import load_dotenv
 import os
 import User
 import Playlist
+from urllib.parse import quote  
 
 # create the extension
 db = SQLAlchemy()
@@ -18,7 +19,7 @@ db_ip = os.getenv("DB_IP")
 db_port = os.getenv("DB_PORT")
 db_schema = os.getenv("DB_SCHEMA")
 
-app.config["SQLALCHEMY_DATABASE_URI"] = f"mysql+pymysql://{db_userName}:{db_pw}@{db_ip}:{db_port}/{db_schema}"
+app.config["SQLALCHEMY_DATABASE_URI"] = f'mysql+pymysql://{db_userName}:%s@{db_ip}:{db_port}/{db_schema}' % quote(db_pw)
 # initialize the app with the extension
 db.init_app(app)
 
@@ -27,20 +28,29 @@ class Statistics(db.Model):
     __tablename__ = 'Statistics'
     uid = db.Column(db.Integer, primary_key=True, nullable=False, autoincrement=True)
     userUID = db.Column(db.Integer, db.ForeignKey(User.User.uid), unique=True, nullable=False )
-    datetime = db.Column(db.DateTime(timezone=True), nullable=False)
+    dateTime = db.Column(db.DateTime(timezone=True), nullable=False)
     songUID = db.Column(db.Integer, db.ForeignKey(Playlist.Playlist.uid), unique=True, nullable=False )
     emotion = db.Column(db.Integer, nullable=False)
     
 
-    def __init__(self, userUID, songUID, emotion):
+    def __init__(self, userUID, songUID, emotion, date = datetime.now()):
         self.userUID = userUID
         self.songUID = songUID
-        self.datetime = datetime.now()
+        self.dateTime = date
         self.emotion = emotion
 
     def __str__(self):
-        return f" uid: {self.uid}\n userUID: {self.userUID}\n datetime: {self.datetime}\n songUID: {self.songUID}\n emotion: {self.emotion}\n"
+        return f" uid: {self.uid}\n userUID: {self.userUID}\n datetime: {self.dateTime}\n songUID: {self.songUID}\n emotion: {self.emotion}\n"
     
+    
+    def toDict(self):
+        staDict = dict()
+        staDict['userUID'] = self.userUID
+        staDict['songUID'] = self.songUID
+        staDict['datetime'] = self.dateTime
+        staDict['emotion'] = self.emotion
+        return staDict
+
 
 def create_table():
     with app.app_context():
@@ -80,7 +90,8 @@ def select_statistics_with_userUID_Day(userUID , curDate = datetime.now()):
     with app.app_context():
         statistics = db.session.query(Statistics).\
             filter(Statistics.userUID == userUID).\
-            filter(Statistics.datetime >= curDate - timedelta(days = 1)).all()
+            filter(Statistics.dateTime >= curDate - timedelta(days = 1)).\
+            filter(Statistics.dateTime <= curDate).all()
     return statistics
 
 
@@ -90,7 +101,8 @@ def select_statistics_with_userUID_Week(userUID , curDate = datetime.now()):
     with app.app_context():
         statistics = db.session.query(Statistics).\
             filter(Statistics.userUID == userUID).\
-            filter(Statistics.datetime >= curDate - timedelta(weeks = 1)).all()
+            filter(Statistics.dateTime >= curDate - timedelta(weeks = 1)).\
+            filter(Statistics.dateTime <= curDate).all()
     return statistics
 
 # 최근 1개월(30일)의 데이터 리스트 반환, default는 서버시간의 날짜
@@ -99,7 +111,8 @@ def select_statistics_with_userUID_Month(userUID , curDate = datetime.now()):
     with app.app_context():
         statistics = db.session.query(Statistics).\
             filter(Statistics.userUID == userUID).\
-            filter(Statistics.datetime >= curDate - timedelta(days = 30)).all()
+            filter(Statistics.dateTime >= curDate - timedelta(days = 30)).\
+            filter(Statistics.dateTime <= curDate).all()
     return statistics
 
 
@@ -119,14 +132,25 @@ def delete_statistics_with_uid(uid):
         print(e.args)
 
 
+# 테스트용 더미 데이터 생성
+def insert_dummy_Data():
+
+    for i in range(40):
+        time = datetime.now() - timedelta(days=i)
+        sta = Statistics(2, 1, 2, time)
+        insert_statistics(sta)
+
+
+
 
 if __name__ == "__main__":
     # create_table()
-    # sta = Statistics(15, 3, 3)
+    # sta = Statistics(2, 1, 2)
     # insert_statistics(sta)
 
     # delete_statistics_with_uid(8)
-    # print_all_statistics_list()
+    # insert_dummy_Data()
+    print_all_statistics_list()
 
     # statistics = Statistics(1,1,2)
     # insert_statistics(statistics)
@@ -137,7 +161,7 @@ if __name__ == "__main__":
     #     print(s.datetime.date())
 
 
-    statistics1 = select_statistics_with_userUID_Month(15)
-    for s in statistics1:
-        print(s)
+    #statistics1 = select_statistics_with_userUID_Month(15)
+    #for s in statistics1:
+    #    print(s)
     
