@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="..\static\assets\css\style.css">
+    <title>테스트 페이지</title>
+</head>
+<body class="main">
+    <div class = "main">
+        <div>
+            <h1>emotion_recommend 테스트</h1>
+            <h2>emotion</h2>
+            <span><input type="text" id = "emotion" placeholder=""></span>
+
+
+            <br>
+            <br>
+        </div>
+            
+            <button id="btnRegister" onclick="register()">제출</button>
+
+        <button class = 'mainBtn' onclick="window.location.href='/'">메인페이지</button>
+        
+    </div>
+    
+
+</body>
+
+<script>
+    async function register() {
+   
+    var emotion = document.querySelector("#emotion").value; 
+
+
+    let urlParams = {
+        emotion_data: emotion,
+
+        };
+    
+    let urlParamsjson = JSON.stringify(urlParams)
+
+    let fetchOptions = {
+            method: "POST",
+            body: urlParamsjson,
+        }
+    
+        let response = await fetch("/emotion/recommend", fetchOptions);
+        console.log(response);
+        let data = await response.json();
+        console.log(data)
+        
+    }
+</script>
+</html>

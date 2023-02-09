@@ -4,7 +4,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 object RetrofitImpl {
-    private const val URL = "https://0.0.0.1:8080"
+    private const val URL = "http://218.232.159.156:10081/"
 
     private val retrofit = Retrofit.Builder()
         .baseUrl(URL)

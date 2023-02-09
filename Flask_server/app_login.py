@@ -28,10 +28,9 @@ def login():
 
 
         user = User.select_user_with_id(userId)
-        print(user.uid)
 
         if user != None and user.password == userPwHash:
-            session['userUid'] = userId
+            session['userUid'] = user.uid
             return jsonify({'result' : 'success'})
         else:
             return jsonify({'result' : 'fail'})

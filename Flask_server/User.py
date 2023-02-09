@@ -2,6 +2,7 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 from dotenv import load_dotenv
+from urllib.parse import quote  
 import os
 
 # create the extension
@@ -17,7 +18,8 @@ db_ip = os.getenv("DB_IP")
 db_port = os.getenv("DB_PORT")
 db_schema = os.getenv("DB_SCHEMA")
 
-app.config["SQLALCHEMY_DATABASE_URI"] = f'mysql+pymysql://{db_userName}:{db_pw}@{db_ip}:{db_port}/{db_schema}'
+app.config["SQLALCHEMY_DATABASE_URI"] = f'mysql+pymysql://{db_userName}:%s@{db_ip}:{db_port}/{db_schema}' % quote(db_pw)
+#app.config["SQLALCHEMY_DATABASE_URI"] = f'mysql+pymysql://{db_userName}:{db_pw}@{db_ip}:{db_port}/{db_schema}'
 # initialize the app with the extension
 db.init_app(app)
 
