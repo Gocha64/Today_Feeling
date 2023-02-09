@@ -54,21 +54,20 @@ class LoginActivity : AppCompatActivity() {
                 if (response.isSuccessful) {
                     if (response.body()?.result.toString() == "success") {
                         dialog.dismiss()
-                        sessionId = response.headers().toString()
+                        sessionId = response.headers().get("Set-Cookie").toString()
+                        Log.d("test", sessionId)
                         val sharedPreference = getSharedPreferences("user", 0)
                         val editor = sharedPreference.edit()
                         editor.putString("id", id)
                         editor.putString("pw", pw)
                         editor.putString("session", sessionId)
                         editor.apply()
-                        dialog.dismiss()
                         val intent = Intent(context, MainActivity::class.java)
                         context.startActivity(intent)
                     }
                     else {
                         dialog.dismiss()
                         Log.d("test","${response.body().toString()}")
-                        Log.d("login2", "${response.body()}")
                         //로그인 실패 알리기
                     }
                 }

@@ -13,12 +13,10 @@ class SplashScreen : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val sharedPreferences = getSharedPreferences("user", 0)
-        sharedPreferences.edit().remove("id")
-        sharedPreferences.edit().remove("pw")
-        sharedPreferences.edit().remove("session")
         val id = sharedPreferences.getString("id", "")
         val pw = sharedPreferences.getString("pw", "")
         val session = sharedPreferences.getString("session", "")
+        Log.d("test","$id")
 
         if (id == "" && pw == "" && session == "") {
             val intent = Intent(this, LoginActivity::class.java)

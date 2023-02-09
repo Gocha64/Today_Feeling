@@ -1,18 +1,22 @@
 [
     {
-        "merged": "com.example.todayfeeling.app-mergeDebugResources-29:/layout/activity_login.xml",
-        "source": "com.example.todayfeeling.app-main-32:/layout/activity_login.xml"
-    },
-    {
-        "merged": "com.example.todayfeeling.app-mergeDebugResources-29:/layout/activity_splash_screen.xml",
-        "source": "com.example.todayfeeling.app-main-32:/layout/activity_splash_screen.xml"
+        "merged": "/Users/anseongjun/.gradle/daemon/7.5/com.example.todayfeeling.app-mergeDebugResources-29:/layout/activity_login.xml",
+        "source": "/Users/anseongjun/.gradle/daemon/7.5/com.example.todayfeeling.app-main-32:/layout/activity_login.xml"
     },
     {
         "merged": "com.example.todayfeeling.app-mergeDebugResources-29:/layout/activity_sign_up.xml",
         "source": "com.example.todayfeeling.app-main-32:/layout/activity_sign_up.xml"
     },
     {
-        "merged": "com.example.todayfeeling.app-mergeDebugResources-29:/layout/activity_main.xml",
-        "source": "com.example.todayfeeling.app-main-32:/layout/activity_main.xml"
+        "merged": "/Users/anseongjun/.gradle/daemon/7.5/com.example.todayfeeling.app-mergeDebugResources-29:/layout/activity_main.xml",
+        "source": "/Users/anseongjun/.gradle/daemon/7.5/com.example.todayfeeling.app-main-32:/layout/activity_main.xml"
+    },
+    {
+        "merged": "/Users/anseongjun/.gradle/daemon/7.5/com.example.todayfeeling.app-mergeDebugResources-29:/layout/activity_sign_up.xml",
+        "source": "/Users/anseongjun/.gradle/daemon/7.5/com.example.todayfeeling.app-main-32:/layout/activity_sign_up.xml"
+    },
+    {
+        "merged": "/Users/anseongjun/.gradle/daemon/7.5/com.example.todayfeeling.app-mergeDebugResources-29:/layout/activity_splash_screen.xml",
+        "source": "/Users/anseongjun/.gradle/daemon/7.5/com.example.todayfeeling.app-main-32:/layout/activity_splash_screen.xml"
     }
 ]
