@@ -19,7 +19,10 @@ class SplashScreen : AppCompatActivity() {
         Log.d("test","$id")
 
         if (id == "" && pw == "" && session == "") {
-            val intent = Intent(this, LoginActivity::class.java)
+            //세션 아이디 수정하면 LoginActivity로 변경
+            val intent = Intent(this, MainActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent)
         } else {
             val intent = Intent(this, MainActivity::class.java)
