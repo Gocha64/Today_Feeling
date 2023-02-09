@@ -15,10 +15,15 @@ drawable ic_email_white_24dp
 drawable ic_launcher_background
 drawable ic_launcher_foreground
 drawable ic_lock_white_24dp
+id btn_register
 id btn_sign_in
 id btn_sign_up
 id edit_id
 id edit_pw
+id edit_signup_id
+id edit_signup_name
+id edit_signup_pw
+id edit_signup_sex
 id imageView
 id linearLayout
 id test

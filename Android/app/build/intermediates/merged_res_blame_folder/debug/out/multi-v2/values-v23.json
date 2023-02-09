@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.todayfeeling.app-mergeDebugResources-27:/values-v23/values-v23.xml",
+            "outputFile": "com.example.todayfeeling.app-mergeDebugResources-28:/values-v23/values-v23.xml",
             "map": [
                 {
                     "source": "/Users/anseongjun/.gradle/caches/transforms-3/f7dffa55bd3b8c6d7559cf87e7e15b04/transformed/cardview-1.0.0/res/values-v23/values-v23.xml",

@@ -3,8 +3,8 @@ package com.example.todayfeeling.data
 import com.google.gson.annotations.SerializedName
 
 data class LoginData(
-    @SerializedName("name")
+    @SerializedName("userId")
     var id:String,
-    @SerializedName("pw")
+    @SerializedName("userPw")
     var password:String
 )

@@ -1,9 +1,8 @@
 package com.example.todayfeeling
 
-import android.content.Context
-import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import com.example.todayfeeling.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -14,5 +13,12 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         mBinding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        val sharedPreference = getSharedPreferences("user", 0)
+        val editor = sharedPreference.edit()
+        editor.remove("id")
+        editor.remove("pw")
+        editor.remove("session")
+        editor.apply()
     }
 }

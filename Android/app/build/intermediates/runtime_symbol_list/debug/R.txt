@@ -2906,6 +2906,7 @@ int id bounce 0x7f08005e
 int id bounceBoth 0x7f08005f
 int id bounceEnd 0x7f080060
 int id bounceStart 0x7f080061
+int id btn_register 0x7f0801f4
 int id btn_sign_in 0x7f080062
 int id btn_sign_up 0x7f080063
 int id buttonPanel 0x7f080064
@@ -2983,6 +2984,10 @@ int id east 0x7f0800ab
 int id edit_id 0x7f0800ac
 int id edit_pw 0x7f0800ad
 int id edit_query 0x7f0800ae
+int id edit_signup_id 0x7f0801f5
+int id edit_signup_name 0x7f0801f6
+int id edit_signup_pw 0x7f0801f7
+int id edit_signup_sex 0x7f0801f8
 int id elastic 0x7f0800af
 int id embed 0x7f0800b0
 int id end 0x7f0800b1
@@ -3316,6 +3321,7 @@ int integer cancel_button_image_alpha 0x7f090004
 int integer config_tooltipAnimTime 0x7f090005
 int integer design_snackbar_text_max_lines 0x7f090006
 int integer design_tab_indicator_anim_duration_ms 0x7f090007
+int integer google_play_services_version 0x7f09003c
 int integer hide_password_duration 0x7f090008
 int integer m3_btn_anim_delay_ms 0x7f090009
 int integer m3_btn_anim_duration_ms 0x7f09000a
@@ -3538,6 +3544,7 @@ int string character_counter_content_description 0x7f0f0024
 int string character_counter_overflowed_content_description 0x7f0f0025
 int string character_counter_pattern 0x7f0f0026
 int string clear_text_end_icon_content_description 0x7f0f0027
+int string common_google_play_services_unknown_issue 0x7f0f009b
 int string error_a11y_label 0x7f0f0028
 int string error_icon_content_description 0x7f0f0029
 int string exposed_dropdown_menu_content_description 0x7f0f002a
