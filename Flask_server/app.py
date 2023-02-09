@@ -10,6 +10,7 @@ app.secret_key = os.getenv("APP_SECRETKEY")
 
 import app_register
 import app_login
+import app_statistics
 
 #app.config["PERMANENT_SESSION_LIFETIME"] = timedelta(minutes=5)
 app.config['SESSION_PERMANENT'] = True
@@ -27,6 +28,10 @@ def hello():
 @app.route('/redirectTest')
 def redirectTest():
     return redirect(url_for('hello'))
+
+@app.route('/statPostTest')
+def statPostTest():
+    return render_template("statPostTest.html")
 
 
 @app.errorhandler(404)

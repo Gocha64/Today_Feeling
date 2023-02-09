@@ -3,6 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 from dotenv import load_dotenv
 import os
+from urllib.parse import quote  
 
 
 # create the extension
@@ -18,7 +19,7 @@ db_ip = os.getenv("DB_IP")
 db_port = os.getenv("DB_PORT")
 db_schema = os.getenv("DB_SCHEMA")
 
-app.config["SQLALCHEMY_DATABASE_URI"] = f"mysql+pymysql://{db_userName}:{db_pw}@{db_ip}:{db_port}/{db_schema}"
+app.config["SQLALCHEMY_DATABASE_URI"] = f'mysql+pymysql://{db_userName}:%s@{db_ip}:{db_port}/{db_schema}' % quote(db_pw)
 # initialize the app with the extension
 db.init_app(app)
 
@@ -75,7 +76,6 @@ def select_playlists_with_mode(mode):
         playlists = db.session.query(Playlist).filter(Playlist.mode == mode).all()
     return playlists
 
-
 def insert_playlist(playlist):
     try:
         with app.app_context():
@@ -113,7 +113,8 @@ def update_playlist_with_uid(uid, playlistModi):
         print(e.args)
 
 if __name__ == "__main__":
-    #playlist = Playlist("urlTest", "titleTest", 1, "000001")
+    playlist = Playlist("urlTest", "appTest", "titleTest", 1, "000001")
+    insert_playlist(playlist)
     #modiTest = Playlist("urlEx","appEx", "titleEx", 1, "000111")
     #delete_playlist_with_uid(4)
     #update_playlist_with_uid(3, modiTest)
