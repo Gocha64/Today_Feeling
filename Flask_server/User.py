@@ -39,8 +39,19 @@ class User(db.Model):
         self.sex = sex
 
 
+
     def __str__(self):
         return f" uid: {self.uid}\n id: {self.id}\n name: {self.name}\n password: {self.password}\n sex: {self.sex}\n"
+
+    def toDict_without_password(self):
+        userDict = dict()
+        userDict['uid'] = self.uid
+        userDict['id'] = self.id
+        userDict['name'] = self.name
+        userDict['sex'] = self.sex
+
+        return userDict
+
     
 
 def create_table():
