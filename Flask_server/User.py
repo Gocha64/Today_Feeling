@@ -106,12 +106,12 @@ def delete_user_with_uid(uid):
     except Exception as e:
         print(e.args)
 
-def update_user_with_uid(uid, userModi):
+def update_user_with_id(id, userModi):
     # id 중복 같은건 사용할 떄 걸러낼 것
 
     try:
         with app.app_context():
-            user = db.session.query(User).filter(User.uid == uid).first()
+            user = db.session.query(User).filter(User.id == id).first()
             if user == None:
                 return None
             

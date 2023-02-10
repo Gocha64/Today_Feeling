@@ -12,6 +12,7 @@ import app_register
 import app_login
 import app_member
 import app_statistics
+import app_modify
 
 
 #app.config["PERMANENT_SESSION_LIFETIME"] = timedelta(minutes=5)
