@@ -47,7 +47,7 @@ def register():
                 print(f"{userId} registered")
                 return jsonify({'result' : 'success'})
             except:
-                return jsonify({'result' : 'undifiend Error'})
+                return jsonify({'result' : 'undefiend Error'})
 
     
     
