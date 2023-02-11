@@ -55,7 +55,8 @@ class LoginActivity : AppCompatActivity() {
                     if (response.body()?.result.toString() == "success") {
                         dialog.dismiss()
                         sessionId = response.headers().get("Set-Cookie").toString()
-                        Log.d("test", sessionId)
+                        sessionId = sessionId.split(";")[0];
+                        sessionId = sessionId.substring(8)
                         val sharedPreference = getSharedPreferences("user", 0)
                         val editor = sharedPreference.edit()
                         editor.putString("id", id)
