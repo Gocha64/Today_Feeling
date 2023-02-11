@@ -39,7 +39,8 @@
 <script>
     async function modify() {
 
-    var userId = document.getElementById('userId');
+    var userId = document.getElementById('userId').innerHTML;
+    console.log(userId)
     var userPw = document.querySelector("#userPw").value;
     var userName = document.querySelector("#userName").value;
     var userSex = document.querySelector("#userSex").value;
