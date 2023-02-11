@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="..\static\assets\css\style.css">
+    <title>회원정보수정</title>
+
+<body class="main">
+    <div class = "main">
+        <div>
+            <h1>회원정보수정</h1>
+
+            <div> ID(변경불가): <span id="userId">{{userId}}</span></div>
+
+            <h2>패스워드</h2>
+            <span><input type="password" id = "userPw" placeholder="새 패스워드를 입력하세요"></span>
+
+            <h2>닉네임</h2>
+            <span><input type="text" id = "userName" placeholder="새 닉네임을 입력하세요"></span>
+
+            <h2>성별</h2>
+            <span><input type="text" id = "userSex" placeholder="성별을 입력하세요 남자:1, 여자:2"></span>
+
+            <br>
+            <br>
+        </div>
+
+            <button id="btnmodify" onclick="modify()">정보 저장</button>
+
+        <button class = 'mainBtn' onclick="window.location.href='/'">메인페이지</button>
+
+    </div>
+
+
+</body>
+<script>
+    async function modify() {
+
+    var userId = document.getElementById('userId').innerHTML;
+    console.log(userId)
+    var userPw = document.querySelector("#userPw").value;
+    var userName = document.querySelector("#userName").value;
+    var userSex = document.querySelector("#userSex").value;
+
+
+    let urlParams = {
+        userId: userId,
+        userPw: userPw,
+        userName: userName,
+        userSex: userSex,
+        };
+
+    let urlParamsjson = JSON.stringify(urlParams)
+
+    let fetchOptions = {
+            method: "POST",
+            body: urlParamsjson,
+        }
+
+        let response = await fetch("/member/modify", fetchOptions);
+        console.log(response);
+        let data = await response.json();
+        if( data.result == "success" ){
+        alert('정보수정에 성공했습니다. 메인 페이지로 이동합니다.');
+        window.location.href="/";
+        }else{
+        alert("정보수정에 실패했습니다.");
+        alert(data.result)
+        window.location.href="/member/modify";
+        }
+    }
+</script>
+
+</html>
