@@ -59,29 +59,8 @@ class SplashScreen : AppCompatActivity() {
                         editor.putString("pw", pw)
                         editor.putString("session", sessionId)
                         editor.apply()
-                        RetrofitImpl.service.getUser(sessionId).enqueue(object : Callback<UserData> {
-                            override fun onResponse(
-                                call: Call<UserData>,
-                                response: Response<UserData>
-                            ) {
-                                if (response.isSuccessful) {
-                                    if (response.body()?.userSex.toString() == "1") {
-                                        editor.putString("sex", "남자")
-                                    } else {
-                                        editor.putString("sex", "여자")
-                                    }
-                                    Log.d("test","성공!!!")
-                                    val intent = Intent(context, MainActivity::class.java)
-                                    context.startActivity(intent)
-                                }
-                                TODO("Not yet implemented")
-                            }
-
-                            override fun onFailure(call: Call<UserData>, t: Throwable) {
-                                TODO("Not yet implemented")
-                            }
-
-                        })
+                        val intent = Intent(context, MainActivity::class.java)
+                        startActivity(intent)
                     }
                     else {
                         Log.d("test","${response.body().toString()}")

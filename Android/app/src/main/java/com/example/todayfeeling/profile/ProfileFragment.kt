@@ -36,6 +36,11 @@ class ProfileFragment : Fragment() {
                 startActivity(intent)
             }
         }
+
+        binding.btnFixUser.setOnClickListener {
+            val intent = Intent(activity, FixUserActivity::class.java)
+            startActivity(intent)
+        }
         // Inflate the layout for this fragment
         return binding.root
     }
