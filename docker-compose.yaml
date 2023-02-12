@@ -1,0 +1,6 @@
+version: "3.9"
+services:
+  flask:
+    image: dksj9921/docker-memo:latest
+    ports:
+      - "10081:10081"
