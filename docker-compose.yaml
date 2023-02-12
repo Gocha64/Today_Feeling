@@ -4,3 +4,4 @@ services:
     image: dksj9921/docker-memo:latest
     ports:
       - "10081:10081"
+    container_name: "flask_server"
