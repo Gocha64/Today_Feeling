@@ -39,8 +39,19 @@ class User(db.Model):
         self.sex = sex
 
 
+
     def __str__(self):
         return f" uid: {self.uid}\n id: {self.id}\n name: {self.name}\n password: {self.password}\n sex: {self.sex}\n"
+
+    def toDict_without_password(self):
+        userDict = dict()
+        userDict['uid'] = self.uid
+        userDict['id'] = self.id
+        userDict['name'] = self.name
+        userDict['sex'] = self.sex
+
+        return userDict
+
     
 
 def create_table():
@@ -95,12 +106,12 @@ def delete_user_with_uid(uid):
     except Exception as e:
         print(e.args)
 
-def update_user_with_uid(uid, userModi):
+def update_user_with_id(id, userModi):
     # id 중복 같은건 사용할 떄 걸러낼 것
 
     try:
         with app.app_context():
-            user = db.session.query(User).filter(User.uid == uid).first()
+            user = db.session.query(User).filter(User.id == id).first()
             if user == None:
                 return None
             
