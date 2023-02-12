@@ -1,8 +1,8 @@
 name: flask-run-actions
-on : 
+on:
   push:
     branches:
-      -main
+      - main
 
 jobs:
   build-image:
