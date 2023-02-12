@@ -25,7 +25,6 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           push: true
-          context : /Flask_server
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/docker-memo:latest
           
       -
