@@ -7,6 +7,8 @@ on:
 jobs:
   build-image:
     runs-on : ubuntu-latest
+    env:
+      working-directory : ./Flask_server
     steps:
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v1
@@ -27,7 +29,9 @@ jobs:
           push: true
           file : ./Flask_server/dockerfile
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/docker-memo:latest
+          working-directory: ${{ env.working-directory }}
       -
         name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
+        working-directory: ${{ env.working-directory }}
     
