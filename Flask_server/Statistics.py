@@ -45,12 +45,11 @@ class Statistics(db.Model):
     
     def toDict(self):
         staDict = dict()
-        staDict['userUID'] = self.userUID
+        # staDict['userUID'] = self.userUID
         staDict['songUID'] = self.songUID
         staDict['datetime'] = self.dateTime
         staDict['emotion'] = self.emotion
         return staDict
-
 
 def create_table():
     with app.app_context():

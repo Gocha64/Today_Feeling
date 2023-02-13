@@ -10,23 +10,8 @@
 <body class="main">
     <div class = "main">
         <div>
-            <h1>회원가입</h1>
-            <h2>아이디</h2>
-            <span><input type="text" id = "userId" placeholder="아이디를 입력하세요"></span>
-    
-            <h2>패스워드</h2>
-            <span><input type="password" id = "userPw" placeholder="패스워드를 입력하세요"></span>
-    
-            <h2>닉네임</h2>
-            <span><input type="text" id = "userName" placeholder="닉네임을 입력하세요"></span>
-
-            <h2>성별</h2>
-            <span><input type="text" id = "userSex" placeholder="성별을 입력하세요 남자:1, 여자:2"></span>
-
-            <h2>이메일</h2>
-            <span><input type="email" id = "userEmail" placeholder="이메일을 입력하세요"></span>
-        
-            <br></br><br></br>
+            <h1>감정 별 장르 수정</h1>
+            <br></br>
             <div>감정에 따른 장르를 입력 (중복 선택 가능)</div>
 
             <h2>화남</h2>
@@ -89,12 +74,11 @@
             <input type="checkbox" name="surprise" value="genre9">힙합
             <input type="checkbox" name="surprise" value="genre10">기타
 
-
             <br>
             <br>
         </div>
             
-            <button id="btnRegister" onclick="register()">회원가입</button>
+            <button id="btnRegister" onclick="genre_modify()">정보수정</button>
 
         <button class = 'mainBtn' onclick="window.location.href='/'">메인페이지</button>
         
@@ -104,14 +88,9 @@
 </body>
 
 <script>
-    async function register() {
+    async function genre_modify() {
    
-    var userId = document.querySelector("#userId").value;
-    var userPw = document.querySelector("#userPw").value;   
-    var userName = document.querySelector("#userName").value;   
-    var userSex = document.querySelector("#userSex").value;  
-    var userEmail = document.querySelector("#userEmail").value;  
-    var happiness = document.getElementsByName("happy");
+    var happiness = document.getElementsByName("happiness");
     var surprise = document.getElementsByName("surprise");
     var anger = document.getElementsByName("anger");
     var sadness = document.getElementsByName("sadness");
@@ -126,11 +105,6 @@
 
 
     let urlParams = {
-        userId: userId,
-        userPw: userPw,
-        userName: userName,
-        userSex: userSex,
-        userEmail : userEmail,
         happiness : happiness,
         surprise : surprise,
         anger : anger,
@@ -147,16 +121,16 @@
             body: urlParamsjson,
         }
     
-        let response = await fetch("/member/register", fetchOptions);
+        let response = await fetch("/member/modify/genre", fetchOptions);
         console.log(response);
         let data = await response.json();
         if( data.result == "success" ){
-        alert('회원가입을 축하합니다. 로그인 페이지로 이동합니다.');
-        window.location.href="/member/login";
+        alert('감정 정보가 수정 되었습니다');
+        window.location.href="/";
         }else{
-        alert("회원가입에 실패했습니다.");
+        alert("실패했습니다.");
         alert(data.result)
-        window.location.href="/member/register";
+        window.location.href="/member/modify/genre";
         }
     }
 

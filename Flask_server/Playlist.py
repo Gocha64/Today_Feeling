@@ -27,22 +27,18 @@ class Playlist(db.Model):
     __tablename__ = 'Playlists'
     uid = db.Column(db.Integer, primary_key=True, nullable=False, autoincrement=True)
     urlWeb = db.Column(db.String(50))
-    urlApp = db.Column(db.String(50))
     title = db.Column(db.String(50))
-    mode = db.Column(db.Integer, nullable=False)
-    emotion = db.Column(db.String(50), nullable=False)
+    genre = db.Column(db.Integer, nullable=False)
     
 
-    def __init__(self, urlWeb, urlApp, title, mode, emotion):
+    def __init__(self, urlWeb, title, genre):
         self.urlWeb =urlWeb
-        self.urlApp = urlApp
         self.title = title
-        self.mode = mode
-        self.emotion = emotion
+        self.genre = genre
 
 
     def __str__(self):
-        return f" uid: {self.uid}\n urlWeb: {self.urlWeb}\n urlApp: {self.urlApp}\n title: {self.title}\n mode: {self.mode}\n emotion: {self.emotion}\n"
+        return f" uid: {self.uid}\n urlWeb: {self.urlWeb}\n title: {self.title}\n genre: {self.genre}\n"
     
 
 def create_table():
@@ -71,10 +67,12 @@ def select_playlist_with_title(title):
         playlist = db.session.query(Playlist).filter(Playlist.title == title).first()
     return playlist
 
-def select_playlists_with_mode(mode):
+
+def get_songUrl_with_uid(uid):
     with app.app_context():
-        playlists = db.session.query(Playlist).filter(Playlist.mode == mode).all()
-    return playlists
+        playlist = db.session.query(Playlist).filter(Playlist.uid == uid).first()
+    return playlist.urlWeb
+
 
 def insert_playlist(playlist):
     try:
@@ -104,17 +102,15 @@ def update_playlist_with_uid(uid, playlistModi):
                 return None
 
             playlist.urlWeb = playlistModi.urlWeb
-            playlist.urlApp = playlistModi.urlApp
             playlist.title = playlistModi.title
-            playlist.mode = playlistModi.mode
-            playlist.emotion = playlistModi.emotion
+            playlist.genre = playlistModi.genre
             db.session.commit()
     except Exception as e:
         print(e.args)
 
 if __name__ == "__main__":
-    playlist = Playlist("urlTest", "appTest", "titleTest", 1, "000001")
-    insert_playlist(playlist)
+    #playlist = Playlist("urlTest", "titleTest", 1, "000001")
+    #insert_playlist(playlist)
     #modiTest = Playlist("urlEx","appEx", "titleEx", 1, "000111")
     #delete_playlist_with_uid(4)
     #update_playlist_with_uid(3, modiTest)

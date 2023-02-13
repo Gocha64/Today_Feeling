@@ -2,6 +2,7 @@ from flask import g, jsonify, request
 import Statistics
 import json
 import song_recommendation
+import Playlist
 from __main__ import app
 
 
@@ -36,6 +37,7 @@ def emotion_day():
     
     stats = Statistics.select_statistics_with_userUID_Day(g.user.uid)
     statList = [s.toDict() for s in stats]
+    statList = include_songUrl(statList)
 
     return jsonify({"result" : statList})
     
@@ -47,6 +49,7 @@ def emotion_week():
     
     stats = Statistics.select_statistics_with_userUID_Week(g.user.uid)
     statList = [s.toDict() for s in stats]
+    statList = include_songUrl(statList)
 
     return jsonify({"result" : statList})
     
@@ -58,6 +61,7 @@ def emotion_month():
     
     stats = Statistics.select_statistics_with_userUID_Month(g.user.uid)
     statList = [s.toDict() for s in stats]
+    statList = include_songUrl(statList)
 
     return jsonify({"result" : statList})
 
@@ -69,5 +73,19 @@ def emotion_info():
     
     stats = Statistics.select_statistics_with_userUID(g.user.uid)
     statList = [s.toDict() for s in stats]
+    statList = include_songUrl(statList)
 
     return jsonify({"result" : statList})
+
+
+# 데이터 전송을 위한 dict 가공
+def include_songUrl(statList):
+    staDict = dict()
+
+    for stat in statList:
+        songUrl = Playlist.get_songUrl_with_uid(stat['songUID'])
+        stat['songUrl'] = songUrl
+        stat.pop('songUID')
+        
+
+    return statList

@@ -1,6 +1,5 @@
-from flask import Flask, render_template, request, redirect, url_for, session, g, jsonify
+from flask import render_template, request, redirect, url_for, session, g, jsonify
 import User
-from datetime import timedelta
 import hashlib
 
 from __main__ import app
