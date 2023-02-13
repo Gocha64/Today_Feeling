@@ -1,4 +1,4 @@
-name: flask-run-actions
+name: flask-run-action
 on:
   push:
     branches:
