@@ -19,21 +19,14 @@ jobs:
         name: access to secrets
         run : |
           touch .env
-          working-directory: ./Flask_server
-          echo APP_SECRETKEY = '${{ secrets.APP_SECRETKEY }}' >> .env
-          working-directory: ./Flask_server
-          echo DB_IP = '${{ secrets.DB_IP }}' >> .env
-          working-directory: ./Flask_server
-          echo DB_PORT = '${{ secrets.DB_PORT }}' >> .env
-          working-directory: ./Flask_server
-          echo DB_PW = '${{ secrets.DB_PW }}' >> .env
-          working-directory: ./Flask_server
-          echo DB_SCHEMA = '${{ secrets.DB_SCHEMA }}' >> .env
-          working-directory: ./Flask_server
-          echo DB_USER = '${{ secrets.DB_USER }}' >> .env
-          working-directory: ./Flask_server
-          cat .env
-          working-directory: ./Flask_server
+        working-directory: ./Flask_server
+          echo APP_SECRETKEY = '${{ secrets.APP_SECRETKEY }}'$'\n'\
+          DB_IP = '${{ secrets.DB_IP }}'$'\n'\
+          DB_PORT = '${{ secrets.DB_PORT }}'$'\n'\
+          DB_PW = '${{ secrets.DB_PW }}'$'\n'\
+          DB_SCHEMA = '${{ secrets.DB_SCHEMA }}'$'\n'\
+          DB_USER = '${{ secrets.DB_USER }}' >> ./Flask_server/.env
+          cat ./Flask_server/.env
       -
         name: Login to DockerHub
         uses: docker/login-action@v2
