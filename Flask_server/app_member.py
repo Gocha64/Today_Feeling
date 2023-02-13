@@ -1,7 +1,6 @@
-from flask import Flask, g, jsonify
-from flask_bcrypt import Bcrypt
+from flask import g, jsonify
 import User
-import hashlib
+import Userdata
 
 from __main__ import app
 
@@ -12,6 +11,11 @@ def member_search():
         return jsonify({"result" : "authentication failed"})
     
     userDict = g.user.toDict_without_password()
+    userdataDict = Userdata.select_userdata_with_uid(g.user.uid).toDict()
+
+    if userdataDict != None:
+        userDict.update(userdataDict)
+
     return jsonify(userDict)
     
 

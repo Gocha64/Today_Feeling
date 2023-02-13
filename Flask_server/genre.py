@@ -12,8 +12,11 @@ def readJson():
 
 
 # 장르의 id로 장르 이름을 출력
-def getGenre(genreID : str):
+def getGenre(genreID):
+    if type(genreID) == int:
+        genreID = str(genreID)
+
     jsonfile = readJson()
     print(jsonfile()[genreID])
 
-getGenre('5')
+getGenre(8)

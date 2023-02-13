@@ -19,7 +19,6 @@ db_port = os.getenv("DB_PORT")
 db_schema = os.getenv("DB_SCHEMA")
 
 app.config["SQLALCHEMY_DATABASE_URI"] = f'mysql+pymysql://{db_userName}:%s@{db_ip}:{db_port}/{db_schema}' % quote(db_pw)
-#app.config["SQLALCHEMY_DATABASE_URI"] = f'mysql+pymysql://{db_userName}:{db_pw}@{db_ip}:{db_port}/{db_schema}'
 # initialize the app with the extension
 db.init_app(app)
 
@@ -30,26 +29,28 @@ class User(db.Model):
     password = db.Column(db.String(50), nullable=False)
     name = db.Column(db.String(50), nullable=False)
     sex = db.Column(db.Integer, nullable=False)
+    email = db.Column(db.String(50), nullable=False)
     
 
-    def __init__(self, id, password, name, sex):
+    def __init__(self, id, password, name, sex, email):
         self.id = id
         self.password = password
         self.name = name
         self.sex = sex
-
+        self.email = email
 
 
     def __str__(self):
-        return f" uid: {self.uid}\n id: {self.id}\n name: {self.name}\n password: {self.password}\n sex: {self.sex}\n"
-
+        return f" uid: {self.uid}\n id: {self.id}\n name: {self.name}\n password: {self.password}\n sex: {self.sex}\n email: {self.email}\n"
+    
     def toDict_without_password(self):
-        userDict = dict()
-        userDict['uid'] = self.uid
-        userDict['id'] = self.id
-        userDict['name'] = self.name
-        userDict['sex'] = self.sex
-
+        userDict = {
+            "uid" : self.uid,
+            "id" : self.id,
+            "name" : self.name,
+            "sex" : self.sex,
+            "email" : self.email
+        }
         return userDict
 
     
@@ -85,6 +86,12 @@ def select_user_with_name(name):
         user = db.session.query(User).filter(User.name == name).first()
     return user
 
+
+def select_user_with_email(email):
+    with app.app_context():
+        user = db.session.query(User).filter(User.email == email).first()
+    return user
+
 def insert_user(user):
     try:
         with app.app_context():
@@ -106,12 +113,12 @@ def delete_user_with_uid(uid):
     except Exception as e:
         print(e.args)
 
-def update_user_with_id(id, userModi):
+def update_user_with_uid(uid, userModi):
     # id 중복 같은건 사용할 떄 걸러낼 것
 
     try:
         with app.app_context():
-            user = db.session.query(User).filter(User.id == id).first()
+            user = db.session.query(User).filter(User.uid == uid).first()
             if user == None:
                 return None
             
@@ -119,6 +126,7 @@ def update_user_with_id(id, userModi):
             user.password = userModi.password
             user.name = userModi.name
             user.sex = userModi.sex
+            user.email = userModi.email
             
             db.session.commit()
     except Exception as e:
@@ -128,13 +136,6 @@ def update_user_with_id(id, userModi):
 
 
 if __name__ == "__main__":
-    #create_table()
-    #user = User("UpdateTest", "1234", "UpdateTestName", 1)
-    #userModi = User("myID", "1234", "insertTestName123", 1)
-    #insert_user(user)
-    #print_all_users_list()
-    #user1 = select_user_with_uid(1)
-    #print(user1)
-    #delete_user_with_uid(6)
-    #update_user_with_uid(9, userModi)
+    
     print_all_users_list()
+    ...
