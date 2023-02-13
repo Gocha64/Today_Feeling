@@ -40,6 +40,7 @@ jobs:
         id: docker_build
         uses: docker/build-push-action@v4
         with:
+          context: .
           push: true
           file: ./Flask_server/dockerfile
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/docker-memo:latest
