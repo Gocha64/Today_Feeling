@@ -64,10 +64,10 @@ jobs:
       - name: executing remote ssh commands using password
         uses: appleboy/ssh-action@master
         with:
-          host: 218.232.159.156
-          username: dev_hwan
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USER_NAME }}
           password: ${{ secrets.PASS_WORD }}
-          port: 10083
+          port: ${{ secrets.PORT }}
 #           script: "docker-compose pull && docker-compose up -d"
           script: whoami
     
