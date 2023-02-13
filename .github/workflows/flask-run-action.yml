@@ -18,6 +18,7 @@ jobs:
       -
         name: access to secrets
         run : |
+          pwd
           touch .env
           echo APP_SECRETKEY = '${{ secrets.APP_SECRETKEY }}'$'\n'\
           DB_IP = '${{ secrets.DB_IP }}'$'\n'\
