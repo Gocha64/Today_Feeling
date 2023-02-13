@@ -57,7 +57,7 @@ jobs:
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USER_NAME }}
-          password: ${{ secrets.PASS_WORD }}
+          key: ${{ secrets.PRIVATE_KEY }}
           port: ${{ secrets.SSH_PORT }}
           source: "./docker-compose.yaml"
           target: "/home/dev_hwan/"
@@ -66,7 +66,7 @@ jobs:
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USER_NAME }}
-          password: ${{ secrets.PASS_WORD }}
+          key: ${{ secrets.PRIVATE_KEY }}
           port: ${{ secrets.SSH_PORT }}
           script: "docker-compose pull && docker-compose up -d"
 
