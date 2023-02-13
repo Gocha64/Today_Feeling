@@ -18,6 +18,7 @@ jobs:
       -
         name: access to secrets
         run : |
+          touch .env
           echo APP_SECRETKEY = '$APP_SECRETKEY' >> .env
           echo DB_IP = '$DB_IP' >> .env
           echo DB_PORT = '$DB_PORT' >> .env
