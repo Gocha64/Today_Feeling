@@ -1,7 +1,12 @@
 {
-    "1" : "genre1",
-    "2" : "genre2",
-    "3" : "genre3",
-    "4" : "genre4",
-    "5" : "genre5"
+    "1" : "classic",
+    "2" : "jazz",
+    "3" : "pop",
+    "4" : "trot",
+    "5" : "idol",
+    "6" : "rock",
+    "7" : "ballad",
+    "8" : "game",
+    "9" : "hiphop",
+    "10" : "extra"
 }

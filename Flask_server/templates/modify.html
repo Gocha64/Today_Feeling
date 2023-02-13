@@ -24,6 +24,10 @@
             <h2>성별</h2>
             <span><input type="text" id = "userSex" placeholder="성별을 입력하세요 남자:1, 여자:2"></span>
 
+            <h2>이메일</h2>
+            <span><input type="email" id = "userEmail" placeholder="이메일을 입력하세요"></span>
+
+
             <br>
             <br>
         </div>
@@ -44,6 +48,7 @@
     var userPw = document.querySelector("#userPw").value;
     var userName = document.querySelector("#userName").value;
     var userSex = document.querySelector("#userSex").value;
+    var userEmail = document.querySelector("#userEmail").value;
 
 
     let urlParams = {
@@ -51,6 +56,7 @@
         userPw: userPw,
         userName: userName,
         userSex: userSex,
+        userEmail : userEmail
         };
 
     let urlParamsjson = JSON.stringify(urlParams)
@@ -60,7 +66,7 @@
             body: urlParamsjson,
         }
 
-        let response = await fetch("/member/modify", fetchOptions);
+        let response = await fetch("/member/modify/info", fetchOptions);
         console.log(response);
         let data = await response.json();
         if( data.result == "success" ){
@@ -69,7 +75,7 @@
         }else{
         alert("정보수정에 실패했습니다.");
         alert(data.result)
-        window.location.href="/member/modify";
+        window.location.href="/member/modify/info";
         }
     }
 </script>

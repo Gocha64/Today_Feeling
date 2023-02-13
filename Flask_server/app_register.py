@@ -1,6 +1,6 @@
-from flask import Flask, render_template, request, redirect, url_for, g, jsonify
-from flask_bcrypt import Bcrypt
+from flask import render_template, request, redirect, url_for, g, jsonify
 import User
+import Userdata
 import hashlib
 
 from __main__ import app
@@ -26,6 +26,15 @@ def register():
         userPw = get_json_data['userPw']
         userName = get_json_data['userName']
         userSex = get_json_data['userSex']
+        email = get_json_data['userEmail']
+        anger = get_json_data['anger']
+        fear = get_json_data['fear']
+        happiness = get_json_data['happiness']
+        sadness = get_json_data['sadness']
+        surprise = get_json_data['surprise']
+
+
+        
 
         #print(userId, userPw, userName, userSex)
 
@@ -34,21 +43,26 @@ def register():
         userPwHash = str(hashlib.sha1(userPw.encode('utf-8')).hexdigest())
         #userPwHash = bcrypt.generate_password_hash(userPw)
 
-        user = User.User(userId, userPwHash, userName, userSex)
+        user = User.User(userId, userPwHash, userName, userSex, email)
+        
         if User.select_user_with_id(userId) != None:
             return jsonify({'result' : 'overlaped ID'})
         
-        elif User.select_user_with_name(userName) != None:
-            return jsonify({'result' : 'overlaped Name'})
+        elif User.select_user_with_email(email) != None:
+            return jsonify({'result' : 'overlaped Email'})
         
+
         else:
             try:
                 User.insert_user(user)
+                userUid = User.select_user_with_id(userId)
+                userdata = Userdata.Userdata(userUid.uid, anger, fear, happiness, sadness, surprise)
+                Userdata.insert_userdata(userdata)
                 print(f"{userId} registered")
                 return jsonify({'result' : 'success'})
-            except:
+            except Exception as e:
+                print(e.args)
                 return jsonify({'result' : 'undefiend Error'})
 
-    
     
     

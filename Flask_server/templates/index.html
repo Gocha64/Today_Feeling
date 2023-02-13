@@ -11,7 +11,9 @@
 
     {% if userName %}
     <h2>환영합니다. {{userName}}</h2>
-    <button class = 'loginBtn' onclick="window.location.href='/member/logout'">로그아웃</button>
+    <button class = 'logoutBtn' onclick="window.location.href='/member/logout'">로그아웃</button>
+    <button class = 'modifyInfoBtn' onclick="window.location.href='/member/modify/info'">회원정보 수정</button>
+    <button class = 'modifyGenreBtn' onclick="window.location.href='/member/modify/genre'">감정별 장르 수정</button>
     
     {% else %}
     <h2>사이트를 이용하려면 로그인하세요.</h2>

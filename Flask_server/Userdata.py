@@ -22,6 +22,7 @@ db_schema = os.getenv("DB_SCHEMA")
 app.config["SQLALCHEMY_DATABASE_URI"] = f'mysql+pymysql://{db_userName}:%s@{db_ip}:{db_port}/{db_schema}' % quote(db_pw)
 # initialize the app with the extension
 db.init_app(app)
+default_value = '0000000001'
 
 class Userdata(db.Model):
     __tablename__ = 'Userdata'
@@ -33,7 +34,12 @@ class Userdata(db.Model):
     surprise = db.Column(db.String(20))
     
 
-    def __init__(self, userUid, anger, fear, happiness, sadness, surprise):
+    def __init__(self, userUid, 
+                 anger = default_value, 
+                 fear = default_value, 
+                 happiness = default_value, 
+                 sadness = default_value, 
+                 surprise = default_value):
         self.userUid = userUid
         self.anger = anger
         self.fear = fear
@@ -44,6 +50,17 @@ class Userdata(db.Model):
 
     def __str__(self):
         return f" userUid: {self.userUid}\n anger:\t\t{self.anger}\n fear:\t\t{self.fear}\n happiness:\t{self.happiness}\n sadness:\t{self.sadness}\nsurprise:\t{self.surprise}" 
+    
+    def toDict(self):
+        userdataDict = {
+            "anger" : self.anger.decode(),
+            "fear" : self.fear.decode(),
+            "happiness" : self.happiness.decode(),
+            "sadness" : self.sadness.decode(),
+            "surprise" : self.surprise.decode(),
+        }
+
+        return userdataDict
     
 
 def create_table():
@@ -76,21 +93,20 @@ def select_userdata_with_uid(uid):
     return userdata
 
 def update_userdata_with_uid(uid, userdataModi):
-    try:
-        with app.app_context():
-            userdata = db.session.query(Userdata).filter(Userdata.userUid == uid).first()
-            if userdata == None:
-                return None
-            
-            userdata.anger = userdataModi.anger
-            userdata.fear = userdataModi.fear
-            userdata.happiness = userdataModi.happiness
-            userdata.sadness = userdataModi.sadness
-            userdata.surprise = userdataModi.surprise
 
-            db.session.commit()
-    except Exception as e:
-        print(e.args)
+    with app.app_context():
+        userdata = db.session.query(Userdata).filter(Userdata.userUid == uid).first()
+        if userdata == None:
+            return None
+        
+        userdata.anger = userdataModi.anger
+        userdata.fear = userdataModi.fear
+        userdata.happiness = userdataModi.happiness
+        userdata.sadness = userdataModi.sadness
+        userdata.surprise = userdataModi.surprise
+
+        db.session.commit()
+
 
 
 
