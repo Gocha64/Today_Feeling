@@ -19,12 +19,12 @@ jobs:
         name: access to secrets
         run : |
           touch .env
-          echo APP_SECRETKEY = '$APP_SECRETKEY' >> .env
-          echo DB_IP = '$DB_IP' >> .env
-          echo DB_PORT = '$DB_PORT' >> .env
-          echo DB_PW = '$DB_PW' >> .env
-          echo DB_SCHEMA = '$DB_SCHEMA' >> .env
-          echo DB_USER = '$DB_USER' >> .env
+          echo APP_SECRETKEY = '${{ secrets.APP_SECRETKEY }}' >> .env
+          echo DB_IP = '${{ secrets.DB_IP }}' >> .env
+          echo DB_PORT = '${{ secrets.DB_PORT }}' >> .env
+          echo DB_PW = '${{ secrets.DB_PW }}' >> .env
+          echo DB_SCHEMA = '${{ secrets.DB_SCHEMA }}' >> .env
+          echo DB_USER = '${{ secrets.DB_USER }}' >> .env
           cat .env
         working-directory: ./Flask_server
       -
