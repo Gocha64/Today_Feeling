@@ -17,13 +17,13 @@ jobs:
       -
         name: access to secrets
         run : |
-          cd /Flask_server
           echo "APP_SECRETKEY = '$APP_SECRETKEY'
           DB_IP = '$DB_IP'
           DB_PORT = '$DB_PORT'
           DB_PW = '$DB_PW'
           DB_SCHEMA = '$DB_SCHEMA'
-          DB_USER = '$DB_USER'" > .env
+          DB_USER = '$DB_USER'" > ./Flask_server/.env
+          cat ./Flask_server/.env
       -
         name: Login to DockerHub
         uses: docker/login-action@v2
