@@ -2,7 +2,6 @@ FROM python:latest
 RUN mkdir Flask_server/
 RUN apt-get update -y
 RUN apt-get install vim -y
-COPY .env Flask_server
 COPY ./Flask_server Flask_server
 WORKDIR /Flask_server/
 RUN pip install -r requirements.txt
