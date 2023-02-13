@@ -8,4 +8,4 @@ WORKDIR /Flask_server/
 RUN pip install -r requirements.txt
 EXPOSE 10081
 
-ENTRYPOINT tail -f /dev/null
+CMD ["python", "app.py"]
