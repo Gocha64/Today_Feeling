@@ -19,7 +19,6 @@ jobs:
         name: access to secrets
         run : |
           touch .env
-        working-directory: ./Flask_server
           echo APP_SECRETKEY = '${{ secrets.APP_SECRETKEY }}'$'\n'\
           DB_IP = '${{ secrets.DB_IP }}'$'\n'\
           DB_PORT = '${{ secrets.DB_PORT }}'$'\n'\
