@@ -55,10 +55,10 @@ jobs:
 #       - name: copy file via ssh password
 #         uses: appleboy/scp-action@master
 #         with:
-#           host: ${{ secrets.HOST }}
-#           username: ${{ secrets.USER_NAME }}
+#           host: dev_hwan
+#           username: 218.232.159.156
 #           password: ${{ secrets.PASS_WORD }}
-#           port: ${{ secrets.PORT }}
+#           port: 10083
 #           source: "./docker-compose.yaml"
 #           target: "/home/dev_hwan/"
       - name: executing remote ssh commands using password
