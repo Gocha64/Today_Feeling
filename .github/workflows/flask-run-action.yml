@@ -68,5 +68,6 @@ jobs:
           username: ${{ secrets.USER_NAME }}
           password: ${{ secrets.PASS_WORD }}
           port: ${{ secrets.PORT }}
-          script: "docker-compose pull && docker-compose up -d"
+#           script: "docker-compose pull && docker-compose up -d"
+          script: whoami
     
