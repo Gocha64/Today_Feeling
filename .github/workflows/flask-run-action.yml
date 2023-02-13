@@ -17,7 +17,7 @@ jobs:
       -
         name: access to secrets
         run : |
-          cd ./Flask_server
+          cd /Flask_server
           echo "APP_SECRETKEY = '$APP_SECRETKEY'
           DB_IP = '$DB_IP'
           DB_PORT = '$DB_PORT'
