@@ -24,7 +24,7 @@ jobs:
           echo DB_PORT = '$DB_PORT' >> .env
           echo DB_PW = '$DB_PW' >> .env
           echo DB_SCHEMA = '$DB_SCHEMA' >> .env
-          echo DB_USER = '$DB_USER'" >> .env
+          echo DB_USER = '$DB_USER' >> .env
           cat .env
         working-directory: ./Flask_server
       -
