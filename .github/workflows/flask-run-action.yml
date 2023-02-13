@@ -18,7 +18,6 @@ jobs:
       -
         name: access to secrets
         run : |
-          cd Flask_server
           echo APP_SECRETKEY = '$APP_SECRETKEY' >> .env
           echo DB_IP = '$DB_IP' >> .env
           echo DB_PORT = '$DB_PORT' >> .env
@@ -26,6 +25,7 @@ jobs:
           echo DB_SCHEMA = '$DB_SCHEMA' >> .env
           echo DB_USER = '$DB_USER'" >> .env
           cat .env
+        working-directory: ./Flask_server
       -
         name: Login to DockerHub
         uses: docker/login-action@v2
