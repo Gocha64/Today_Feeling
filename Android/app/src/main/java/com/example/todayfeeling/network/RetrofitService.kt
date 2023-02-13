@@ -27,4 +27,10 @@ interface RetrofitService {
 
     @GET("emotion/info_day")
     fun dayEmotionStatistic(@Header("session") session:String): Call<EmotionData>
+
+    @GET("emotion/info_week")
+    fun weekEmotionStatistic(@Header("session") session:String): Call<EmotionData>
+
+    @GET("emotion/info_month")
+    fun monthEmotionStatistic(@Header("session") session:String): Call<EmotionData>
 }
