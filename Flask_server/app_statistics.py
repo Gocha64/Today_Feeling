@@ -33,7 +33,7 @@ def emotion_recommend():
 @app.route('/emotion/info_day', methods = ["GET"])
 def emotion_day():
     if g.user == None:
-        return jsonify({"result" : "authentication failed"})
+        return jsonify({"result_f" : "authentication failed"})
     
     stats = Statistics.select_statistics_with_userUID_Day(g.user.uid)
     statList = [s.toDict() for s in stats]
@@ -45,7 +45,7 @@ def emotion_day():
 @app.route('/emotion/info_week', methods = ['GET'])
 def emotion_week():
     if g.user == None:
-        return jsonify({"result" : "authentication failed"})
+        return jsonify({"result_f" : "authentication failed"})
     
     stats = Statistics.select_statistics_with_userUID_Week(g.user.uid)
     statList = [s.toDict() for s in stats]
@@ -57,7 +57,7 @@ def emotion_week():
 @app.route('/emotion/info_month', methods = ['GET'])
 def emotion_month():
     if g.user == None:
-        return jsonify({"result" : "authentication failed"})
+        return jsonify({"result_f" : "authentication failed"})
     
     stats = Statistics.select_statistics_with_userUID_Month(g.user.uid)
     statList = [s.toDict() for s in stats]
@@ -69,7 +69,7 @@ def emotion_month():
 @app.route('/emotion/info', methods = ['GET'])
 def emotion_info():
     if g.user == None:
-        return jsonify({"result" : "authentication failed"})
+        return jsonify({"result_f" : "authentication failed"})
     
     stats = Statistics.select_statistics_with_userUID(g.user.uid)
     statList = [s.toDict() for s in stats]
