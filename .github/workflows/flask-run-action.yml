@@ -14,17 +14,18 @@ jobs:
       -
         name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
+      - uses : action/checkout@v3
       -
         name: access to secrets
         run : |
-          touch /Flask_server/.env
-          echo APP_SECRETKEY = '$APP_SECRETKEY' >> /Flask_server/.env
-          echo DB_IP = '$DB_IP' >> /Flask_server/.env
-          echo DB_PORT = '$DB_PORT' >> /Flask_server/.env
-          echo DB_PW = '$DB_PW' >> /Flask_server/.env
-          echo DB_SCHEMA = '$DB_SCHEMA' >> /Flask_server/.env
-          echo DB_USER = '$DB_USER'" >> /Flask_server/.env
-          cat /Flask_server/.env
+          cd Flask_server
+          echo APP_SECRETKEY = '$APP_SECRETKEY' >> .env
+          echo DB_IP = '$DB_IP' >> .env
+          echo DB_PORT = '$DB_PORT' >> .env
+          echo DB_PW = '$DB_PW' >> .env
+          echo DB_SCHEMA = '$DB_SCHEMA' >> .env
+          echo DB_USER = '$DB_USER'" >> .env
+          cat .env
       -
         name: Login to DockerHub
         uses: docker/login-action@v2
