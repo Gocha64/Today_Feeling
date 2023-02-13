@@ -32,6 +32,7 @@ jobs:
           DB_PW = '${{ secrets.DB_PW }}'$'\n'\
           DB_SCHEMA = '${{ secrets.DB_SCHEMA }}'$'\n'\
           DB_USER = '${{ secrets.DB_USER }}' >> .env
+          pwd
           cat .env
         working-directory: "./Flask_server"
       -
