@@ -17,14 +17,14 @@ jobs:
       -
         name: access to secrets
         run : |
-          touch ./Flask_server/.env
-          echo APP_SECRETKEY = '$APP_SECRETKEY' >>./Flask_server/.env
-          echo DB_IP = '$DB_IP' >>./Flask_server/.env
-          echo DB_PORT = '$DB_PORT' >>./Flask_server/.env
-          echo DB_PW = '$DB_PW' >>./Flask_server/.env
-          echo DB_SCHEMA = '$DB_SCHEMA' >>./Flask_server/.env
-          echo DB_USER = '$DB_USER'" > ./Flask_server/.env
-          cat ./Flask_server/.env
+          touch /Flask_server/.env
+          echo APP_SECRETKEY = '$APP_SECRETKEY' >> /Flask_server/.env
+          echo DB_IP = '$DB_IP' >> /Flask_server/.env
+          echo DB_PORT = '$DB_PORT' >> /Flask_server/.env
+          echo DB_PW = '$DB_PW' >> /Flask_server/.env
+          echo DB_SCHEMA = '$DB_SCHEMA' >> /Flask_server/.env
+          echo DB_USER = '$DB_USER'" >> /Flask_server/.env
+          cat /Flask_server/.env
       -
         name: Login to DockerHub
         uses: docker/login-action@v2
