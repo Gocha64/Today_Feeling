@@ -1,6 +1,7 @@
 package com.example.todayfeeling.network
 
 import com.example.todayfeeling.data.*
+import okhttp3.Cookie
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.GET
@@ -14,7 +15,7 @@ interface RetrofitService {
     fun postSignUp(@Body req: SignUpData): Call<ResultData>
 
     @GET("member/search")
-    fun getUser(@Header("session") req: String): Call<UserData>
+    fun getUser(): Call<UserData>
 
     @POST("member/modify")
     fun modifyUser(@Header("session") session:String, @Body req: ModifyUserData): Call<ResultData>

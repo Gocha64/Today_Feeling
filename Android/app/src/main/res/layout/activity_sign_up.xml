@@ -21,80 +21,662 @@
         android:layout_weight="80"
         android:weightSum="100">
 
-        <TextView
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:text="아이디"
-            android:textSize="15dp"
-            android:layout_weight="10"
-            android:gravity="center"
-            android:textAlignment="center"
-            android:textColor="#96ffffff"/>
+            android:layout_weight="4">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:text="아이디"
+                android:textSize="15dp"
+                android:layout_weight="5"
+                android:gravity="center"
+                android:textAlignment="center"
+                android:textColor="#96ffffff"/>
 
-        <EditText
-            android:id="@+id/edit_signup_id"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="10"/>
+            <EditText
+                android:id="@+id/edit_signup_id"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="5"/>
+        </LinearLayout>
         <Space
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="3"/>
+            android:layout_weight="1"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="4">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="5"
+                android:text="비밀번호"
+                android:textSize="15dp"
+                android:gravity="center"
+                android:textAlignment="center"
+                android:textColor="#96ffffff"/>
+            <EditText
+                android:id="@+id/edit_signup_pw"
+                android:inputType="textPassword"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="5"/>
+        </LinearLayout>
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="4">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="5"
+                android:text="이름"
+                android:textSize="15dp"
+                android:gravity="center"
+                android:textAlignment="center"
+                android:textColor="#96ffffff"/>
+            <EditText
+                android:id="@+id/edit_signup_name"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="5"/>
+        </LinearLayout>
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="4">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="5"
+                android:textSize="15dp"
+                android:text="성별"
+                android:gravity="center"
+                android:textAlignment="center"
+                android:textColor="#96ffffff"/>
+            <EditText
+                android:id="@+id/edit_signup_sex"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="5"/>
+        </LinearLayout>
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="4">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="5"
+                android:textSize="15dp"
+                android:text="이메일"
+                android:gravity="center"
+                android:textAlignment="center"
+                android:textColor="#96ffffff"/>
+            <EditText
+                android:id="@+id/edit_signup_email"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="5"/>
+        </LinearLayout>
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="10"
-            android:text="비밀번호"
-            android:textSize="15dp"
-            android:gravity="center"
+            android:layout_weight="3"
             android:textAlignment="center"
-            android:textColor="#96ffffff"/>
-        <EditText
-            android:id="@+id/edit_signup_pw"
-            android:inputType="textPassword"
+            android:text="화났을 때 듣고싶은 노래" />
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="10"/>
+            android:layout_weight="5"
+            android:orientation="horizontal"
+            android:weightSum="80">
+
+            <CheckBox
+                android:id="@+id/cb_anger1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="15"
+                android:textSize="10dp"
+                android:text="클래식" />
+
+            <CheckBox
+                android:id="@+id/cb_anger2"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="15"
+                android:textSize="10dp"
+                android:text="재즈" />
+
+            <CheckBox
+                android:id="@+id/cb_anger5"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="20"
+                android:textSize="10dp"
+                android:text="아이돌음악" />
+
+            <CheckBox
+                android:id="@+id/cb_anger4"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="15"
+                android:textSize="10dp"
+                android:text="트로트" />
+
+            <CheckBox
+                android:id="@+id/cb_anger3"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="15"
+                android:textSize="10dp"
+                android:text="팝" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="5"
+            android:orientation="horizontal"
+            android:weightSum="80">
+
+            <CheckBox
+                android:id="@+id/cb_anger6"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="15"
+                android:textSize="10dp"
+                android:text="락" />
+
+            <CheckBox
+                android:id="@+id/cb_anger7"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="15"
+                android:textSize="10dp"
+                android:text="발라드" />
+
+            <CheckBox
+                android:id="@+id/cb_anger8"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="20"
+                android:textSize="10dp"
+                android:text="게임음악" />
+
+            <CheckBox
+                android:id="@+id/cb_anger9"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="15"
+                android:textSize="10dp"
+                android:text="힙합" />
+
+            <CheckBox
+                android:id="@+id/cb_anger10"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="15"
+                android:textSize="10dp"
+                android:text="기타" />
+
+        </LinearLayout>
         <Space
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="3"/>
+            android:layout_weight="1"/>
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="10"
-            android:text="이름"
-            android:textSize="15dp"
-            android:gravity="center"
+            android:layout_weight="3"
             android:textAlignment="center"
-            android:textColor="#96ffffff"/>
-        <EditText
-            android:id="@+id/edit_signup_name"
+            android:text="무서울 때 듣고싶은 노래" />
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="10"/>
+            android:layout_weight="5"
+            android:orientation="horizontal"
+            android:weightSum="80">
+
+            <CheckBox
+                android:id="@+id/cb_fear1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="15"
+                android:textSize="10dp"
+                android:text="클래식" />
+
+            <CheckBox
+                android:id="@+id/cb_fear2"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="15"
+                android:textSize="10dp"
+                android:text="재즈" />
+
+            <CheckBox
+                android:id="@+id/cb_fear5"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="20"
+                android:textSize="10dp"
+                android:text="아이돌음악" />
+
+            <CheckBox
+                android:id="@+id/cb_fear4"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="15"
+                android:textSize="10dp"
+                android:text="트로트" />
+
+            <CheckBox
+                android:id="@+id/cb_fear3"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="15"
+                android:textSize="10dp"
+                android:text="팝" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="5"
+            android:orientation="horizontal"
+            android:weightSum="80">
+
+            <CheckBox
+                android:id="@+id/cb_fear6"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="15"
+                android:textSize="10dp"
+                android:text="락" />
+
+            <CheckBox
+                android:id="@+id/cb_fear7"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="15"
+                android:textSize="10dp"
+                android:text="발라드" />
+
+            <CheckBox
+                android:id="@+id/cb_fear8"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="20"
+                android:textSize="10dp"
+                android:text="게임음악" />
+
+            <CheckBox
+                android:id="@+id/cb_fear9"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="15"
+                android:textSize="10dp"
+                android:text="힙합" />
+
+            <CheckBox
+                android:id="@+id/cb_fear10"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="15"
+                android:textSize="10dp"
+                android:text="기타" />
+
+        </LinearLayout>
         <Space
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="3"/>
+            android:layout_weight="1"/>
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="10"
-            android:textSize="15dp"
-            android:text="성별"
-            android:gravity="center"
+            android:layout_weight="3"
             android:textAlignment="center"
-            android:textColor="#96ffffff"/>
-        <EditText
-            android:id="@+id/edit_signup_sex"
+            android:text="행복할 때 듣고싶은 노래" />
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="10"/>
+            android:layout_weight="5"
+            android:orientation="horizontal"
+            android:weightSum="80">
+
+            <CheckBox
+                android:id="@+id/cb_happy1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="15"
+                android:textSize="10dp"
+                android:text="클래식" />
+
+            <CheckBox
+                android:id="@+id/cb_happy2"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="15"
+                android:textSize="10dp"
+                android:text="재즈" />
+
+            <CheckBox
+                android:id="@+id/cb_happy5"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="20"
+                android:textSize="10dp"
+                android:text="아이돌음악" />
+
+            <CheckBox
+                android:id="@+id/cb_happy4"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="15"
+                android:textSize="10dp"
+                android:text="트로트" />
+
+            <CheckBox
+                android:id="@+id/cb_happy3"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="15"
+                android:textSize="10dp"
+                android:text="팝" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="5"
+            android:orientation="horizontal"
+            android:weightSum="80">
+
+            <CheckBox
+                android:id="@+id/cb_happy6"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="15"
+                android:textSize="10dp"
+                android:text="락" />
+
+            <CheckBox
+                android:id="@+id/cb_happy7"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="15"
+                android:textSize="10dp"
+                android:text="발라드" />
+
+            <CheckBox
+                android:id="@+id/cb_happy8"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="20"
+                android:textSize="10dp"
+                android:text="게임음악" />
+
+            <CheckBox
+                android:id="@+id/cb_happy9"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="15"
+                android:textSize="10dp"
+                android:text="힙합" />
+
+            <CheckBox
+                android:id="@+id/cb_happy10"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="15"
+                android:textSize="10dp"
+                android:text="기타" />
+
+        </LinearLayout>
         <Space
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="3"/>
+            android:layout_weight="1"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="3"
+            android:textAlignment="center"
+            android:text="슬플때 듣고싶은 노래" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="5"
+            android:orientation="horizontal"
+            android:weightSum="80">
+
+            <CheckBox
+                android:id="@+id/cb_sad1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="15"
+                android:textSize="10dp"
+                android:text="클래식" />
+
+            <CheckBox
+                android:id="@+id/cb_sad2"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="15"
+                android:textSize="10dp"
+                android:text="재즈" />
+
+            <CheckBox
+                android:id="@+id/cb_sad5"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="20"
+                android:textSize="10dp"
+                android:text="아이돌음악" />
+
+            <CheckBox
+                android:id="@+id/cb_sad4"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="15"
+                android:textSize="10dp"
+                android:text="트로트" />
+
+            <CheckBox
+                android:id="@+id/cb_sad3"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="15"
+                android:textSize="10dp"
+                android:text="팝" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="5"
+            android:orientation="horizontal"
+            android:weightSum="80">
+
+            <CheckBox
+                android:id="@+id/cb_sad6"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="15"
+                android:textSize="10dp"
+                android:text="락" />
+
+            <CheckBox
+                android:id="@+id/cb_sad7"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="15"
+                android:textSize="10dp"
+                android:text="발라드" />
+
+            <CheckBox
+                android:id="@+id/cb_sad8"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="20"
+                android:textSize="10dp"
+                android:text="게임음악" />
+
+            <CheckBox
+                android:id="@+id/cb_sad9"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="15"
+                android:textSize="10dp"
+                android:text="힙합" />
+
+            <CheckBox
+                android:id="@+id/cb_sad10"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="15"
+                android:textSize="10dp"
+                android:text="기타" />
+
+        </LinearLayout>
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="3"
+            android:textAlignment="center"
+            android:text="놀랐을 때 듣고싶은 노래" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="5"
+            android:orientation="horizontal"
+            android:weightSum="80">
+
+            <CheckBox
+                android:id="@+id/cb_surprise1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="15"
+                android:textSize="10dp"
+                android:text="클래식" />
+
+            <CheckBox
+                android:id="@+id/cb_surprise2"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="15"
+                android:textSize="10dp"
+                android:text="재즈" />
+
+            <CheckBox
+                android:id="@+id/cb_surprise5"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="20"
+                android:textSize="10dp"
+                android:text="아이돌음악" />
+
+            <CheckBox
+                android:id="@+id/cb_surprise4"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="15"
+                android:textSize="10dp"
+                android:text="트로트" />
+
+            <CheckBox
+                android:id="@+id/cb_surprise3"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="15"
+                android:textSize="10dp"
+                android:text="팝" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="5"
+            android:orientation="horizontal"
+            android:weightSum="80">
+
+            <CheckBox
+                android:id="@+id/cb_surprise6"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="15"
+                android:textSize="10dp"
+                android:text="락" />
+
+            <CheckBox
+                android:id="@+id/cb_surprise7"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="15"
+                android:textSize="10dp"
+                android:text="발라드" />
+
+            <CheckBox
+                android:id="@+id/cb_surprise8"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="20"
+                android:textSize="10dp"
+                android:text="게임음악" />
+
+            <CheckBox
+                android:id="@+id/cb_surprise9"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="15"
+                android:textSize="10dp"
+                android:text="힙합" />
+
+            <CheckBox
+                android:id="@+id/cb_surprise10"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="15"
+                android:textSize="10dp"
+                android:text="기타" />
+
+        </LinearLayout>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1.5"/>
+
         <Button
             android:id="@+id/btn_register"
             android:layout_width="match_parent"

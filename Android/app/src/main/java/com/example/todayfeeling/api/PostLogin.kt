@@ -16,21 +16,18 @@ class PostLogin {
         Log.d("test", id)
         Log.d("test", pw)
         val call = RetrofitImpl.service.postSignIn(LoginData(id,pw))
-        var sessionId = ""
 
         call.enqueue(object : Callback<ResultData> {
             override fun onResponse(call: Call<ResultData>, response: Response<ResultData>) {
                 if (response.isSuccessful) {
                     if (response.body()?.result.toString() == "success") {
-                        sessionId = response.headers().get("Set-Cookie").toString()
-                        sessionId = sessionId.split(";")[0]
-                        sessionId = sessionId.substring(8)
                         val sharedPreference = context.getSharedPreferences("user", 0)
                         val editor = sharedPreference.edit()
+                        editor.putString("id", id)
                         editor.putString("pw", pw)
-                        editor.putString("session", sessionId)
                         editor.apply()
-//                        GetMember().searchMember(sessionId, context)
+                        Log.d("login1","${response.body().toString()}")
+                        GetMember().searchMember(context)
                     }
                     else {
                         Log.d("test","${response.body().toString()}")

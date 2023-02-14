@@ -6,14 +6,15 @@ import android.util.Log
 import com.example.todayfeeling.MainActivity
 import com.example.todayfeeling.data.UserData
 import com.example.todayfeeling.network.RetrofitImpl
+import okhttp3.Cookie
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 class GetMember {
 
-    fun searchMember(session: String, context: Context) {
-        val call = RetrofitImpl.service.getUser(session)
+    fun searchMember(context: Context) {
+        val call = RetrofitImpl.service.getUser()
 
         call.enqueue(object: Callback<UserData>{
             override fun onResponse(call: Call<UserData>, response: Response<UserData>) {
@@ -30,6 +31,7 @@ class GetMember {
                     editor.putString("sadness", response.body()?.sadness)
                     editor.putString("surprise", response.body()?.surprise)
                     editor.apply()
+                    Log.d("getMember",response.body().toString())
                     val intent = Intent(context, MainActivity::class.java)
                     context.startActivity(intent)
                 }
