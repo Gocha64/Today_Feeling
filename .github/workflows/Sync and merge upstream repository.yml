@@ -83,8 +83,4 @@ jobs:
           delete-branch: true
           draft: false
           base: main
-          head: sync-with-upstream
-          maintainer-can-modify: true
-          changes: |
-            ${{ steps.find_diff.outputs.diff_file }}
 
