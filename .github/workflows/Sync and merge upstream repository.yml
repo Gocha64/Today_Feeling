@@ -55,12 +55,16 @@ jobs:
           cat diff.txt
           if [ -s diff.txt ]
           then
-            echo "{diff}={man}" >> $GITHUB_OUTPUT
+            echo "diff=man" >> $GITHUB_OUTPUT
             echo "true!"
           else
-            echo "{diff}={false}" >> $GITHUB_OUTPUT
+            echo "diff=false" >> $GITHUB_OUTPUT
             echo "false!"
           fi
+          
+#         outputs:
+#           diff: ${{ steps.find_diff_step.outputs.diff }}
+                  
           
   test_getdiff:
     needs: find_diff
