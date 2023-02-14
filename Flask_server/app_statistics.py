@@ -34,48 +34,68 @@ def emotion_recommend():
 def emotion_day():
     if g.user == None:
         return jsonify({"result_f" : "authentication failed"})
-    
-    stats = Statistics.select_statistics_with_userUID_Day(g.user.uid)
-    statList = [s.toDict() for s in stats]
-    statList = include_songUrl(statList)
 
-    return jsonify({"result" : statList})
-    
+    try:
+        stats = Statistics.select_statistics_with_userUID_Day(g.user.uid)
+        statList = [s.toDict() for s in stats]
+        statList = include_songUrl(statList)
+
+        return jsonify({"result" : statList})
+
+    except Exception as e:
+        print(e.args)
+        return jsonify({"result_f": "undefined error"})
+
 
 @app.route('/emotion/info_week', methods = ['GET'])
 def emotion_week():
     if g.user == None:
         return jsonify({"result_f" : "authentication failed"})
-    
-    stats = Statistics.select_statistics_with_userUID_Week(g.user.uid)
-    statList = [s.toDict() for s in stats]
-    statList = include_songUrl(statList)
 
-    return jsonify({"result" : statList})
-    
+    try:
+        stats = Statistics.select_statistics_with_userUID_Week(g.user.uid)
+        statList = [s.toDict() for s in stats]
+        statList = include_songUrl(statList)
+
+        return jsonify({"result" : statList})
+
+    except Exception as e:
+        print(e.args)
+        return jsonify({"result_f": "undefined error"})
+
 
 @app.route('/emotion/info_month', methods = ['GET'])
 def emotion_month():
     if g.user == None:
         return jsonify({"result_f" : "authentication failed"})
-    
-    stats = Statistics.select_statistics_with_userUID_Month(g.user.uid)
-    statList = [s.toDict() for s in stats]
-    statList = include_songUrl(statList)
 
-    return jsonify({"result" : statList})
+    try:
+        stats = Statistics.select_statistics_with_userUID_Month(g.user.uid)
+        statList = [s.toDict() for s in stats]
+        statList = include_songUrl(statList)
+
+        return jsonify({"result" : statList})
+
+    except Exception as e:
+        print(e.args)
+        return jsonify({"result_f": "undefined error"})
 
 
 @app.route('/emotion/info', methods = ['GET'])
 def emotion_info():
     if g.user == None:
         return jsonify({"result_f" : "authentication failed"})
-    
-    stats = Statistics.select_statistics_with_userUID(g.user.uid)
-    statList = [s.toDict() for s in stats]
-    statList = include_songUrl(statList)
 
-    return jsonify({"result" : statList})
+    try:
+        stats = Statistics.select_statistics_with_userUID(g.user.uid)
+        statList = [s.toDict() for s in stats]
+        statList = include_songUrl(statList)
+
+        return jsonify({"result" : statList})
+
+    except Exception as e:
+        print(e.args)
+        return jsonify({"result_f": "undefined error"})
 
 
 # 데이터 전송을 위한 dict 가공
