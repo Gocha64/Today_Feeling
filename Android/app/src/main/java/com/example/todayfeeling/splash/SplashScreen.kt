@@ -35,7 +35,7 @@ class SplashScreen : AppCompatActivity() {
         } else {
             if (id != null) {
                 if (pw != null) {
-//                    PostLogin().startLogin(id, pw, this)
+                    PostLogin().startLogin(id, pw, this)
                 }
             }
         }

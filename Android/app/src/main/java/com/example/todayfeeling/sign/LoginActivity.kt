@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AlertDialog
 import com.example.todayfeeling.MainActivity
+import com.example.todayfeeling.api.PostLogin
 import com.example.todayfeeling.data.LoginData
 import com.example.todayfeeling.data.ResultData
 import com.example.todayfeeling.databinding.ActivityLoginBinding
@@ -32,52 +33,8 @@ class LoginActivity : AppCompatActivity() {
 
         binding.btnSignIn.setOnClickListener {
             // 실제 로그인시 사용
-            startLogin(binding.editId.text.toString(), binding.editPw.text.toString(), this)
+            PostLogin().startLogin(binding.editId.text.toString(), binding.editPw.text.toString(), this)
         }
     }
     // 로그인을 위한 서버 통신
-    fun startLogin(id: String, pw: String, context: Context) {
-        Log.d("test", id)
-        Log.d("test", pw)
-        val call = RetrofitImpl.service.postSignIn(LoginData(id,pw))
-        var sessionId = ""
-        val dialog = AlertDialog.Builder(context)
-            .setTitle("로그인 시도중")
-            .setMessage("잠시만 기다려주세요.")
-            .create()
-
-        dialog.show()
-
-        call.enqueue(object : Callback<ResultData> {
-            override fun onResponse(call: Call<ResultData>, response: Response<ResultData>) {
-                Log.d("login1", "$response")
-                if (response.isSuccessful) {
-                    if (response.body()?.result.toString() == "success") {
-                        dialog.dismiss()
-                        sessionId = response.headers().get("Set-Cookie").toString()
-                        sessionId = sessionId.split(";")[0];
-                        sessionId = sessionId.substring(8)
-                        val sharedPreference = getSharedPreferences("user", 0)
-                        val editor = sharedPreference.edit()
-                        editor.putString("id", id)
-                        editor.putString("pw", pw)
-                        editor.putString("session", sessionId)
-                        editor.apply()
-                        val intent = Intent(context, MainActivity::class.java)
-                        context.startActivity(intent)
-                    }
-                    else {
-                        dialog.dismiss()
-                        Log.d("test","${response.body().toString()}")
-                        //로그인 실패 알리기
-                    }
-                }
-            }
-            override fun onFailure(call: Call<ResultData>, t: Throwable) {
-                dialog.dismiss()
-                // 서버 에러 알림창 띄우기
-            }
-
-        })
-    }
 }

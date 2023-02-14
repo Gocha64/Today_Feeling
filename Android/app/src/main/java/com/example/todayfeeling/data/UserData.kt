@@ -3,13 +3,13 @@ package com.example.todayfeeling.data
 import com.google.gson.annotations.SerializedName
 
 data class UserData(
-    @SerializedName("userId")
+    @SerializedName("id")
     val userId: String,
-    @SerializedName("userSex")
+    @SerializedName("sex")
     val userSex: String,
-    @SerializedName("userName")
+    @SerializedName("name")
     val userName: String,
-    @SerializedName("userEmail")
+    @SerializedName("email")
     val email: String,
     @SerializedName("anger")
     val anger: String,
