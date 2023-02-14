@@ -61,6 +61,7 @@ jobs:
           echo "::set-output name=diff_file::diff.txt"
       - name: Merge Upstream Main
         run: |
+          git pull --unshallow
           git merge -Xtheirs upstream/main
       - name: Push changes
         uses: ad-m/github-push-action@master
