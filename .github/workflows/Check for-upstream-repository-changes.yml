@@ -73,6 +73,7 @@ jobs:
     if: ${{ needs.find_diff.outputs.diff == 'true' }}
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v3
       - name: Set up Git user name and email
         run: |
           git config --global user.name "dksj9921"
