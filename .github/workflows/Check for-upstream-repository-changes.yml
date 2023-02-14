@@ -73,9 +73,6 @@ jobs:
     if: ${{ needs.find_diff.outputs.diff == 'true' }}
     runs-on: ubuntu-latest
     steps:
-      - env:
-          GITHUB_TOKEN: ${{ secrets.MY_TOKEN }}
-
       - name: Set up Git user name and email
         run: |
           git config --global user.name "dksj9921"
@@ -91,6 +88,8 @@ jobs:
           git push origin main
           
       - name: Push changes to forked repository
+        env: 
+          GITHUB_TOKEN: ${{ secrets.MY_TOKEN }}
         run: git push origin main
 
 
