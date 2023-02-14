@@ -56,8 +56,10 @@ jobs:
           if [ -s diff.txt ]
           then
             echo "::set-output name=diff::true"
+            echo "The output from job1 was ${{ find_diff.outputs.diff }}"
           else
             echo "::set-output name=diff::false"
+            echo "The output from job1 was ${{ find_diff.outputs.diff }}"
           fi
 
   create_pull_request:
