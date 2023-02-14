@@ -19,7 +19,6 @@ import app_modify
 app.config['SESSION_PERMANENT'] = True
 
 
-
 # 메인 페이지
 @app.route('/')
 def hello():
@@ -64,7 +63,7 @@ def getJsonTest():
 if __name__ == "__main__":
 
     app.run(host = '0.0.0.0', port = '10081')
-    #app.run(debug=True)
+    # app.run(debug=True)
 
 
 

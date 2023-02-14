@@ -18,7 +18,7 @@ def emotion_recommend():
         emotion_data = get_json_data['emotion_data']
 
 
-        song = song_recommendation.song_recommend(emotion_data)
+        song = song_recommendation.song_recommend(emotion_data, g.user.uid)
 
         stat = Statistics.Statistics(g.user.uid, song.uid, emotion_data)
         Statistics.insert_statistics(stat)
