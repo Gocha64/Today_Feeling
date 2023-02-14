@@ -26,44 +26,67 @@
 #           # etc
 
 
-name: Trigger Workflow on Repository Change
+name: Check for upstream repository changes
 
 on:
   schedule:
-    - cron: '0 * * * *' # Runs every hour
+    - cron: '0 0 * * *'   # Run once a day
   workflow_dispatch:
 
 jobs:
-  check:
+  find_diff:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
         with:
-          fetch-depth: 0 # Fetches all git history
+          fetch-depth: 0    # Fetch all history for the upstream and forked repositories
 
-      - name: Check if upstream is ahead of forked repository
-        id: diff
+      - name: Fetch upstream changes
+        run: git fetch upstream
+
+      - name: Check for diff between upstream and forked repositories
+        id: check_diff
         run: |
-          git remote add upstream https://github.com/Gocha64/Today_Feeling.git
-          git fetch upstream
-          git fetch origin
-          if [ $(git rev-parse HEAD) = $(git rev-parse @{u}) ]; then
-            echo "Up-to-date"
-            exit 0
+          git diff --name-only upstream/main HEAD > diff.txt
+          if [ -s diff.txt ]
+          then
+            echo "::set-output name=diff::true"
           else
-            echo "::set-output name=diff::$(git log --pretty=format:'%h' origin..upstream)"
-            exit 1
+            echo "::set-output name=diff::false"
           fi
 
-      - name: Create Pull Request
-        if: steps.diff.outputs.diff != ''
+  create_pull_request:
+    needs: find_diff
+    if: ${{ needs.find_diff.outputs.diff == 'true' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Git user name and email
+        run: |
+          git config --global user.name "Your Name"
+          git config --global user.email "youremail@example.com"
+
+      - name: Fetch upstream changes
+        run: git fetch upstream
+
+      - name: Merge upstream changes into forked repository
+        run: |
+          git pull --unshallow
+          git merge -Xtheirs upstream/main
+          
+      - name: Push changes to forked repository
+        run: git push origin main
+
+      - name: Create pull request
         uses: peter-evans/create-pull-request@v3
         with:
-          branch: "update-${{ github.event_name }}-${{ github.sha }}"
-          title: "Update from upstream"
-          body: "Changes from upstream: ${{ steps.diff.outputs.diff }}"
-          commit-message: "Update from upstream"
-          labels: "auto-update"
+          title: Update forked repository to match upstream
+          body: This pull request updates the forked repository to match upstream.
+          base: main
+          branch: update-forked-repo
+          token: ${{ secrets.GITHUB_TOKEN }}
 
 
