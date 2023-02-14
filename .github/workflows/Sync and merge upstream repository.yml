@@ -58,7 +58,7 @@ jobs:
           cat diff.txt
           if [ -s diff.txt ]
           then
-            echo "diff=man" >> $GITHUB_OUTPUT
+            echo "diff=true" >> $GITHUB_OUTPUT
             echo "true!"
           else
             echo "diff=false" >> $GITHUB_OUTPUT
