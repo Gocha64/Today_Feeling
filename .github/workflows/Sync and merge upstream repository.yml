@@ -26,61 +26,44 @@
 #           # etc
 
 
-name: Sync with Upstream and Create Pull Request
+name: Trigger Workflow on Repository Change
+
 on:
-  workflow_dispatch:
   schedule:
-  - cron : '15 * * * * '
-  
+    - cron: '0 * * * *' # Runs every hour
+  workflow_dispatch:
+
 jobs:
-  sync-and-pr:
+  check:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
         with:
-          ref: 'refs/heads/main'
-      - name: Set up Git
-        uses: actions/setup-python@v2
-        with:
-          python-version: '3.x'
-      - name: Configure Git
-        run: |
-          git config --global user.email "sung980213@naver.com"
-          git config --global user.name "dksj9921"
-      - name: Add Upstream Remote
+          fetch-depth: 0 # Fetches all git history
+
+      - name: Check if upstream is ahead of forked repository
+        id: diff
         run: |
           git remote add upstream https://github.com/Gocha64/Today_Feeling.git
-      - name: Fetch Upstream
-        run: |
           git fetch upstream
-      - name: Find Difference between Upstream and Forked Repository
-        id: find_diff
-        run: |
-          git diff --name-only upstream/main..main > diff.txt
-          echo "::set-output name=diff_file::diff.txt"
-      - name: Merge Upstream Main
-        run: |
-          git pull --unshallow
-          git merge -Xtheirs upstream/main
-      - name: Push changes
-        uses: ad-m/github-push-action@master
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: main
-          force: true
+          git fetch origin
+          if [ $(git rev-parse HEAD) = $(git rev-parse @{u}) ]; then
+            echo "Up-to-date"
+            exit 0
+          else
+            echo "::set-output name=diff::$(git log --pretty=format:'%h' origin..upstream)"
+            exit 1
+          fi
+
       - name: Create Pull Request
-        if: steps.find_diff.outputs.diff_file != ''
+        if: steps.diff.outputs.diff != ''
         uses: peter-evans/create-pull-request@v3
         with:
-          title: Sync with upstream
-          commit-message: Sync with upstream
-          branch: sync-with-upstream
-          body: This is an automated pull request to sync changes from the upstream repository.
-          labels: automerge
-          reviewers: octocat
-          token: ${{ secrets.GITHUB_TOKEN }}
-          delete-branch: true
-          draft: false
-          base: main
+          branch: "update-${{ github.event_name }}-${{ github.sha }}"
+          title: "Update from upstream"
+          body: "Changes from upstream: ${{ steps.diff.outputs.diff }}"
+          commit-message: "Update from upstream"
+          labels: "auto-update"
+
 
