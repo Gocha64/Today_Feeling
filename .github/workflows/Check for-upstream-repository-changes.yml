@@ -91,7 +91,7 @@ jobs:
           
       - name: checkout other branch
         run: |
-          git checkout my-branch
+          git checkout -b my-branch
           
       - name: Create pull request
         uses: peter-evans/create-pull-request@v3
