@@ -59,6 +59,14 @@ jobs:
           else
             echo "{diff}={false}" >> $GITHUB_OUTPUT
           fi
+          
+  test_getdiff:
+    needs: find_diff
+    runs-on: ubuntu-latest
+    steps:
+      - name: check code
+        run: | 
+          echo ${{ needs.find_diff.outputs.diff' }}
 
   create_pull_request:
     needs: find_diff
