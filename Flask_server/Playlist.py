@@ -1,15 +1,17 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy.sql.expression import func
 from datetime import datetime
 from dotenv import load_dotenv
 import os
+import random
 from urllib.parse import quote  
-
+from __main__ import app
 
 # create the extension
 db = SQLAlchemy()
 # create the app
-app = Flask(__name__)
+# app = Flask(__name__)
 
 
 load_dotenv()
@@ -73,6 +75,16 @@ def get_songUrl_with_uid(uid):
         playlist = db.session.query(Playlist).filter(Playlist.uid == uid).first()
     return playlist.urlWeb
 
+def get_random_playlist():
+    with app.app_context():
+        playlist = db.session.query(Playlist).order_by(func.random()).first()
+    return playlist
+
+def get_random_playlist_from_genreList(genreList):
+    with app.app_context():
+        playlist = db.session.query(Playlist).filter(Playlist.genre.in_(genreList)).\
+                                                      order_by(func.random()).first()
+    return playlist
 
 def insert_playlist(playlist):
     try:

@@ -4,11 +4,12 @@ from datetime import datetime
 from dotenv import load_dotenv
 from urllib.parse import quote  
 import os
+from __main__ import app
 
 # create the extension
 db = SQLAlchemy()
 # create the app
-app = Flask(__name__)
+#app = Flask(__name__)
 
 
 load_dotenv()

@@ -5,12 +5,13 @@ from dotenv import load_dotenv
 import os
 import User
 import Playlist
-from urllib.parse import quote  
+from urllib.parse import quote
+from __main__ import app
 
 # create the extension
 db = SQLAlchemy()
 # create the app
-app = Flask(__name__)
+# app = Flask(__name__)
 
 load_dotenv()
 db_userName = os.getenv("DB_USER")
@@ -83,9 +84,16 @@ def select_statistics_with_userUID(userUID):
     return statistics
 
 
-# 최근 24시간의 데이터 리스트 반환, default는 서버시간의 날짜
-# datetime의 date형식으로 
 def select_statistics_with_userUID_Day(userUID , curDate = datetime.now()):
+    """
+    최근 24시간의 데이터 리스트 반환, 
+
+    ### Parameters
+    1. userUID : int
+        - 사용자의 uid
+    2. curDate : datatime, (default: datetime.now())
+        - 검색할 기준 날짜
+    """
     with app.app_context():
         statistics = db.session.query(Statistics).\
             filter(Statistics.userUID == userUID).\
@@ -94,9 +102,16 @@ def select_statistics_with_userUID_Day(userUID , curDate = datetime.now()):
     return statistics
 
 
-# 최근 1주일의 데이터 리스트 반환, default는 서버시간의 날짜
-# datetime의 date형식으로 
 def select_statistics_with_userUID_Week(userUID , curDate = datetime.now()):
+    """
+    최근 1주일의 데이터 리스트 반환, 
+
+    ### Parameters
+    1. userUID : int
+        - 사용자의 uid
+    2. curDate : datatime, (default: datetime.now())
+        - 검색할 기준 날짜
+    """
     with app.app_context():
         statistics = db.session.query(Statistics).\
             filter(Statistics.userUID == userUID).\
@@ -104,9 +119,17 @@ def select_statistics_with_userUID_Week(userUID , curDate = datetime.now()):
             filter(Statistics.dateTime <= curDate).all()
     return statistics
 
-# 최근 1개월(30일)의 데이터 리스트 반환, default는 서버시간의 날짜
-# datetime의 date형식으로 
+
 def select_statistics_with_userUID_Month(userUID , curDate = datetime.now()):
+    """
+    최근 1개월(30일)의 데이터 리스트 반환, 
+
+    ### Parameters
+    1. userUID : int
+        - 사용자의 uid
+    2. curDate : datatime, (default: datetime.now())
+        - 검색할 기준 날짜
+    """
     with app.app_context():
         statistics = db.session.query(Statistics).\
             filter(Statistics.userUID == userUID).\
@@ -141,7 +164,6 @@ def insert_dummy_Data():
 
 
 
-
 if __name__ == "__main__":
     # create_table()
     # sta = Statistics(2, 1, 2)
@@ -150,6 +172,7 @@ if __name__ == "__main__":
     # delete_statistics_with_uid(8)
     # insert_dummy_Data()
     print_all_statistics_list()
+
 
     # statistics = Statistics(1,1,2)
     # insert_statistics(statistics)
@@ -163,4 +186,4 @@ if __name__ == "__main__":
     #statistics1 = select_statistics_with_userUID_Month(15)
     #for s in statistics1:
     #    print(s)
-    
+    ...
