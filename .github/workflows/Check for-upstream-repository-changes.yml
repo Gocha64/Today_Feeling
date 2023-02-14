@@ -80,6 +80,8 @@ jobs:
           git config --global user.email "sung980213@naver.com"
 
       - name: Merge upstream changes into forked repository
+        env: 
+          GITHUB_TOKEN: ${{ secrets.MY_TOKEN }}      
         run: |
           git pull --unshallow
           git remote add upstream https://github.com/Gocha64/Today_Feeling.git
@@ -87,11 +89,7 @@ jobs:
           git checkout main
           git merge -Xtheirs upstream/main
           git push origin main
-          
-      - name: Push changes to forked repository
-        env: 
-          GITHUB_TOKEN: ${{ secrets.MY_TOKEN }}
-        run: git push origin main
+        
 
 
 
