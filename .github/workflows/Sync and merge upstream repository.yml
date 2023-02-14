@@ -55,11 +55,9 @@ jobs:
           cat diff.txt
           if [ -s diff.txt ]
           then
-            echo "::set-output name=diff::true"
-            echo "true!"
+            echo "{diff}={true}" >> $GITHUB_OUTPUT
           else
-            echo "::set-output name=diff::false"
-            echo "false!"
+            echo "{diff}={false}" >> $GITHUB_OUTPUT
           fi
 
   create_pull_request:
