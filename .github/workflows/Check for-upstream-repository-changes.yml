@@ -89,17 +89,13 @@ jobs:
           git checkout main
           git merge -Xtheirs upstream/main
           
-      - name: checkout other branch
-        run: |
-          git checkout -b my-branch
           
       - name: Create pull request
         uses: peter-evans/create-pull-request@v4
         with:
           title: Update forked repository to match upstream
           body: This pull request updates the forked repository to match upstream.
-          branch: main
-          base: my-branch
+          branch: my-branch
           token: ${{ secrets.MY_TOKEN }}
 
 
