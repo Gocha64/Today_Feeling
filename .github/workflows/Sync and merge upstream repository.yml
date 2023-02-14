@@ -85,5 +85,5 @@ jobs:
           head: sync-with-upstream
           maintainer-can-modify: true
           changes: |
-            ${{{ steps.find_diff.outputs.diff_file }}}
+            ${{ steps.find_diff.outputs.diff_file }}
 
