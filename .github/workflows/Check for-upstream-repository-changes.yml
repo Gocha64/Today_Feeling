@@ -98,8 +98,8 @@ jobs:
         with:
           title: Update forked repository to match upstream
           body: This pull request updates the forked repository to match upstream.
-          branch: my-branch
-          base: main
+          branch: main
+          base: my-branch
           token: ${{ secrets.MY_TOKEN }}
 
 
