@@ -95,9 +95,14 @@ jobs:
         with:
           title: Update forked repository to match upstream
           body: This pull request updates the forked repository to match upstream.
-          branch: my-branch
-          base: main
+          branch: main
+          base: my-branch
           token: ${{ secrets.MY_TOKEN }}
+          
+      - uses: peter-evans/enable-pull-request-automerge@v2
+        with:
+          token: ${{ secrets.PAT }}
+          pull-request-number: 1
 
 
 
