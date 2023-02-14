@@ -1,8 +1,12 @@
 name: flask-run-action
 on:
-  push:
-    branches:
-      - 'main'
+  pull_request:
+    types: [opened]
+  workflow_dispatch:
+    inputs:
+      trigger_pr: # Use this input to trigger a manual PR
+        description: 'Trigger a new pull request to run this workflow.'
+        required: false
 
 jobs:
   build-image:
