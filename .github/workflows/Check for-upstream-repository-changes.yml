@@ -90,11 +90,7 @@ jobs:
           git merge -Xtheirs upstream/main
           
       - name: Push changes
-        uses: ad-m/github-push-action@master
-        with:
-          github_token: ${{ secrets.MY_TOKEN }}
-          branch: ${{ github.ref }}
-        
+        run: git push https://${{ secrets.MY_TOKEN }}@github.com/dksj9921/Today_Feeling.git
 
 
 
