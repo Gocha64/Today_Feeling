@@ -36,6 +36,8 @@ on:
 jobs:
   find_diff:
     runs-on: ubuntu-latest
+    outputs:
+      diff: ${{steps.check_diff.outputs.diff}}
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -50,6 +52,7 @@ jobs:
 
       - name: Check for diff between upstream and forked repositories
         id: check_diff
+
         run: |
           git diff --name-only upstream/main HEAD > diff.txt
           cat diff.txt
@@ -62,8 +65,7 @@ jobs:
             echo "false!"
           fi
           
-#         outputs:
-#           diff: ${{ steps.find_diff_step.outputs.diff }}
+       
                   
           
   test_getdiff:
