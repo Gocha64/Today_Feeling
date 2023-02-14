@@ -1,7 +1,6 @@
 name: flask-run-action
 on:
-  push:
-    branches: "main"
+  pull_request:
 
 jobs:
   build-image:
