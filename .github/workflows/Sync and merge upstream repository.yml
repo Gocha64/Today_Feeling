@@ -56,8 +56,10 @@ jobs:
           if [ -s diff.txt ]
           then
             echo "{diff}={true}" >> $GITHUB_OUTPUT
+            echo "true!"
           else
             echo "{diff}={false}" >> $GITHUB_OUTPUT
+            echo "false!"
           fi
           
   test_getdiff:
@@ -66,7 +68,7 @@ jobs:
     steps:
       - name: check code
         run: | 
-          echo "${{ needs.find_diff.outputs.diff }}"
+          echo "diff값은 == ${{ needs.find_diff.outputs.diff }}"
 
   create_pull_request:
     needs: find_diff
