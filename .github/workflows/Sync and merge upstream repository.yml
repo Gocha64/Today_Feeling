@@ -78,7 +78,7 @@ jobs:
 
   create_pull_request:
     needs: find_diff
-    if: ${{ needs.find_diff.outputs.diff == 'false' }}
+    if: ${{ needs.find_diff.outputs.diff == 'true' }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
