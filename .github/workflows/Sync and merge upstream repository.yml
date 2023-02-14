@@ -52,6 +52,7 @@ jobs:
         id: check_diff
         run: |
           git diff --name-only upstream/main HEAD > diff.txt
+          cat diff.txt
           if [ -s diff.txt ]
           then
             echo "::set-output name=diff::true"
