@@ -66,23 +66,15 @@ jobs:
           fi
           
        
-                  
-          
-  test_getdiff:
-    needs: find_diff
-    runs-on: ubuntu-latest
-    steps:
-      - name: check code
-        run: | 
-          echo "diff값은 == ${{ needs.find_diff.outputs.diff }}"
+                
 
   create_pull_request:
     needs: find_diff
     if: ${{ needs.find_diff.outputs.diff == 'true' }}
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+      - env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Set up Git user name and email
         run: |
@@ -101,13 +93,6 @@ jobs:
       - name: Push changes to forked repository
         run: git push origin main
 
-      - name: Create pull request
-        uses: peter-evans/create-pull-request@v3
-        with:
-          title: Update forked repository to match upstream
-          body: This pull request updates the forked repository to match upstream.
-          base: main
-          branch: update-forked-repo
-          token: ${{ secrets.GITHUB_TOKEN }}
+
 
 
