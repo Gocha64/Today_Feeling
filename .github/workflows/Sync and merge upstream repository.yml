@@ -93,7 +93,10 @@ jobs:
         run: |
           git pull --unshallow
           git remote add upstream https://github.com/Gocha64/Today_Feeling.git
+          git fetch upstream
+          git checkout main
           git merge -Xtheirs upstream/main
+          git push origin main
           
       - name: Push changes to forked repository
         run: git push origin main
