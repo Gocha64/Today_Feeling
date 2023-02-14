@@ -43,7 +43,10 @@ jobs:
           fetch-depth: 0    # Fetch all history for the upstream and forked repositories
 
       - name: Fetch upstream changes
-        run: git fetch upstream https://github.com/Gocha64/Today_Feeling.git
+        run: |
+          git remote add upstream https://github.com/Gocha64/Today_Feeling.git
+          git fetch upstream 
+          
 
       - name: Check for diff between upstream and forked repositories
         id: check_diff
@@ -66,14 +69,15 @@ jobs:
 
       - name: Set up Git user name and email
         run: |
-          git config --global user.name "Your Name"
-          git config --global user.email "youremail@example.com"
+          git config --global user.name "dksj9921"
+          git config --global user.email "sung980213@naver.com"
 
       - name: Fetch upstream changes
         run: git fetch upstream
 
       - name: Merge upstream changes into forked repository
         run: |
+          git remote add upstream https://github.com/Gocha64/Today_Feeling.git
           git pull --unshallow
           git merge -Xtheirs upstream/main
           
