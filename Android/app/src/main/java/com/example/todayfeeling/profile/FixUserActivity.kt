@@ -8,9 +8,11 @@ import android.widget.EditText
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import com.example.todayfeeling.R
+import com.example.todayfeeling.api.PostModifyUser
 import com.example.todayfeeling.databinding.ActivityFixUserBinding
+import com.example.todayfeeling.listener.AlertUserModify
 
-class FixUserActivity : AppCompatActivity() {
+class FixUserActivity : AppCompatActivity(), AlertUserModify {
     private var mBinding:ActivityFixUserBinding? = null
     private val binding get() = mBinding!!
 
@@ -19,28 +21,41 @@ class FixUserActivity : AppCompatActivity() {
         mBinding = ActivityFixUserBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        val sharedPreference = getSharedPreferences("user", 0)
+
+        binding.txtFixId.text = sharedPreference.getString("id", "").toString()
+        val pw = sharedPreference.getString("pw", "").toString()
+        binding.txtFixPw.text = "****"
+        binding.txtFixSex.text = sharedPreference.getString("sex","").toString()
+        binding.txtFixName.text = sharedPreference.getString("name","").toString()
+        binding.txtFixEmail.text = sharedPreference.getString("email","").toString()
+
+        binding.btnFixName.setOnClickListener {
+            showAlertDialog(0, pw)
+        }
+
         binding.btnFixId.setOnClickListener {
-            showAlertDialog(1)
+            showAlertDialog(1, pw)
         }
 
         binding.btnFixPw.setOnClickListener {
-            showAlertDialog(2)
+            showAlertDialog(2, pw)
 
         }
 
         binding.btnFixEmail.setOnClickListener {
-            showAlertDialog(3)
+            showAlertDialog(3, pw)
         }
 
         binding.btnFixSex.setOnClickListener {
-            showAlertDialog(4)
+            showAlertDialog(4, pw)
         }
 
         binding.btnFixedCheck.setOnClickListener {
-            //서버 전송 및 sharedPreference 값 수정
+            finish()
         }
     }
-    fun showAlertDialog(id:Int) {
+    private fun showAlertDialog(id:Int, pw:String) {
         val dialogView = layoutInflater.inflate(R.layout.fix_user_dialog, null)
         val alertDialog = AlertDialog.Builder(this)
             .setView(dialogView)
@@ -52,22 +67,58 @@ class FixUserActivity : AppCompatActivity() {
         button.setOnClickListener {
             alertDialog.dismiss()
             when (id) {
+                0 -> {
+                    PostModifyUser(this, this).modifyUser(
+                        binding.txtFixId.text.toString(),
+                        pw,
+                        edit.toString(),
+                        binding.txtFixSex.text.toString(),
+                        binding.txtFixEmail.text.toString()
+                    )
+                }
                 1 -> {
-                    binding.txtFixedId.text = edit
+                    PostModifyUser(this, this).modifyUser(
+                        edit.toString(),
+                        pw,
+                        binding.txtFixName.text.toString(),
+                        binding.txtFixSex.text.toString(),
+                        binding.txtFixEmail.text.toString()
+                    )
                 }
                 2 -> {
-                    binding.txtFixedPw.text = edit
+                    PostModifyUser(this,this).modifyUser(
+                        binding.txtFixId.text.toString(),
+                        edit.toString(),
+                        binding.txtFixName.text.toString(),
+                        binding.txtFixSex.text.toString(),
+                        binding.txtFixEmail.text.toString()
+                    )
                 }
                 3 -> {
-                    binding.txtFixEmail.text = edit
+                    PostModifyUser(this,this).modifyUser(
+                        binding.txtFixId.text.toString(),
+                        pw,
+                        binding.txtFixName.text.toString(),
+                        binding.txtFixSex.text.toString(),
+                        edit.toString()
+                    )
                 }
                 else -> {
-                    binding.txtFixedSex.text = edit
+                    PostModifyUser(this,this).modifyUser(
+                        binding.txtFixId.text.toString(),
+                        pw,
+                        binding.txtFixName.text.toString(),
+                        edit.toString(),
+                        binding.txtFixEmail.text.toString()
+                    )
                 }
             }
         }
 
         when (id) {
+            0 -> {
+                dialogView.findViewById<TextView>(R.id.txt_fix).text = "이름 변경"
+            }
             1 -> {
                 Log.d("test","아이디 변경")
                 dialogView.findViewById<TextView>(R.id.txt_fix).text = "아이디 변경"
@@ -84,5 +135,13 @@ class FixUserActivity : AppCompatActivity() {
         }
 
         alertDialog.show()
+    }
+
+    override fun alertUserModify() {
+        val intent = intent
+        finish()
+        overridePendingTransition(0, 0)
+        startActivity(intent)
+        overridePendingTransition(0, 0)
     }
 }

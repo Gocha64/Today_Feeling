@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:weightSum="100"
-    tools:context=".profile.FixUserActivity">
+    tools:context=".profile.FixGenreActivity">
 
     <TextView
         android:layout_width="match_parent"
@@ -14,7 +14,7 @@
         android:layout_weight="5"
         android:gravity="center"
         android:textStyle="bold"
-        android:text="회원정보 수정" />
+        android:text="노래 장르 수정" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -36,38 +36,7 @@
             <Space
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="5" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="15"
-                android:weightSum="80"
-                android:orientation="horizontal">
-
-                <Space
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="25" />
-
-                <ImageView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="30" />
-
-                <Space
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="25" />
-
-            </LinearLayout>
-
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="5"
-                android:background="@drawable/buttonshapewhitebg"
-                android:text="사진 변경"/>
+                android:layout_weight="2" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -85,7 +54,7 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="90"
-                    android:text="기본 정보"
+                    android:text="표정별 장르"
                     android:textStyle="bold"
                     android:gravity="center" />
 
@@ -112,12 +81,12 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="30"
-                    android:text="성별:"
+                    android:text="화남:"
                     android:textStyle="bold"
                     android:gravity="start|center" />
 
                 <TextView
-                    android:id="@+id/txt_fix_name"
+                    android:id="@+id/txt_fix_anger"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="50"
@@ -125,7 +94,7 @@
                     android:gravity="start|center" />
 
                 <Button
-                    android:id="@+id/btn_fix_name"
+                    android:id="@+id/btn_fix_anger"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="15"
@@ -149,11 +118,11 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="30"
-                    android:text="아이디:"
+                    android:text="공포:"
                     android:textStyle="bold"
                     android:gravity="start|center" />
                 <TextView
-                    android:id="@+id/txt_fix_id"
+                    android:id="@+id/txt_fix_fear"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="50"
@@ -161,7 +130,7 @@
                     android:gravity="start|center" />
 
                 <Button
-                    android:id="@+id/btn_fix_id"
+                    android:id="@+id/btn_fix_fear"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="15"
@@ -185,12 +154,12 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="30"
-                    android:text="비밀번호:"
+                    android:text="행복:"
                     android:textStyle="bold"
                     android:gravity="start|center" />
 
                 <TextView
-                    android:id="@+id/txt_fix_pw"
+                    android:id="@+id/txt_fix_happy"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="50"
@@ -198,7 +167,7 @@
                     android:gravity="start|center" />
 
                 <Button
-                    android:id="@+id/btn_fix_pw"
+                    android:id="@+id/btn_fix_happy"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="15"
@@ -222,12 +191,12 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="30"
-                    android:text="이메일:"
+                    android:text="슬픔:"
                     android:textStyle="bold"
                     android:gravity="start|center" />
 
                 <TextView
-                    android:id="@+id/txt_fix_email"
+                    android:id="@+id/txt_fix_sad"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="50"
@@ -235,7 +204,7 @@
                     android:gravity="start|center" />
 
                 <Button
-                    android:id="@+id/btn_fix_email"
+                    android:id="@+id/btn_fix_sad"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="15"
@@ -259,12 +228,12 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="30"
-                    android:text="성별:"
+                    android:text="놀람:"
                     android:textStyle="bold"
                     android:gravity="start|center" />
 
                 <TextView
-                    android:id="@+id/txt_fix_sex"
+                    android:id="@+id/txt_fix_surprise"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="50"
@@ -272,7 +241,7 @@
                     android:gravity="start|center" />
 
                 <Button
-                    android:id="@+id/btn_fix_sex"
+                    android:id="@+id/btn_fix_surprise"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="15"
@@ -285,14 +254,14 @@
                 android:layout_height="0dp"
                 android:layout_weight="3" />
 
-                <Button
-                    android:id="@+id/btn_fixed_check"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_gravity="center"
-                    android:text="확인"
-                    android:textSize="13dp"
-                    android:layout_weight="6" />
+            <Button
+                android:id="@+id/btn_fixed_check"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_gravity="center"
+                android:text="확인"
+                android:textSize="13dp"
+                android:layout_weight="6" />
 
         </LinearLayout>
 
