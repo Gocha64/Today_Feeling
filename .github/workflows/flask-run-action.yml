@@ -1,6 +1,7 @@
 name: flask-run-action
 on:
-  pull_request:
+  repository_dispatch:
+    types: [my-event]
 
 jobs:
   build-image:
