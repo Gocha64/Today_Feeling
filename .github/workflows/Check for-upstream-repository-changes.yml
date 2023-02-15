@@ -87,20 +87,13 @@ jobs:
           git remote add upstream https://github.com/Gocha64/Today_Feeling.git
           git fetch upstream
           git checkout upstream/main
+          git merge -Xtheirs upstream/main
+          git push origin main
       
-      - name: Create pull request
-        uses: peter-evans/create-pull-request@v4
+      - name: Repository Dispatch
+        uses: peter-evans/repository-dispatch@v2
         with:
-          title: Update forked repository to match upstream
-          body: This pull request updates the forked repository to match upstream.
-          base: main
-          token: ${{ secrets.MY_TOKEN }}
-          
-      - uses: peter-evans/enable-pull-request-automerge@v2
-        with:
-          token: ${{ secrets.MY_TOKEN }}
-          pull-request-number: 1
-
+          event-type: my-event
 
 
 
