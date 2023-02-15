@@ -1,7 +1,8 @@
-import Playlist
-import Userdata
-import readJson
-
+from service.PlaylistQuery import get_random_playlist,\
+                                    get_random_playlist_from_genreList
+from service.UserdataQuery import select_userdata_with_uid
+import service.readJson as readJson
+from flask import current_app
 
 # 노래 추천 알고리즘
 def song_recommend(emotion_data : int , userUid : int):
@@ -25,7 +26,7 @@ def song_recommend(emotion_data : int , userUid : int):
     """
 
     # uid로 userdata로 가져와 dictionary로 변환
-    userdata = Userdata.select_userdata_with_uid(userUid).toDict()
+    userdata = select_userdata_with_uid(current_app, userUid).toDict()
 
 
     # 해당하는 감정의 장르 데이터 가져오기
@@ -43,12 +44,8 @@ def song_recommend(emotion_data : int , userUid : int):
 
     # genreList가 비어있으면(아무런 장르가 선택되지 않았다면) 아무 노래나 추천해줌
     if not genreList:
-         return Playlist.get_random_playlist()
+         return get_random_playlist(current_app)
     
     # genreList에 해당하는 노래를 랜덤으로 추천
-    return Playlist.get_random_playlist_from_genreList(genreList)
-
-
-if __name__ == "__main__":
-    print(song_recommend(1,2).urlWeb)
+    return get_random_playlist_from_genreList(current_app, genreList)
 

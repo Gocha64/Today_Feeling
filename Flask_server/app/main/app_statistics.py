@@ -1,13 +1,17 @@
-from flask import g, jsonify, request
-import Statistics
-import json
-import song_recommendation
-import Playlist
-from __main__ import app
+from flask import g, jsonify, request, current_app
+import service.song_recommendation as song_recommendation
+from models.Statistics import Statistics
+from service.StatisticsQuery import insert_statistics,\
+                                    select_statistics_with_userUID_Day,\
+                                    select_statistics_with_userUID_Week,\
+                                    select_statistics_with_userUID_Month,\
+                                    select_statistics_with_userUID
+from service.PlaylistQuery import get_songUrl_with_uid
+from main import bp
 
 
 
-@app.route('/emotion/recommend', methods = ["POST"])
+@bp.route('/emotion/recommend', methods = ["POST"])
 def emotion_recommend():
     if g.user == None:
         return jsonify({"result" : "authentication failed"})
@@ -20,8 +24,8 @@ def emotion_recommend():
 
         song = song_recommendation.song_recommend(emotion_data, g.user.uid)
 
-        stat = Statistics.Statistics(g.user.uid, song.uid, emotion_data)
-        Statistics.insert_statistics(stat)
+        stat = Statistics(g.user.uid, song.uid, emotion_data)
+        insert_statistics(current_app, stat)
 
         return jsonify({"result" : song.urlWeb})
 
@@ -30,13 +34,13 @@ def emotion_recommend():
         return jsonify({"result" : "undefined error"})
     
 
-@app.route('/emotion/info_day', methods = ["GET"])
+@bp.route('/emotion/info_day', methods = ["GET"])
 def emotion_day():
     if g.user == None:
         return jsonify({"result_f" : "authentication failed"})
 
     try:
-        stats = Statistics.select_statistics_with_userUID_Day(g.user.uid)
+        stats = select_statistics_with_userUID_Day(current_app, g.user.uid)
         statList = [s.toDict() for s in stats]
         statList = include_songUrl(statList)
 
@@ -47,13 +51,13 @@ def emotion_day():
         return jsonify({"result_f": "undefined error"})
 
 
-@app.route('/emotion/info_week', methods = ['GET'])
+@bp.route('/emotion/info_week', methods = ['GET'])
 def emotion_week():
     if g.user == None:
         return jsonify({"result_f" : "authentication failed"})
 
     try:
-        stats = Statistics.select_statistics_with_userUID_Week(g.user.uid)
+        stats = select_statistics_with_userUID_Week(current_app, g.user.uid)
         statList = [s.toDict() for s in stats]
         statList = include_songUrl(statList)
 
@@ -64,13 +68,13 @@ def emotion_week():
         return jsonify({"result_f": "undefined error"})
 
 
-@app.route('/emotion/info_month', methods = ['GET'])
+@bp.route('/emotion/info_month', methods = ['GET'])
 def emotion_month():
     if g.user == None:
         return jsonify({"result_f" : "authentication failed"})
 
     try:
-        stats = Statistics.select_statistics_with_userUID_Month(g.user.uid)
+        stats = select_statistics_with_userUID_Month(current_app, g.user.uid)
         statList = [s.toDict() for s in stats]
         statList = include_songUrl(statList)
 
@@ -81,13 +85,13 @@ def emotion_month():
         return jsonify({"result_f": "undefined error"})
 
 
-@app.route('/emotion/info', methods = ['GET'])
+@bp.route('/emotion/info', methods = ['GET'])
 def emotion_info():
     if g.user == None:
         return jsonify({"result_f" : "authentication failed"})
 
     try:
-        stats = Statistics.select_statistics_with_userUID(g.user.uid)
+        stats = select_statistics_with_userUID(current_app, g.user.uid)
         statList = [s.toDict() for s in stats]
         statList = include_songUrl(statList)
 
@@ -103,7 +107,7 @@ def include_songUrl(statList):
     staDict = dict()
 
     for stat in statList:
-        songUrl = Playlist.get_songUrl_with_uid(stat['songUID'])
+        songUrl = get_songUrl_with_uid(current_app, stat['songUID'])
         stat['songUrl'] = songUrl
         stat.pop('songUID')
         
