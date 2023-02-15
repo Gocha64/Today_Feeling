@@ -17,14 +17,14 @@ interface RetrofitService {
     @GET("member/search")
     fun getUser(): Call<UserData>
 
-    @POST("member/modify")
-    fun modifyUser(@Header("session") session:String, @Body req: ModifyUserData): Call<ResultData>
+    @POST("member/modify/info")
+    fun modifyUser(@Body req: ModifyUserData): Call<ResultData>
 
     @POST("emotion/recommend")
     fun recommendEmotion(@Header("session") session:String, @Body emotion: Int): Call<ResultData>
 
     @POST("member/modify/genre")
-    fun modifyGenre(@Header("session") session:String, @Body req: ModifyGenreData): Call<ResultData>
+    fun modifyGenre(@Body req: ModifyGenreData): Call<ResultData>
 
     @GET("emotion/info_day")
     fun dayEmotionStatistic(@Header("session") session:String): Call<EmotionData>
