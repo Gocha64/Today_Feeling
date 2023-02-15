@@ -32,6 +32,7 @@ class PostModifyGenre(context: Context, listener: AlertUserModifyGenre) {
                     editor.putString("happiness", happiness)
                     editor.putString("sadness", sadness)
                     editor.putString("surprise", surprise)
+                    editor.apply()
                     listen.alertUserModifyGenre()
                 }
             }
