@@ -2,22 +2,23 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from models.Userdata import Userdata
 from extensions import db
+from flask import current_app as app
 
 default_value = '0000000001'
     
 
-def print_all_userdatas_list(app):
+def print_all_userdatas_list():
     with app.app_context():
         userdatas = db.session.query(Userdata).all()
         for userdata in userdatas:
             print(userdata)
 
-def select_userdatas(app):
+def select_userdatas():
     with app.app_context():
         userdatas = db.session.query(Userdata).all()
     return userdatas
 
-def insert_userdata(app, userdata):
+def insert_userdata(userdata):
     try:
         with app.app_context():
             db.session.add(userdata)
@@ -26,12 +27,12 @@ def insert_userdata(app, userdata):
         print(e.args)
         raise e
     
-def select_userdata_with_uid(app, uid):
+def select_userdata_with_uid( uid):
     with app.app_context():
         userdata = db.session.query(Userdata).filter(Userdata.userUid == uid).first()
     return userdata
 
-def update_userdata_with_uid(app, uid, userdataModi):
+def update_userdata_with_uid(uid, userdataModi):
 
     with app.app_context():
         userdata = db.session.query(Userdata).filter(Userdata.userUid == uid).first()
@@ -45,3 +46,5 @@ def update_userdata_with_uid(app, uid, userdataModi):
         userdata.surprise = userdataModi.surprise
 
         db.session.commit()
+
+

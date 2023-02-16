@@ -1,4 +1,4 @@
-from flask import g, jsonify, current_app
+from flask import g, jsonify
 from service.UserdataQuery import select_userdata_with_uid
 from main import bp
 
@@ -9,7 +9,7 @@ def member_search():
         return jsonify({"result" : "authentication failed"})
     
     userDict = g.user.toDict_without_password()
-    userdataDict = select_userdata_with_uid(current_app, g.user.uid).toDict()
+    userdataDict = select_userdata_with_uid(g.user.uid).toDict()
 
     if userdataDict != None:
         userDict.update(userdataDict)

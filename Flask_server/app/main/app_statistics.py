@@ -1,4 +1,6 @@
-from flask import g, jsonify, request, current_app
+from datetime import datetime
+from flask import g, jsonify, request
+from service.UserdataQuery import select_userdata_with_uid
 import service.song_recommendation as song_recommendation
 from models.Statistics import Statistics
 from service.StatisticsQuery import insert_statistics,\
@@ -21,11 +23,12 @@ def emotion_recommend():
 
         emotion_data = get_json_data['emotion_data']
 
-
-        song = song_recommendation.song_recommend(emotion_data, g.user.uid)
+        user_data = select_userdata_with_uid(g.user.uid)
+        
+        song = song_recommendation.song_recommend(user_data, emotion_data)
 
         stat = Statistics(g.user.uid, song.uid, emotion_data)
-        insert_statistics(current_app, stat)
+        insert_statistics(stat)
 
         return jsonify({"result" : song.urlWeb})
 
@@ -40,7 +43,16 @@ def emotion_day():
         return jsonify({"result_f" : "authentication failed"})
 
     try:
-        stats = select_statistics_with_userUID_Day(current_app, g.user.uid)
+
+        targetTime = datetime.now()
+
+        date = request.args.get("date")
+        if date != None:
+            # print(date)
+            targetTimestamp = int(date)
+            targetTime = datetime.utcfromtimestamp(targetTimestamp)
+
+        stats = select_statistics_with_userUID_Day(g.user.uid, targetTime)
         statList = [s.toDict() for s in stats]
         statList = include_songUrl(statList)
 
@@ -57,7 +69,15 @@ def emotion_week():
         return jsonify({"result_f" : "authentication failed"})
 
     try:
-        stats = select_statistics_with_userUID_Week(current_app, g.user.uid)
+        targetTime = datetime.now()
+
+        date = request.args.get("date")
+        if date != None:
+            # print(date)
+            targetTimestamp = int(date)
+            targetTime = datetime.utcfromtimestamp(targetTimestamp)
+
+        stats = select_statistics_with_userUID_Week( g.user.uid, targetTime)
         statList = [s.toDict() for s in stats]
         statList = include_songUrl(statList)
 
@@ -74,7 +94,16 @@ def emotion_month():
         return jsonify({"result_f" : "authentication failed"})
 
     try:
-        stats = select_statistics_with_userUID_Month(current_app, g.user.uid)
+        targetTime = datetime.now()
+
+        date = request.args.get("date")
+        if date != None:
+            # print(date)
+            targetTimestamp = int(date)
+            targetTime = datetime.utcfromtimestamp(targetTimestamp)
+
+
+        stats = select_statistics_with_userUID_Month( g.user.uid, targetTime)
         statList = [s.toDict() for s in stats]
         statList = include_songUrl(statList)
 
@@ -91,7 +120,7 @@ def emotion_info():
         return jsonify({"result_f" : "authentication failed"})
 
     try:
-        stats = select_statistics_with_userUID(current_app, g.user.uid)
+        stats = select_statistics_with_userUID(g.user.uid)
         statList = [s.toDict() for s in stats]
         statList = include_songUrl(statList)
 
@@ -107,7 +136,7 @@ def include_songUrl(statList):
     staDict = dict()
 
     for stat in statList:
-        songUrl = get_songUrl_with_uid(current_app, stat['songUID'])
+        songUrl = get_songUrl_with_uid(stat['songUID'])
         stat['songUrl'] = songUrl
         stat.pop('songUID')
         

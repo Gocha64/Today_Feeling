@@ -1,10 +1,11 @@
 from datetime import datetime, timedelta
 from models.Statistics import Statistics
 from extensions import db
+from flask import current_app as app
 
 
 # userUID와 songUID는 각 테이블에 존재해야함
-def insert_statistics(app, statistics):
+def insert_statistics(statistics):
     try:
         with app.app_context():
             db.session.add(statistics)
@@ -12,25 +13,25 @@ def insert_statistics(app, statistics):
     except Exception as e:
         print(e.args)
 
-def print_all_statistics_list(app):
+def print_all_statistics_list():
     with app.app_context():
         statistics = db.session.query(Statistics).\
             all()
         for s in statistics:
             print(s)
 
-def select_statistics(app):
+def select_statistics():
     with app.app_context():
         statistics = db.session.query(Statistics).all()
     return statistics
 
-def select_statistics_with_userUID(app, userUID):
+def select_statistics_with_userUID(userUID):
     with app.app_context():
         statistics = db.session.query(Statistics).filter(Statistics.userUID == userUID).all()
     return statistics
 
 
-def select_statistics_with_userUID_Day(app, userUID , curDate = datetime.now()):
+def select_statistics_with_userUID_Day(userUID , curDate = datetime.now()):
     """
     최근 24시간의 데이터 리스트 반환, 
 
@@ -48,7 +49,7 @@ def select_statistics_with_userUID_Day(app, userUID , curDate = datetime.now()):
     return statistics
 
 
-def select_statistics_with_userUID_Week(app, userUID , curDate = datetime.now()):
+def select_statistics_with_userUID_Week(userUID , curDate = datetime.now()):
     """
     최근 1주일의 데이터 리스트 반환, 
 
@@ -66,7 +67,7 @@ def select_statistics_with_userUID_Week(app, userUID , curDate = datetime.now())
     return statistics
 
 
-def select_statistics_with_userUID_Month(app, userUID , curDate = datetime.now()):
+def select_statistics_with_userUID_Month(userUID , curDate = datetime.now()):
     """
     최근 1개월(30일)의 데이터 리스트 반환, 
 
@@ -84,13 +85,13 @@ def select_statistics_with_userUID_Month(app, userUID , curDate = datetime.now()
     return statistics
 
 
-def select_statistics_with_uid(app, uid):
+def select_statistics_with_uid(uid):
     with app.app_context():
         statistics = db.session.query(Statistics).filter(Statistics.uid == uid).first()
     return statistics
 
 
-def delete_statistics_with_uid(app, uid):
+def delete_statistics_with_uid( uid):
     try:
         with app.app_context():
             statistics = db.session.query(Statistics).filter(Statistics.uid == uid).first()
@@ -101,7 +102,7 @@ def delete_statistics_with_uid(app, uid):
 
 
 # 테스트용 더미 데이터 생성
-def insert_dummy_Data(app):
+def insert_dummy_Data():
 
     for i in range(40):
         time = datetime.now() - timedelta(days=i)

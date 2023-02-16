@@ -1,4 +1,4 @@
-from flask import render_template, request, redirect, url_for, session, g, jsonify, current_app
+from flask import render_template, request, redirect, url_for, session, g, jsonify
 from service.UserQuery import select_user_with_id
 import hashlib
 from main import bp
@@ -23,7 +23,7 @@ def login():
         userPw = get_json_data['userPw']
         userPwHash = str(hashlib.sha1(userPw.encode('utf-8')).hexdigest())
 
-        user = select_user_with_id(current_app, userId)
+        user = select_user_with_id(userId)
 
         if user != None and user.password == userPwHash:
             session['userUid'] = user.uid

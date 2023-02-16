@@ -1,4 +1,4 @@
-from flask import render_template, request, redirect, url_for, g, jsonify, current_app
+from flask import render_template, request, redirect, url_for, g, jsonify
 from service.UserQuery import insert_user, select_user_with_id, select_user_with_email
 from service.UserdataQuery import insert_userdata
 from models.User import User
@@ -45,19 +45,19 @@ def register():
 
         user = User(userId, userPwHash, userName, userSex, email)
         
-        if select_user_with_id(current_app, userId) != None:
+        if select_user_with_id(userId) != None:
             return jsonify({'result' : 'overlaped ID'})
         
-        elif select_user_with_email(current_app, email) != None:
+        elif select_user_with_email(email) != None:
             return jsonify({'result' : 'overlaped Email'})
         
 
         else:
             try:
-                insert_user(current_app, user)
-                userUid = select_user_with_id(current_app, userId)
+                insert_user(user)
+                userUid = select_user_with_id(userId)
                 userdata = Userdata(userUid.uid, anger, fear, happiness, sadness, surprise)
-                insert_userdata(current_app, userdata)
+                insert_userdata(userdata)
                 print(f"{userId} registered")
                 return jsonify({'result' : 'success'})
             except Exception as e:

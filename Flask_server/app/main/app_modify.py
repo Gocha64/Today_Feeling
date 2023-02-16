@@ -1,4 +1,4 @@
-from flask import render_template, request, redirect, url_for, g, jsonify, current_app
+from flask import render_template, request, redirect, url_for, g, jsonify
 from service.UserQuery import update_user_with_uid
 from service.UserdataQuery import update_userdata_with_uid
 from models.User import User
@@ -37,7 +37,7 @@ def modify():
         # print(userModi)
 
         try:
-            update_user_with_uid(current_app, g.user.uid, userModi)
+            update_user_with_uid(g.user.uid, userModi)
             print("userinfo changed")
             return jsonify({'result': 'success'})
         except Exception as e:
@@ -72,7 +72,7 @@ def modify_genre():
 
         print(userdataModi)
         try:
-            update_userdata_with_uid(current_app, g.user.uid, userdataModi)
+            update_userdata_with_uid(g.user.uid, userdataModi)
             print("userdata changed")
             return jsonify({'result': 'success'})
         except Exception as e:
