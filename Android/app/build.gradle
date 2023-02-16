@@ -42,11 +42,14 @@ dependencies {
     implementation 'com.google.android.material:material:1.8.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
 
-    // retrofit2
+    // 서버통신을 위한 라이브러리
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
     implementation 'com.google.android.gms:play-services-basement:18.1.0'
     implementation 'com.squareup.okhttp3:okhttp-urlconnection:4.9.0'
+
+    //그래프 그리기 위한 라이브러리
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'

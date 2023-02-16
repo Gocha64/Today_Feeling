@@ -1,12 +1,15 @@
 package com.example.todayfeeling.network
 
 import com.example.todayfeeling.data.*
-import okhttp3.Cookie
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.Header
 import retrofit2.http.POST
+import retrofit2.http.Query
+import java.sql.Date
+import java.time.LocalDateTime
+
 interface RetrofitService {
     @POST("member/login")
     fun postSignIn(@Body req: LoginData): Call<ResultData>
@@ -27,11 +30,11 @@ interface RetrofitService {
     fun modifyGenre(@Body req: ModifyGenreData): Call<ResultData>
 
     @GET("emotion/info_day")
-    fun dayEmotionStatistic(@Header("session") session:String): Call<EmotionData>
+    fun dayEmotionStatistic(@Query("date") req: String): Call<EmotionData>
 
     @GET("emotion/info_week")
-    fun weekEmotionStatistic(@Header("session") session:String): Call<EmotionData>
+    fun weekEmotionStatistic(): Call<EmotionData>
 
     @GET("emotion/info_month")
-    fun monthEmotionStatistic(@Header("session") session:String): Call<EmotionData>
+    fun monthEmotionStatistic(): Call<EmotionData>
 }

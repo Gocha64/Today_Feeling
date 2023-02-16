@@ -1,6 +1,7 @@
 package com.example.todayfeeling.data
 
 import com.google.gson.annotations.SerializedName
+import java.time.LocalDateTime
 import java.util.Date
 
 data class EmotionData(
@@ -10,7 +11,9 @@ data class EmotionData(
 
 data class Emotion(
     @SerializedName("datetime")
-    val dateTime: Date,
+    val dateTime: String,
+    @SerializedName("timestamp")
+    val time: String,
     @SerializedName("emotion")
     val emotion: Int,
     @SerializedName("songUrl")
