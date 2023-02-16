@@ -1,5 +1,6 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
+import time
 from datetime import datetime, timedelta
 from models.User import User
 from models.Playlist import Playlist
@@ -30,6 +31,7 @@ class Statistics(db.Model):
         # staDict['userUID'] = self.userUID
         staDict['songUID'] = self.songUID
         staDict['datetime'] = self.dateTime
+        staDict['timestamp'] = int(time.mktime(self.dateTime.timetuple()))
         staDict['emotion'] = self.emotion
         return staDict
 

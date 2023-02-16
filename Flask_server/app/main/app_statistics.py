@@ -50,7 +50,7 @@ def emotion_day():
         if date != None:
             # print(date)
             targetTimestamp = int(date)
-            targetTime = datetime.utcfromtimestamp(targetTimestamp)
+            targetTime = datetime.fromtimestamp(targetTimestamp)
 
         stats = select_statistics_with_userUID_Day(g.user.uid, targetTime)
         statList = [s.toDict() for s in stats]
@@ -75,7 +75,7 @@ def emotion_week():
         if date != None:
             # print(date)
             targetTimestamp = int(date)
-            targetTime = datetime.utcfromtimestamp(targetTimestamp)
+            targetTime = datetime.fromtimestamp(targetTimestamp)
 
         stats = select_statistics_with_userUID_Week( g.user.uid, targetTime)
         statList = [s.toDict() for s in stats]
@@ -100,7 +100,7 @@ def emotion_month():
         if date != None:
             # print(date)
             targetTimestamp = int(date)
-            targetTime = datetime.utcfromtimestamp(targetTimestamp)
+            targetTime = datetime.fromtimestamp(targetTimestamp)
 
 
         stats = select_statistics_with_userUID_Month( g.user.uid, targetTime)

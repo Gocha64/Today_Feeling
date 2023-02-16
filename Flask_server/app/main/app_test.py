@@ -21,7 +21,8 @@ def getJsonTest():
 # 통계정보 등록 테스트를 위한 데모 페이지
 @bp.route('/statPostTest')
 def statPostTest():
-    from service.UserdataQuery import print_all_userdatas_list
-    print_all_userdatas_list()
+    from service.StatisticsQuery import select_statistics_with_uid
+    stat = select_statistics_with_uid(68)
+    print(stat.dateTime.month)
     return render_template("statPostTest.html")
 
