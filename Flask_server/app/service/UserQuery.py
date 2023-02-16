@@ -1,64 +1,9 @@
-from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
-from datetime import datetime
-from dotenv import load_dotenv
-from urllib.parse import quote  
-import os
-from __main__ import app
+from flask import Flask
+from models.User import User
+from extensions import db
+from flask import current_app as app
 
-# create the extension
-db = SQLAlchemy()
-# create the app
-#app = Flask(__name__)
-
-
-load_dotenv()
-db_userName = os.getenv("DB_USER")
-db_pw = os.getenv("DB_PW")
-db_ip = os.getenv("DB_IP")
-db_port = os.getenv("DB_PORT")
-db_schema = os.getenv("DB_SCHEMA")
-
-app.config["SQLALCHEMY_DATABASE_URI"] = f'mysql+pymysql://{db_userName}:%s@{db_ip}:{db_port}/{db_schema}' % quote(db_pw)
-# initialize the app with the extension
-db.init_app(app)
-
-class User(db.Model):
-    __tablename__ = 'Users'
-    uid = db.Column(db.Integer, primary_key=True, nullable=False, autoincrement=True)
-    id = db.Column(db.String(50), unique=True, nullable=False)
-    password = db.Column(db.String(50), nullable=False)
-    name = db.Column(db.String(50), nullable=False)
-    sex = db.Column(db.Integer, nullable=False)
-    email = db.Column(db.String(50), nullable=False)
-    
-
-    def __init__(self, id, password, name, sex, email):
-        self.id = id
-        self.password = password
-        self.name = name
-        self.sex = sex
-        self.email = email
-
-
-    def __str__(self):
-        return f" uid: {self.uid}\n id: {self.id}\n name: {self.name}\n password: {self.password}\n sex: {self.sex}\n email: {self.email}\n"
-    
-    def toDict_without_password(self):
-        userDict = {
-            "uid" : self.uid,
-            "id" : self.id,
-            "name" : self.name,
-            "sex" : self.sex,
-            "email" : self.email
-        }
-        return userDict
-
-    
-
-def create_table():
-    with app.app_context():
-        db.create_all()
 
 def print_all_users_list():
     with app.app_context():
@@ -133,10 +78,3 @@ def update_user_with_uid(uid, userModi):
     except Exception as e:
         print(e.args)
 
-
-
-
-if __name__ == "__main__":
-    
-    print_all_users_list()
-    ...

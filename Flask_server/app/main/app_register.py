@@ -1,13 +1,13 @@
 from flask import render_template, request, redirect, url_for, g, jsonify
-import User
-import Userdata
+from service.UserQuery import insert_user, select_user_with_id, select_user_with_email
+from service.UserdataQuery import insert_userdata
+from models.User import User
+from models.Userdata import Userdata
 import hashlib
-
-from __main__ import app
-
+from main import bp
 
 
-@app.route('/member/register', methods=["GET", "POST"])
+@bp.route('/member/register', methods=["GET", "POST"])
 def register():
     if request.method == "GET":
         #이미 로그인 했다면 메인페이지
@@ -43,21 +43,21 @@ def register():
         userPwHash = str(hashlib.sha1(userPw.encode('utf-8')).hexdigest())
         #userPwHash = bcrypt.generate_password_hash(userPw)
 
-        user = User.User(userId, userPwHash, userName, userSex, email)
+        user = User(userId, userPwHash, userName, userSex, email)
         
-        if User.select_user_with_id(userId) != None:
+        if select_user_with_id(userId) != None:
             return jsonify({'result' : 'overlaped ID'})
         
-        elif User.select_user_with_email(email) != None:
+        elif select_user_with_email(email) != None:
             return jsonify({'result' : 'overlaped Email'})
         
 
         else:
             try:
-                User.insert_user(user)
-                userUid = User.select_user_with_id(userId)
-                userdata = Userdata.Userdata(userUid.uid, anger, fear, happiness, sadness, surprise)
-                Userdata.insert_userdata(userdata)
+                insert_user(user)
+                userUid = select_user_with_id(userId)
+                userdata = Userdata(userUid.uid, anger, fear, happiness, sadness, surprise)
+                insert_userdata(userdata)
                 print(f"{userId} registered")
                 return jsonify({'result' : 'success'})
             except Exception as e:

@@ -1,13 +1,12 @@
-from flask import Flask, render_template, request, redirect, url_for, g, jsonify
-from flask_bcrypt import Bcrypt
-import User
-import Userdata
+from flask import render_template, request, redirect, url_for, g, jsonify
+from service.UserQuery import update_user_with_uid
+from service.UserdataQuery import update_userdata_with_uid
+from models.User import User
+from models.Userdata import Userdata
 import hashlib
+from main import bp
 
-from __main__ import app
-
-
-@app.route('/member/modify/info', methods=["GET", "POST"])
+@bp.route('/member/modify/info', methods=["GET", "POST"])
 def modify():
     if request.method == "GET":
         if g.user == None:
@@ -34,11 +33,11 @@ def modify():
         userPwHash = str(hashlib.sha1(userPw.encode('utf-8')).hexdigest())
         # userPwHash = bcrypt.generate_password_hash(userPw)
 
-        userModi = User.User(userID, userPwHash, userName, userSex, userEmail)
+        userModi = User(userID, userPwHash, userName, userSex, userEmail)
         # print(userModi)
 
         try:
-            User.update_user_with_uid(g.user.uid, userModi)
+            update_user_with_uid(g.user.uid, userModi)
             print("userinfo changed")
             return jsonify({'result': 'success'})
         except Exception as e:
@@ -48,7 +47,7 @@ def modify():
 
 
 
-@app.route('/member/modify/genre', methods=["GET", "POST"])
+@bp.route('/member/modify/genre', methods=["GET", "POST"])
 def modify_genre():
     if request.method == "GET":
         if g.user == None:
@@ -69,11 +68,11 @@ def modify_genre():
         sadness = get_json_data['sadness']
         surprise = get_json_data['surprise']
 
-        userdataModi = Userdata.Userdata(g.user.uid, anger, fear, happiness, sadness, surprise)
+        userdataModi = Userdata(g.user.uid, anger, fear, happiness, sadness, surprise)
 
         print(userdataModi)
         try:
-            Userdata.update_userdata_with_uid(g.user.uid, userdataModi)
+            update_userdata_with_uid(g.user.uid, userdataModi)
             print("userdata changed")
             return jsonify({'result': 'success'})
         except Exception as e:
