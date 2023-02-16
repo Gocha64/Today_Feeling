@@ -40,7 +40,7 @@ jobs:
       diff: ${{steps.check_diff.outputs.diff}}
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           fetch-depth: 0    # Fetch all history for the upstream and forked repositories
 
@@ -54,7 +54,7 @@ jobs:
         id: check_diff
 
         run: |
-          git diff --name-only upstream/main HEAD > diff.txt
+          git diff upstream/main HEAD > diff.txt
           cat diff.txt
           if [ -s diff.txt ]
           then
