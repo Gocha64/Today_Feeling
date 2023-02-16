@@ -1,4 +1,6 @@
 from datetime import datetime, timedelta
+
+from sqlalchemy import extract
 from models.Statistics import Statistics
 from extensions import db
 from flask import current_app as app
@@ -31,7 +33,7 @@ def select_statistics_with_userUID(userUID):
     return statistics
 
 
-def select_statistics_with_userUID_Day(userUID , curDate = datetime.now()):
+def select_statistics_with_userUID_24Hours(userUID , curDate = datetime.now()):
     """
     최근 24시간의 데이터 리스트 반환, 
 
@@ -46,6 +48,24 @@ def select_statistics_with_userUID_Day(userUID , curDate = datetime.now()):
             filter(Statistics.userUID == userUID).\
             filter(Statistics.dateTime >= curDate - timedelta(days = 1)).\
             filter(Statistics.dateTime <= curDate).all()
+    return statistics
+
+def select_statistics_with_userUID_Day(userUID , curDate = datetime.now()):
+    """
+    해당 일의 데이터 리스트 반환, 
+
+    ### Parameters
+    1. userUID : int
+        - 사용자의 uid
+    2. curDate : datatime, (default: datetime.now())
+        - 검색할 기준 날짜
+    """
+    with app.app_context():
+        statistics = db.session.query(Statistics).\
+            filter(Statistics.userUID == userUID).\
+            filter(extract('year', Statistics.dateTime)==curDate.year).\
+            filter(extract('month', Statistics.dateTime)==curDate.month).\
+            filter(extract('day', Statistics.dateTime)==curDate.day).all()
     return statistics
 
 
@@ -68,6 +88,24 @@ def select_statistics_with_userUID_Week(userUID , curDate = datetime.now()):
 
 
 def select_statistics_with_userUID_Month(userUID , curDate = datetime.now()):
+    """
+    해당 월의 데이터 리스트 반환, 
+
+    ### Parameters
+    1. userUID : int
+        - 사용자의 uid
+    2. curDate : datatime, (default: datetime.now())
+        - 검색할 기준 날짜
+    """
+    with app.app_context():
+        statistics = db.session.query(Statistics).\
+            filter(Statistics.userUID == userUID).\
+            filter(extract('year', Statistics.dateTime)==curDate.year).\
+            filter(extract('month', Statistics.dateTime)==curDate.month).all()
+    return statistics
+
+
+def select_statistics_with_userUID_30days(userUID , curDate = datetime.now()):
     """
     최근 1개월(30일)의 데이터 리스트 반환, 
 
