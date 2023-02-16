@@ -30,7 +30,7 @@ name: Check for upstream repository changes
 
 on:
   schedule:
-    - cron: '0 0 * * *'   # Run once a day
+    - cron: '15 0 * * *'   # Run once in hour
   workflow_dispatch:
 
 jobs:
