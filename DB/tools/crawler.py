@@ -75,12 +75,15 @@ def parseHTML():
             for i in range(1,int(temp)+1):
                 tempXpath = songElementXpath.replace('@param',str(i))
                 try:
+                    print("\rprocessing "+str(i)+"/"+temp,end='')
                     tempElement = driver.find_element(By.XPATH,tempXpath)
                 except selenium.common.exceptions.NoSuchElementException:
+                    #very slow
                     continue
                 title = tempElement.text
                 url = modifyURL(tempElement.get_attribute('href'))
                 tempdf.loc[len(tempdf)]=[url,title]
+            print()
             urlBefore=driver.current_url
             print("parsing OK")
             a = input("genre of current playlist(quit : -1) : ")
