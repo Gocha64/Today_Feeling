@@ -54,7 +54,7 @@ jobs:
         id: check_diff
 
         run: |
-          git diff upstream/main HEAD > diff.txt
+          git diff upstream/main HEAD --Flask_server/> diff.txt
           cat diff.txt
           if [ -s diff.txt ]
           then
