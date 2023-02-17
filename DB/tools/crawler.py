@@ -5,6 +5,8 @@ import re
 from urllib.parse import urlparse, parse_qs
 import time
 import pandas as pd
+import os
+from pathlib import Path
 #todo1 refactoring
 #todo2 string 'title' length limit
 #todo3 limit userInput of genre
@@ -83,10 +85,14 @@ def parseHTML():
             print("go to other playlist\n")
             
 def readExcel():
-    print("open data.xlsx")
     global df
-    df = pd.read_excel("data.xlsx",engine="openpyxl")
-    print("open data.xlsx OK")
+    print("open data.xlsx")
+    try:  
+        df = pd.read_excel("data.xlsx",engine="openpyxl")
+    except FileNotFoundError:
+        print("no data.xlsx")
+    else:
+        print("open data.xlsx OK")
     
 def writeExcel():
     print("start writeExcel")
@@ -97,8 +103,13 @@ def writeExcel():
 def rmDup():
     print("start removing Duplicated url")
     global df
-    df = df.drop_duplicates(['url'],keep='last')
+    df = df.drop_duplicates(['url'],keep='first')
     print("removing Duplicated url OK")
+
+
+currPath = os.path.realpath(__file__)
+rootPath = Path(currPath).parent
+os.chdir(rootPath)
 
 readExcel()
 connChrome()
