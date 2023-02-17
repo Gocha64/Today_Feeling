@@ -52,9 +52,8 @@ jobs:
 
       - name: Check for diff between upstream and forked repositories
         id: check_diff
-
         run: |
-          git diff upstream/main...HEAD  --./flask_server/ > diff.txt
+          git diff upstream/main..HEAD --flask_server/ > diff.txt
           cat diff.txt
           if [ -s diff.txt ]
           then
