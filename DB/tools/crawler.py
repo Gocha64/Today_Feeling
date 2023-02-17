@@ -35,10 +35,15 @@ def connChrome():
     global driver
     chrome_options=Options()
     chrome_options.add_experimental_option("debuggerAddress","127.0.0.1:65489")
-    driver=webdriver.Chrome(options=chrome_options)
-    driver.implicitly_wait(10)
-    driver.get('https://music.youtube.com/')
-    print("connecting Chrome OK\n")
+    try:
+        driver=webdriver.Chrome(options=chrome_options)
+    except:
+        print("Connection Chrome KO")
+        return -1
+    else:
+        driver.implicitly_wait(10)
+        driver.get('https://music.youtube.com/')
+        print("connecting Chrome OK\n")
     
 def parseHTML():
     global urlBefore
@@ -106,16 +111,19 @@ def rmDup():
     df = df.drop_duplicates(['url'],keep='first')
     print("removing Duplicated url OK")
 
+def main():
+    currPath = os.path.realpath(__file__)
+    rootPath = Path(currPath).parent
+    os.chdir(rootPath)
+    readExcel()
+    if(connChrome()==-1):
+        print("terminate")
+        return
+    parseHTML()
+    rmDup()
+    writeExcel()
 
-currPath = os.path.realpath(__file__)
-rootPath = Path(currPath).parent
-os.chdir(rootPath)
-
-readExcel()
-connChrome()
-parseHTML()
-rmDup()
-writeExcel()
-
+if __name__=="__main__":
+    main()
 
     
