@@ -7,6 +7,7 @@ import time
 import pandas as pd
 import os
 from pathlib import Path
+import selenium
 #todo1 refactoring
 #todo2 string 'title' length limit
 #todo3 limit userInput of genre
@@ -73,7 +74,10 @@ def parseHTML():
             print("parsing start")
             for i in range(1,int(temp)+1):
                 tempXpath = songElementXpath.replace('@param',str(i))
-                tempElement = driver.find_element(By.XPATH,tempXpath)
+                try:
+                    tempElement = driver.find_element(By.XPATH,tempXpath)
+                except selenium.common.exceptions.NoSuchElementException:
+                    continue
                 title = tempElement.text
                 url = modifyURL(tempElement.get_attribute('href'))
                 tempdf.loc[len(tempdf)]=[url,title]
