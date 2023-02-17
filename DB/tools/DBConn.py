@@ -3,10 +3,12 @@ import pandas as pd
 import logging
 from datetime import datetime
 import os
+from pathlib import Path
 
 df=None
 conn = None
 logger = None
+
 def makeLogger():
     global logger
     logger = logging.getLogger()
@@ -28,10 +30,12 @@ def makeLogger():
 def readExcel():
     print("open data.xlsx")
     global df
+    print(os.getcwd())
     try:
         df = pd.read_excel("data.xlsx",engine="openpyxl")
     except:
-        print("open data.xlsx KO")    
+        print("open data.xlsx KO")
+        return -1
     print("open data.xlsx OK")
 
 #we have to change (', " ,%) to (\', \", \%) to avoid sql query error and we have to limit its length
@@ -77,12 +81,12 @@ def insertData():
             insertKO+=1
             code, msg = e.args
             if(code==1062):
-                logger.warn("url Duplicated with sql : "+sql)
+                logger.warning("url Duplicated with sql : "+sql)
             else:
-                logger.warn("Error with sql : "+sql)    
+                logger.warning("Error with sql : "+sql)    
         except:
             insertKO+=1
-            logger.warn("Error with sql : "+sql)
+            logger.warning("Error with sql : "+sql)
     conn.commit()
     conn.close()
     logger.info("total elements : "+str(len(df)))
@@ -90,6 +94,10 @@ def insertData():
     logger.info("insert KO : "+str(insertKO))
     
 def main():
+    currPath = os.path.realpath(__file__)
+    rootPath = Path(currPath).parent
+    os.chdir(rootPath)
+    
     if(connDB()==-1):
         print("terminate")
         return
