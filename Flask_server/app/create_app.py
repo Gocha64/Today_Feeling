@@ -1,6 +1,7 @@
 import os
 from dotenv import load_dotenv
 from flask import Flask
+from flask_cors import CORS, cross_origin
 from extensions import db, db_url
 
 application = None
@@ -8,6 +9,8 @@ application = None
 def create_app():
     app = Flask(__name__)
     app.config['SESSION_PERMANENT'] = True
+
+    CORS(app)
 
 
     load_dotenv()
