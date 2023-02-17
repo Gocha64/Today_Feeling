@@ -8,4 +8,8 @@ from main import app_modify
 from main import app_register
 from main import app_statistics
 from main import app_login
+from main import app_research
+
+
+
 from main import app_test
