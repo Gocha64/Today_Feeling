@@ -66,7 +66,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="5"
-                android:background="@android:color/transparent"
+                android:background="@drawable/buttonshapewhitebg"
                 android:text="사진 변경"/>
 
             <LinearLayout
@@ -84,11 +84,53 @@
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="30"
+                    android:layout_weight="90"
                     android:text="기본 정보"
-                    android:textSize="10dp"
+                    android:textStyle="bold"
+                    android:gravity="center" />
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="5" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:orientation="horizontal"
+                android:layout_weight="5"
+                android:weightSum="100">
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="5" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="30"
+                    android:text="성별:"
                     android:textStyle="bold"
                     android:gravity="start|center" />
+
+                <TextView
+                    android:id="@+id/txt_fix_name"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="50"
+                    android:textStyle="bold"
+                    android:gravity="start|center" />
+
+                <Button
+                    android:id="@+id/btn_fix_name"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="15"
+                    android:textSize="10dp"
+                    android:text="수정" />
             </LinearLayout>
 
             <LinearLayout
@@ -238,156 +280,19 @@
                     android:text="수정" />
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:orientation="horizontal"
-                android:layout_weight="5"
-                android:weightSum="100">
-
-                <Space
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="5" />
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="30"
-                    android:text="수정된 정보"
-                    android:textSize="10dp"
-                    android:textStyle="bold"
-                    android:gravity="start|center" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:orientation="horizontal"
-                android:layout_weight="5"
-                android:weightSum="100">
-
-                <Space
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="5" />
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="30"
-                    android:text="아이디:"
-                    android:textStyle="bold"
-                    android:gravity="start|center" />
-                <TextView
-                    android:id="@+id/txt_fixed_id"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="50"
-                    android:textStyle="bold"
-                    android:gravity="start|center" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:orientation="horizontal"
-                android:layout_weight="5"
-                android:weightSum="100">
-
-                <Space
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="5" />
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="30"
-                    android:text="비밀번호:"
-                    android:textStyle="bold"
-                    android:gravity="start|center" />
-
-                <TextView
-                    android:id="@+id/txt_fixed_pw"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="50"
-                    android:textStyle="bold"
-                    android:gravity="start|center" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:orientation="horizontal"
-                android:layout_weight="5"
-                android:weightSum="100">
-
-                <Space
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="5" />
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="30"
-                    android:text="이메일:"
-                    android:textStyle="bold"
-                    android:gravity="start|center" />
-
-                <TextView
-                    android:id="@+id/txt_fixed_email"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="50"
-                    android:textStyle="bold"
-                    android:gravity="start|center" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:orientation="horizontal"
-                android:layout_weight="5"
-                android:weightSum="100">
-
-                <Space
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="5" />
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="30"
-                    android:text="성별:"
-                    android:textStyle="bold"
-                    android:gravity="start|center" />
-
-                <TextView
-                    android:id="@+id/txt_fixed_sex"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="50"
-                    android:textStyle="bold"
-                    android:gravity="start|center" />
-            </LinearLayout>
-
             <Space
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="3" />
 
-            <Button
-                android:id="@+id/btn_fixed_check"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:layout_gravity="end"
-                android:text="확인"
-                android:textSize="13dp"
-                android:layout_weight="5" />
+                <Button
+                    android:id="@+id/btn_fixed_check"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_gravity="center"
+                    android:text="확인"
+                    android:textSize="13dp"
+                    android:layout_weight="6" />
 
         </LinearLayout>
 
