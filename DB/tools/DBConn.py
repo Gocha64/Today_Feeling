@@ -81,12 +81,12 @@ def insertData():
             insertKO+=1
             code, msg = e.args
             if(code==1062):
-                logger.warn("url Duplicated with sql : "+sql)
+                logger.warning("url Duplicated with sql : "+sql)
             else:
-                logger.warn("Error with sql : "+sql)    
+                logger.warning("Error with sql : "+sql)    
         except:
             insertKO+=1
-            logger.warn("Error with sql : "+sql)
+            logger.warning("Error with sql : "+sql)
     conn.commit()
     conn.close()
     logger.info("total elements : "+str(len(df)))
