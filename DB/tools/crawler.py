@@ -5,6 +5,8 @@ import re
 from urllib.parse import urlparse, parse_qs
 import time
 import pandas as pd
+import os
+from pathlib import Path
 #todo1 refactoring
 #todo2 string 'title' length limit
 #todo3 limit userInput of genre
@@ -33,10 +35,15 @@ def connChrome():
     global driver
     chrome_options=Options()
     chrome_options.add_experimental_option("debuggerAddress","127.0.0.1:65489")
-    driver=webdriver.Chrome(options=chrome_options)
-    driver.implicitly_wait(10)
-    driver.get('https://music.youtube.com/')
-    print("connecting Chrome OK\n")
+    try:
+        driver=webdriver.Chrome(options=chrome_options)
+    except:
+        print("Connection Chrome KO")
+        return -1
+    else:
+        driver.implicitly_wait(10)
+        driver.get('https://music.youtube.com/')
+        print("connecting Chrome OK\n")
     
 def parseHTML():
     global urlBefore
@@ -83,10 +90,14 @@ def parseHTML():
             print("go to other playlist\n")
             
 def readExcel():
-    print("open data.xlsx")
     global df
-    df = pd.read_excel("data.xlsx",engine="openpyxl")
-    print("open data.xlsx OK")
+    print("open data.xlsx")
+    try:  
+        df = pd.read_excel("data.xlsx",engine="openpyxl")
+    except FileNotFoundError:
+        print("no data.xlsx")
+    else:
+        print("open data.xlsx OK")
     
 def writeExcel():
     print("start writeExcel")
@@ -97,14 +108,22 @@ def writeExcel():
 def rmDup():
     print("start removing Duplicated url")
     global df
-    df = df.drop_duplicates(['url'],keep='last')
+    df = df.drop_duplicates(['url'],keep='first')
     print("removing Duplicated url OK")
 
-readExcel()
-connChrome()
-parseHTML()
-rmDup()
-writeExcel()
+def main():
+    currPath = os.path.realpath(__file__)
+    rootPath = Path(currPath).parent
+    os.chdir(rootPath)
+    readExcel()
+    if(connChrome()==-1):
+        print("terminate")
+        return
+    parseHTML()
+    rmDup()
+    writeExcel()
 
+if __name__=="__main__":
+    main()
 
     
