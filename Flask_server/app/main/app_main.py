@@ -1,4 +1,5 @@
-from flask import render_template, session, g
+from flask import render_template, request, session, g
+from service.UserQuery import select_user_with_id
 from main import bp
 from service.UserQuery import select_user_with_uid
 
@@ -23,7 +24,10 @@ def load_logged_in_user():
     userUid = session.get('userUid')
     print(session)
     if userUid is None:
-        g.user = None
+        if request.args.get("userId") != None:
+            g.user = select_user_with_id(request.args.get("userId"))
+        else:
+            g.user = None
     else:
         session.permanent = True
         g.user = select_user_with_uid(userUid)
