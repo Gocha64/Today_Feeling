@@ -3,13 +3,14 @@ from dotenv import load_dotenv
 from flask import Flask
 from flask_cors import CORS, cross_origin
 from extensions import db, db_url
+import logging
 
 application = None
 
 def create_app():
+    logging.basicConfig(filename = "logs/FeelingManager.log", level = logging.DEBUG)
     app = Flask(__name__)
     app.config['SESSION_PERMANENT'] = True
-
     CORS(app)
 
 
