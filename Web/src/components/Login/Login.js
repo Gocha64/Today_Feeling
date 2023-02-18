@@ -14,8 +14,8 @@ function Login() {
 
     const [msg, setMsg] = useState('');
 
-    const server_login_url = 'http://218.232.159.156:10081/member/login';
-    const server_search_url = 'http://218.232.159.156:10081/member/search';
+    const server_login_url = '/member/login';
+    const server_search_url = '/member/search';
 
     // const session_id = '<%=(String)session.getAttribute("uid")%>';
 
@@ -61,7 +61,6 @@ function Login() {
             if (res.data.result === 'success') {
                 // sessionStorage.setItem('session_id', res.headers['session']);
                 // console.log(sessionStorage.getItem('session_id'));
-                console.log(res.headers.get('Set-Cookie'));
                 console.log(res.headers);
                 alert('로그인 성공');
                 GetInfo()
@@ -85,10 +84,10 @@ function Login() {
     const GetInfo = () => {
         axios.get(server_search_url, {
             headers: {
-                "Content-Type": 'application/json'
+                "Content-Type": 'application/json',
             },
-            withCredentials: true,
-        }).then(res => {
+
+        }, { withCredentials: true, }).then(res => {
             //로그인 성공
             if ((res.data.result) !== "authentication failed" || (res.data.result) !== "undefined error") {
                 // sessionStorage.setItem('user_id', user_id);
