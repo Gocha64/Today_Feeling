@@ -16,6 +16,8 @@ data class Emotion(
     val time: String,
     @SerializedName("emotion")
     val emotion: Int,
+    @SerializedName("count")
+    val count: Int,
     @SerializedName("songUrl")
     val songUrl: String
 )
