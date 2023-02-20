@@ -5,15 +5,12 @@ function Camera() {
         <div>
             <div>
                 <div src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs">
-
                 </div>
                 <div src="https://cdn.jsdelivr.net/npm/@tensorflow-models/blazeface">
-
                 </div>
                 <CameraComponent />
             </div>
-
-        </div>
+        </div >
     )
     // < div >
     //         <div id='SongInput'>
