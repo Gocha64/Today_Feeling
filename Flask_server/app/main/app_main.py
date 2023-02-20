@@ -27,13 +27,11 @@ def load_logged_in_user():
     userUid = session.get('userUid')
     print(session, ip)
     if userUid is None:
-        
         if request.args.get("userId") != None:
             g.user = select_user_with_id(request.args.get("userId"))
         else:
             g.user = None
         logging.info(f'connected from {ip}')
-
     else:
         session.permanent = True
         g.user = select_user_with_uid(userUid)

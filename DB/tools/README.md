@@ -23,3 +23,15 @@ step2. 장르 입력 시 -1입력
 
 5. 데이터 저장
 폴더 내부의 data.xlsx에 저장됨
+
+DBConn.py  
+수집한 data.xlsx을 DB에 INSERT하는 프로그램  
+
+1. DB연결정보 입력    
+host, user, password, db, port를 입력한다.(띄어쓰기로 구분)
+
+2. 실행  
+해당 DB에 data.xlsx값을 INSERT한다.
+
+3. 로그출력  
+해당 작업의 결과를 출력하는 로그 파일을 생성한다.  
