@@ -6,7 +6,9 @@ import java.util.Date
 
 data class EmotionData(
     @SerializedName("result")
-    val result: ArrayList<Emotion>
+    val result: ArrayList<Emotion>,
+    @SerializedName("result_f")
+    val result_f: String
 )
 
 data class Emotion(
@@ -16,8 +18,6 @@ data class Emotion(
     val time: String,
     @SerializedName("emotion")
     val emotion: Int,
-    @SerializedName("count")
-    val count: Int,
     @SerializedName("songUrl")
     val songUrl: String
 )

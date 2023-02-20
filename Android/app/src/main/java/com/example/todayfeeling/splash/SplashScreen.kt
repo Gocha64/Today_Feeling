@@ -28,11 +28,14 @@ class SplashScreen : AppCompatActivity() {
 
         if (id == "" && pw == "") {
             //세션 아이디 수정하면 LoginActivity로 변경
-            val intent = Intent(this, LoginActivity::class.java)
+            val intent = Intent(this, MainActivity::class.java)
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent)
         } else {
+            //서버 정상되면 삭제
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
             if (id != null) {
                 if (pw != null) {
                     PostLogin().startLogin(id, pw, this)
