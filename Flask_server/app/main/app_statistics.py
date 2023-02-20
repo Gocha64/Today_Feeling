@@ -8,7 +8,7 @@ from service.StatisticsQuery import insert_statistics,\
                                     select_statistics_with_userUID_Week,\
                                     select_statistics_with_userUID_Month,\
                                     select_statistics_with_userUID
-from service.PlaylistQuery import get_songUrl_with_uid
+from service.PlaylistQuery import get_songUrl_with_uid, get_random_playlist
 from main import bp
 
 
@@ -19,6 +19,9 @@ def emotion_recommend():
         return jsonify({"result" : "authentication failed"})
 
     try:
+
+
+
         get_json_data = request.get_json(True)
 
         emotion_data = get_json_data['emotion_data']
@@ -35,6 +38,19 @@ def emotion_recommend():
     except Exception as e:
         print(e.args)
         return jsonify({"result" : "undefined error"})
+    
+
+# 랜덤 추천
+@bp.route('/emotion/recommend/random', methods = ["GET"])
+def emotion_recommend_random():
+    try:
+        print("random recommend")
+        song = get_random_playlist()
+        return jsonify({"result" : song.urlWeb})
+    except Exception as e:
+        print(e.args)
+        return jsonify({"result" : "undefined error"})
+
     
 
 @bp.route('/emotion/info_day', methods = ["GET"])
