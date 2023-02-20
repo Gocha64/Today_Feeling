@@ -35,7 +35,7 @@ def getGenre(genreID):
 
     global genrefile
     if not genrefile:
-        genrefile = readJson("./static/Json/genre.json")
+        genrefile = readJson("/Flask_server/app/static/Json/genre.json")
 
     return genrefile()[genreID]
 
@@ -54,6 +54,6 @@ def getEmotion(emotionID):
 
     global emotionfile
     if not emotionfile:
-        emotionfile = readJson("./static/Json/emotion.json")
+        emotionfile = readJson("/Flask_server/app/static/Json/emotion.json")
 
     return emotionfile()[emotionID]
