@@ -35,7 +35,7 @@ def getGenre(genreID):
 
     global genrefile
     if not genrefile:
-        genrefile = readJson("app\static\Json\genre.json")
+        genrefile = readJson("./static/Json/genre.json")
 
     return genrefile()[genreID]
 
@@ -54,6 +54,6 @@ def getEmotion(emotionID):
 
     global emotionfile
     if not emotionfile:
-        emotionfile = readJson("app\static\Json\emotion.json")
+        emotionfile = readJson("./static/Json/emotion.json")
 
     return emotionfile()[emotionID]
