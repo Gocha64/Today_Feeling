@@ -6,6 +6,7 @@ COPY ./Flask_server Flask_server
 COPY ./Flask_server/.env Flask_server
 WORKDIR /Flask_server/
 RUN pip install -r requirements.txt
+RUN cd app
 EXPOSE 10081
 
 CMD ["python", "app/run.py"]
