@@ -1,6 +1,8 @@
-from flask import render_template, session, g
+from flask import render_template, request, session, g
+from service.UserQuery import select_user_with_id
 from main import bp
 from service.UserQuery import select_user_with_uid
+import logging
 
 # 메인 페이지
 @bp.route('/')
@@ -20,13 +22,22 @@ def page_not_found(error):
 # 모든 요청 전에 사용자 확인
 @bp.before_request
 def load_logged_in_user():
+    ip = request.remote_addr
+
     userUid = session.get('userUid')
-    print(session)
+    print(session, ip)
     if userUid is None:
-        g.user = None
+        
+        if request.args.get("userId") != None:
+            g.user = select_user_with_id(request.args.get("userId"))
+        else:
+            g.user = None
+        logging.info(f'connected from {ip}')
+
     else:
         session.permanent = True
         g.user = select_user_with_uid(userUid)
+        logging.info(f'connected from {ip}, userId: {g.user.id}')
     
     #print(g.user)
 
