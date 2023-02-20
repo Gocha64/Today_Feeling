@@ -14,8 +14,8 @@ function Login() {
 
     const [msg, setMsg] = useState('');
 
-    const server_login_url = '/member/login';
-    const server_search_url = '/member/search';
+    const server_login_url = 'http://218.232.159.156:10081/member/login';
+    const server_search_url = `http://218.232.159.156:10081/member/search?userId=${user_id}`;
 
     // const session_id = '<%=(String)session.getAttribute("uid")%>';
 
@@ -31,6 +31,10 @@ function Login() {
     const userLoginData = {
         userId: user_id,
         userPw: user_pw
+    }
+
+    const userLogInTmp = {
+        userId: user_id
     }
 
     useEffect(() => {
@@ -86,12 +90,14 @@ function Login() {
             headers: {
                 "Content-Type": 'application/json',
             },
-
-        }, { withCredentials: true, }).then(res => {
+        },
+            { withCredentials: true, }
+        ).then(res => {
             //로그인 성공
             if ((res.data.result) !== "authentication failed" || (res.data.result) !== "undefined error") {
                 // sessionStorage.setItem('user_id', user_id);
                 alert('회원 정보 불러오기 성공');
+                console.log(userLogInTmp)
                 dispatch(userLogIn(res.data.result));
                 console.log(res.data.result);
                 //Home으로 이동
