@@ -26,7 +26,7 @@ jobs:
           context: .
           push: true
           file: ./Web/dockerfile
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/web_sever:latest
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/web_server:${{ secrets.WEB_VERSION }}
       -
         name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
