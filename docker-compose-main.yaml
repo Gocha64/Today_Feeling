@@ -1,8 +1,7 @@
-
-version: "3.9"
+version: "3.3"
 services:
   flask:
-    image: dksj9921/flask_server:lastest
+    image: dksj9921/flask_server:v1.0.0
     ports:
       - "10084:10081"
     container_name: "flask_server"
