@@ -9,7 +9,7 @@ services:
   react:
     image: dksj9921/web_server:v1.0.0
     ports:
-      - "10084:80"
+      - "10085:80"
     container_name: "web_server"
     
  
