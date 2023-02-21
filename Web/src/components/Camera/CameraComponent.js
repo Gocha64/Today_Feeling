@@ -6,12 +6,11 @@ import {
 } from 'react-use-face-detection';
 import FaceDetection from '@mediapipe/face_detection';
 import { Camera } from '@mediapipe/camera_utils';
-import Emotion from './Emotion';
-import Pyodide from './Pyodide';
+
 
 function CameraComponent() {
 
-
+    var Crop = require('tinycrop')
     //이미지 state
     const [img, setImg] = useState(null);
 
@@ -63,7 +62,7 @@ function CameraComponent() {
 
     //캡쳐
     const capture = useCallback(() => {
-        const imageSrc = webcamRef.current.getScreenshot();
+        let imageSrc = webcamRef.current.getScreenshot();
         setImg(imageSrc);
     }, [webcamRef]);
 
@@ -100,6 +99,7 @@ function CameraComponent() {
                             style={{
                                 height: '100%',
                                 width: '100%',
+                                color: 'white',
                                 // objectFit: 'cover',
                                 // position: 'absolute',
                             }}
