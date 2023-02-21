@@ -50,8 +50,8 @@ abstract class BaseImageAnalyzer<T> : ImageAnalysis.Analyzer {
                         Log.e("test", "$result")
                     }
                     imageProxy.close()
-//                        isResultNotBlank(result)
-//                        result = "무표정"
+                        isResultNotBlank(result)
+                        result = "무표정"
                 }
                 .addOnFailureListener {
                     onFailure(it)
@@ -74,7 +74,7 @@ abstract class BaseImageAnalyzer<T> : ImageAnalysis.Analyzer {
 
         yBuffer.get(nv21, 0, ySize)
         vuBuffer.get(nv21, ySize, vuSize)
-        
+
         val yuvImage = YuvImage(nv21, ImageFormat.NV21, this.width, this.height, null)
         val out = ByteArrayOutputStream()
         yuvImage.compressToJpeg(Rect(0, 0, yuvImage.width, yuvImage.height), 50, out)

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="emotion_array">
+        <item>랜덤</item>
+        <item>화남</item>
+        <item>공포</item>
+        <item>행복</item>
+        <item>슬픔</item>
+        <item>놀람</item>
+    </string-array>
+</resources>

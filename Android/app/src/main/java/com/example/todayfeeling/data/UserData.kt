@@ -20,5 +20,5 @@ data class UserData(
     @SerializedName("sadness")
     val sadness: String,
     @SerializedName("surprise")
-    val surprise: String,
+    val surprise: String
 )
