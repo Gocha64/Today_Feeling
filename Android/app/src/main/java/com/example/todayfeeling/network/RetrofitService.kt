@@ -24,12 +24,15 @@ interface RetrofitService {
     fun modifyUser(@Body req: ModifyUserData): Call<ResultData>
 
     @POST("emotion/recommend")
-    fun recommendEmotion(@Header("session") session:String, @Body emotion: Int): Call<ResultData>
+    fun recommendEmotion(@Body req: EmotionRecommend): Call<result>
+
+    @GET("emotion/recommend/random")
+    fun recommendSong(): Call<result>
 
     @POST("member/modify/genre")
     fun modifyGenre(@Body req: ModifyGenreData): Call<ResultData>
 
-    @GET("emotion/info_day")
+    @GET("emotion/stat_day")
     fun dayEmotionStatistic(@Query("date") req: String): Call<EmotionData>
 
     @GET("emotion/info_week")
@@ -37,4 +40,7 @@ interface RetrofitService {
 
     @GET("emotion/info_month")
     fun monthEmotionStatistic(): Call<EmotionData>
+
+    @GET("emotion/info_day")
+    fun dayEmotionDetailStatistic(@Query("date") req: String): Call<EmotionDetailData>
 }

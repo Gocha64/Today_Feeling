@@ -18,7 +18,6 @@ import org.tensorflow.lite.Interpreter
 import java.io.IOException
 import java.nio.ByteBuffer
 import java.nio.ByteOrder
-import org.tensorflow.lite.DataType
 
 class FaceContourDetectionProcessor(private val view: GraphicOverlay, private val model: Interpreter, private val context: Context) :
     BaseImageAnalyzer<List<Face>>() {
@@ -69,8 +68,30 @@ class FaceContourDetectionProcessor(private val view: GraphicOverlay, private va
     }
 
     override fun isResultNotBlank(result: String) {
-        if (result != "무표정") {
+        var resultEmotion: Int
+        when (result) {
+            "화남" -> {
+                resultEmotion = 1
+            }
+            "공포" -> {
+                resultEmotion = 2
+            }
+            "행복" -> {
+                resultEmotion = 3
+            }
+            "슬픔" -> {
+                resultEmotion = 4
+            }
+            "놀람" -> {
+                resultEmotion = 5
+            }
+            else -> {
+                resultEmotion = 0
+            }
+        }
+        if (resultEmotion != 0) {
             val intent = Intent(context, YoutubeActivity::class.java)
+            intent.putExtra("emotion", resultEmotion)
             stop()
             context.startActivity(intent)
         }
