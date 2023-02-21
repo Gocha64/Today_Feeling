@@ -97,9 +97,9 @@ function Login() {
             if ((res.data.result) !== "authentication failed" || (res.data.result) !== "undefined error") {
                 // sessionStorage.setItem('user_id', user_id);
                 alert('회원 정보 불러오기 성공');
-                console.log(userLogInTmp)
-                dispatch(userLogIn(res.data.result));
-                console.log(res.data.result);
+                console.log(userLogInTmp);
+                console.log("res.data.result" + (res.data));
+                dispatch(userLogIn(res.data));
                 //Home으로 이동
                 navigate('/');
             }
@@ -111,7 +111,7 @@ function Login() {
             }
         })
             .catch(error => {
-                console.log(error);
+                console.log("error" + error);
             }
             )
     }

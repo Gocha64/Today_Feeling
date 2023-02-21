@@ -26,7 +26,6 @@ export const userSlice = createSlice({
             state.happiness = action.payload.happiness;
             state.sadness = action.payload.sadness;
             state.surprise = action.payload.surprise;
-            state.email = action.payload.email;
             return state;
         },
 
@@ -41,7 +40,6 @@ export const userSlice = createSlice({
             state.happiness = "";
             state.sadness = "";
             state.surprise = "";
-            state.email = "";
             return state;
         },
     },
