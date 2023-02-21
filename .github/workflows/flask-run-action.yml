@@ -1,4 +1,4 @@
-name: flask-run-action
+name: flask-test-run-action
 on:
   repository_dispatch:
     types: [my-event]
