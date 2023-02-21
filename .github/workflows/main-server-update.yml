@@ -1,4 +1,4 @@
-name: flask-run-action
+name: flask-main-run-action
 on:
   workflow_dispatch:
 
@@ -70,4 +70,4 @@ jobs:
           username: ${{ secrets.HOST_USER_NAME }}
           key: ${{ secrets.PRIVATE_KEY }}
           port: ${{ secrets.HOST_SSH_PORT }}
-          script: "docker-compose-main pull && docker-compose-main up -d"
+          script: "docker-compose -f docker-compose-main.yaml pull && docker-compose -f docker-compose-main.yaml up -d"
