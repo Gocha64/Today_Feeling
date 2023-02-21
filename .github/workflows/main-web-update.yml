@@ -31,3 +31,27 @@ jobs:
         name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
         working-directory: ${{ env.working-directory }}
+        
+  cd-pipeline:
+    needs: build-image
+    name: continuos deploy
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: copy file via ssh password
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.HOST_USER_NAME }}
+          key: ${{ secrets.PRIVATE_KEY }}
+          port: ${{ secrets.HOST_SSH_PORT }}
+          source: "./docker-compose-main.yaml"
+          target: "/home/hancom/"
+      - name: executing remote ssh commands using password
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.HOST_USER_NAME }}
+          key: ${{ secrets.PRIVATE_KEY }}
+          port: ${{ secrets.HOST_SSH_PORT }}
+          script: "docker-compose -f docker-compose-main.yaml pull && docker-compose -f docker-compose-main.yaml up -d"
