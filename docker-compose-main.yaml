@@ -5,3 +5,11 @@ services:
     ports:
       - "10084:10081"
     container_name: "flask_server"
+    
+  react:
+    image: dksj9921/web_server:v1.0.0
+    ports:
+      - "10085:80"
+    container_name: "web_server"
+    
+ 
