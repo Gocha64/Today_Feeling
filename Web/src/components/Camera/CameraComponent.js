@@ -1,5 +1,5 @@
 import React, {
-    useCallback, useState
+    useCallback, useState, useEffect
     // , useRef 
 } from 'react';
 import Webcam from 'react-webcam';
@@ -10,52 +10,23 @@ import {
 import FaceDetection from '@mediapipe/face_detection';
 import { Camera } from '@mediapipe/camera_utils';
 import * as tf from '@tensorflow/tfjs';
-import _Image from 'image-js';
+import axios from 'axios';
+import { useSelector } from 'react-redux';
 
 function CameraComponent() {
+    const user = useSelector((state) => state.user);
+    const server_song_url = 'http://218.232.159.156:10081/emotion/recommend';
+    const [image, setImage] = useState(null);
+    const [imgSrc, setImgSrc] = useState("");
+    const [emotionNumber, setEmotionNumber] = useState(null);
+    const [emotion, setEmotion] = useState("");
 
-    //이미지 state
-    const [img, setImg] = useState(null);
-    const [imgGrey, setGrey] = useState(null);
-    // const [xmin, setXmin] = useState(null);
-    // const [xmax, setXmax] = useState(null);
-    // const [ymin, setYmin] = useState(null);
-    // const [ymax, setYmax] = useState(null);
-
-    // const XminHandler = (c) => {
-    //     setXmin(c);
-    // }
-    // const XmaxHandler = (c) => {
-    //     setXmax(c);
-    // }
-    // const YminHandler = (c) => {
-    //     setYmin(c);
-    // }
-    // const YmaxHandler = (c) => {
-    //     setYmax(c);
-    // }
-
-    // const canvas = useRef(null);
-    // const ctx = canvas.current.getContext('2d');
-
-    // const CropImg = () => {
-    //     img.onload = function () {
-    //         ctx.drawImage(img, 150, 200, 500, 300, 60, 60, 500, 300);
-    //     }
-    // }
     const MODEL_URL = "jsmodel/model.json";
 
-    function imgSet() {
-        console.log("2")
-        _Image.load(img).then(function (image) {
-            image.grey();
-            image.resize({ width: 48, height: 48 })
-            setGrey(image);
-        })
-        return new Promise(function (resolve, reject) {
-            resolve();
-            reject(new Error("Request is failed"));
-        });
+    const imgSet = () => {
+        {
+            return loadModel();
+        }
     }
 
     //웹 카메라 detecting 설정
@@ -77,21 +48,27 @@ function CameraComponent() {
             }),
     });
 
+    const emotionInputData = {
+        user_id: `${user.id}`,
+        emotion_data: emotionNumber,
+    }
+
     const setImageHandler = () => {
         console.log("1")
-        let imageSrc = webcamRef.current.getScreenshot();
-        setImg(imageSrc)
-        return new Promise(function (resolve, reject) {
-            resolve();
-            reject();
-        });
+        const imageSrc = webcamRef.current.getScreenshot({ width: 1280, height: 800 });
+        console.log(typeof (imageSrc));
+        setImgSrc(imageSrc);
+
+        const imgTmp = new Image(48, 48);
+        imgTmp.src = imgSrc;
+        setImage(imgTmp);
+        console.log(image);
     }
 
     //캡쳐
     const capture = useCallback(() => {
-
-        setImageHandler().then(imgSet()).then(loadModel());
-
+        setImageHandler()
+        return imgSet()
     }, [webcamRef]);
 
     async function loadModel() {
@@ -106,20 +83,64 @@ function CameraComponent() {
             5: 'neutral'
         }
         let axis = 0;
+        if (image !== null) {
+            let a = tf.browser.fromPixels(image, 1);
+            console.log('a = ' + a);
 
-        let a = tf.browser.fromPixels(imgGrey, 1)
-        let yhat_valid = model.predict(tf.expandDims(a, axis))
-        axis = -1;
+            let yhat_valid = model.predict(tf.expandDims(a, axis))
+            axis = -1;
+            yhat_valid.print();
+            yhat_valid = tf.argMax(yhat_valid, axis);
 
-        yhat_valid = yhat_valid.argmax(axis)
-        console.log(emotion_label_to_text[yhat_valid[0]])
 
-        console.log(yhat_valid[0])
+            const values = yhat_valid.dataSync();
+            const arr = Array.from(values);
+
+            const resultKey = arr[0];
+            setEmotionNumber(resultKey);
+            const result = emotion_label_to_text[resultKey];
+            setEmotion(String(result));
+            console.log(emotion);
+            GetSong();
+        }
+        else {
+            imgSet();
+        }
     }
+
+    const GetSong = () => {
+        axios.get(server_song_url, JSON.stringify(emotionInputData), {
+            headers: {
+                "Content-Type": 'application/json',
+            },
+        },
+            { withCredentials: true }
+        ).then(res => {
+            //로그인 성공
+            if ((res.data.result) !== "authentication failed" || (res.data.result) !== "undefined error") {
+                // sessionStorage.setItem('user_id', user_id);
+                console.log('노래 가져오기 성공');
+                console.log("res.data.result" + (res.data));
+            }
+            //노래 불러오기 실패
+            else {
+                console.log(res.data.result);
+            }
+        })
+            .catch(error => {
+                console.log("error" + error);
+            }
+            )
+    }
+
+    useEffect(() => {
+        console.log(image);
+        console.log(imgSrc);
+    }, [imgSrc]);
 
     return (
         <div>
-            {img === null ? (
+            {imgSrc === "" ? (
                 <div>
                     <br />
                     <br />
@@ -149,7 +170,6 @@ function CameraComponent() {
                             style={{
                                 height: '100%',
                                 width: '100%',
-                                color: 'white',
                                 // objectFit: 'cover',
                                 // position: 'absolute',
                             }}
@@ -159,12 +179,8 @@ function CameraComponent() {
                 </div>
             ) : (
                 <div>
-                    <img src={img} alt="screenshot" />
-                    <button onClick={() => setImg(null)}>Retake</button>
-
-                    {/* <div>
-                        <CroppedImage src={img} alt="cropped Image" x={20} y={20} cropHeight={20} cropWidth={20} />
-                    </div> */}
+                    <img src={imgSrc} alt="screenshot" />
+                    <button onClick={() => setImgSrc("")}>Retake</button>
                 </div>
 
             )}
