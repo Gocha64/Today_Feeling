@@ -7,7 +7,7 @@ services:
     container_name: "flask_server"
     
   react:
-    image: dksj9921/web_server:v1.0.0
+    image: dksj9921/web_server_test:latest
     ports:
       - "10086:80"
     container_name: "web_server"
