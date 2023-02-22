@@ -38,6 +38,7 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       diff: ${{steps.check_diff.outputs.diff}}
+      diff2: ${{steps.check_diff.outputs.diff2}}
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -54,6 +55,7 @@ jobs:
         id: check_diff
         run: |
           git diff upstream/main..HEAD -- Flask_server/ > diff.txt
+          git diff upstream/main..HEAD -- Web/ > diff2.txt
           cat diff.txt
           if [ -s diff.txt ]
           then
@@ -63,11 +65,19 @@ jobs:
             echo "diff=false" >> $GITHUB_OUTPUT
             echo "false!"
           fi
+          if [ -s diff2.txt ]
+          then
+            echo "diff2=true" >> $GITHUB_OUTPUT
+            echo "true!"
+          else
+            echo "diff2=false" >> $GITHUB_OUTPUT
+            echo "false!"
+          fi
           
        
                 
 
-  create_pull_request:
+  create_flask_pull_request:
     needs: find_diff
     if: ${{ needs.find_diff.outputs.diff == 'true' }}
     runs-on: ubuntu-latest
@@ -93,6 +103,33 @@ jobs:
         uses: peter-evans/repository-dispatch@v2
         with:
           event-type: my-event
+          
+  create_web_pull_request:
+    needs: find_diff
+    if: ${{ needs.find_diff.outputs.diff2 == 'true' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Git user name and email
+        run: |
+          git config --global user.name "dksj9921"
+          git config --global user.email "sung980213@naver.com"
+
+      - name: Merge upstream changes into forked repository
+        env: 
+          GITHUB_TOKEN: ${{ secrets.MY_TOKEN }}      
+        run: |
+          git pull --unshallow
+          git remote add upstream https://github.com/Gocha64/Today_Feeling.git
+          git fetch upstream
+          git checkout main
+          git merge -Xtheirs upstream/main
+          git push origin main
+      
+      - name: Repository Dispatch
+        uses: peter-evans/repository-dispatch@v2
+        with:
+          event-type: my-event2
 
 
 
