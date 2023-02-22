@@ -15,7 +15,7 @@ function Login() {
     const [msg, setMsg] = useState('');
 
     const server_login_url = 'http://218.232.159.156:10081/member/login';
-    const server_search_url = `http://218.232.159.156:10081/member/search?userId=${user_id}`;
+    const server_search_url = 'http://218.232.159.156:10081/member/search';
 
     // const session_id = '<%=(String)session.getAttribute("uid")%>';
 
@@ -91,7 +91,7 @@ function Login() {
                 "Content-Type": 'application/json',
             },
         },
-            { withCredentials: true, }
+            { withCredentials: true }
         ).then(res => {
             //로그인 성공
             if ((res.data.result) !== "authentication failed" || (res.data.result) !== "undefined error") {

@@ -12,8 +12,9 @@ import Profile from './components/Profile/Profile';
 import ReviseInfo from './components/Profile/ReviseInfo';
 import './styles/App.css';
 
-
 function App() {
+
+
   return (
     <div className='App'>
       <Router>
