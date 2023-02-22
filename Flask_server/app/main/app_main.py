@@ -25,10 +25,14 @@ def load_logged_in_user():
     ip = request.remote_addr
 
     userUid = session.get('userUid')
-    print(session, ip)
+
+    jsonData = request.get_json(force=True,silent=True)
+    print(jsonData)
     if userUid is None:
         if request.args.get("userId") != None:
             g.user = select_user_with_id(request.args.get("userId"))
+        elif jsonData != None and 'userId' in jsonData:
+            g.user = select_user_with_id(jsonData['userId'])
         else:
             g.user = None
         logging.info(f'connected from {ip}')
