@@ -18,7 +18,7 @@ def create_app():
 
     app = Flask(__name__)
     app.config['SESSION_PERMANENT'] = True
-    CORS(app, supports_credentials=True, origins=["localhost:3000", "fm.jcopy.net:10085"])
+    CORS(app)
 
 
     load_dotenv()
