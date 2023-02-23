@@ -31,6 +31,8 @@ import com.github.mikephil.charting.formatter.ValueFormatter
 import com.github.mikephil.charting.highlight.Highlight
 import com.github.mikephil.charting.interfaces.datasets.IBarDataSet
 import com.github.mikephil.charting.listener.OnChartValueSelectedListener
+import java.sql.Timestamp
+import java.time.Instant
 
 class DayStatisticFragment : Fragment(), GetStatistic {
 
@@ -60,7 +62,7 @@ class DayStatisticFragment : Fragment(), GetStatistic {
     ): View? {
         mBinding = FragmentDayStatisticBinding.inflate(inflater, container, false)
 
-        val boardAdapter=BoardAdapter(emotion)
+        val boardAdapter=BoardAdapter(emotion,requireContext())
         binding.recyclerView.adapter = boardAdapter
         binding.recyclerView.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
 
@@ -68,7 +70,7 @@ class DayStatisticFragment : Fragment(), GetStatistic {
         var date = ("%02d년 %02d월 %02d일").format(dailyDate.year, dailyDate.monthValue,dailyDate.dayOfMonth)
 
         binding.txtDay.text = date
-        var day = dailyDate.atStartOfDay(ZoneId.systemDefault()).toInstant().toEpochMilli().toString()
+        var day = dailyDate.atStartOfDay(ZoneId.of("Asia/Seoul")).toInstant().epochSecond.plus(32400).toString()
         GetEmotionStatistic(this).dayEmotionStatistic(day.substring(0 until 10))
         GetEmotionDetailStatistic(this).dayEmotionDetailStatistic(day.substring(0 until 10))
 
@@ -80,10 +82,9 @@ class DayStatisticFragment : Fragment(), GetStatistic {
                 dailyDate.plusYears(1)
             }
             date = ("%02d년 %02d월 %02d일").format(dailyDate.year, dailyDate.monthValue,dailyDate.dayOfMonth)
-            day = dailyDate.atStartOfDay(ZoneId.systemDefault()).toInstant().toEpochMilli().toString()
+            day = dailyDate.atStartOfDay(ZoneId.of("Asia/Seoul")).toInstant().epochSecond.plus(32400).toString()
             GetEmotionStatistic(this).dayEmotionStatistic(day.substring(0 until 10))
             GetEmotionDetailStatistic(this).dayEmotionDetailStatistic(day.substring(0 until 10))
-            Log.d("day", date)
             binding.txtDay.text = date
             binding.txtEmotion.visibility = View.INVISIBLE
             emotion.clear()
@@ -98,7 +99,7 @@ class DayStatisticFragment : Fragment(), GetStatistic {
                 dailyDate.minusYears(-1)
             }
             date = ("%02d년 %02d월 %02d일").format(dailyDate.year, dailyDate.monthValue,dailyDate.dayOfMonth)
-            day = dailyDate.atStartOfDay(ZoneId.systemDefault()).toInstant().toEpochMilli().toString()
+            day = dailyDate.atStartOfDay(ZoneId.of("Asia/Seoul")).toInstant().epochSecond.plus(32400).toString()
             GetEmotionStatistic(this).dayEmotionStatistic(day.substring(0 until 10))
             GetEmotionDetailStatistic(this).dayEmotionDetailStatistic(day.substring(0 until 10))
             binding.txtDay.text = date
@@ -243,8 +244,7 @@ class DayStatisticFragment : Fragment(), GetStatistic {
     }
 
     override fun getDayDetailStatistic(data: ArrayList<EmotionDetail>) {
-        Log.e("detailData", data.toString())
-
+        Log.e("data", data.toString())
         for (i in data) {
             when (i.emotion) {
                 1 -> {
@@ -265,11 +265,11 @@ class DayStatisticFragment : Fragment(), GetStatistic {
             }
         }
 
-        Log.e("anger", anger.toString())
-        Log.e("fear", fear.toString())
-        Log.e("happy", happy.toString())
-        Log.e("sad", sad.toString())
-        Log.e("surprise", surprise.toString())
+        anger.sortByDescending(EmotionDetail::time)
+        fear.sortByDescending(EmotionDetail::time)
+        happy.sortByDescending(EmotionDetail::time)
+        sad.sortByDescending(EmotionDetail::time)
+        surprise.sortByDescending(EmotionDetail::time)
     }
 
 

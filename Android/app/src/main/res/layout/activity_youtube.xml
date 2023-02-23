@@ -5,16 +5,38 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:weightSum="100"
     tools:context=".emotion.YoutubeActivity">
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="30" />
 
     <TextView
         android:id="@+id/txt_recommend_emotion"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="0dp"
+        android:layout_weight="5"
+        android:gravity="center"
+        android:text="화남"
+        android:background="@color/background_menu"
+        android:textColor="@color/text_color"/>
 
-    <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+    <LinearLayout
         android:id="@+id/youtube_player_view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:orientation="vertical"/>
+
+    <Button
+        android:id="@+id/btn_exit_youtube"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/buttonshapewhitebg"
+        android:text="종료"
+        android:gravity="center"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="left" />
 
 </LinearLayout>

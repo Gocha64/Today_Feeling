@@ -16,8 +16,6 @@ class ProfileFragment : Fragment() {
 
     private val binding get() = mBinding!!
 
-    private lateinit var anger:Array<Char>
-
     override fun onResume() {
         super.onResume()
         val sharedPreference = requireActivity().getSharedPreferences("user", 0)
@@ -41,19 +39,11 @@ class ProfileFragment : Fragment() {
         mBinding = FragmentProfileBinding.inflate(inflater, container, false)
 
         val sharedPreference = requireActivity().getSharedPreferences("user", 0)
+        val editor = sharedPreference.edit()
 
         binding.btnLogout.setOnClickListener {
-            sharedPreference.edit().remove("id")
-            sharedPreference.edit().remove("pw")
-            sharedPreference.edit().remove("sex")
-            sharedPreference.edit().remove("email")
-            sharedPreference.edit().remove("anger")
-            sharedPreference.edit().remove("name")
-            sharedPreference.edit().remove("happiness")
-            sharedPreference.edit().remove("fear")
-            sharedPreference.edit().remove("sadness")
-            sharedPreference.edit().remove("surprise")
-            sharedPreference.edit().apply()
+            editor.clear()
+            editor.apply()
             activity?.let{
                 val intent = Intent(context, LoginActivity::class.java)
                 startActivity(intent)
@@ -82,6 +72,7 @@ class ProfileFragment : Fragment() {
                 str = str.plus("${emotion[i]}, ")
             }
         }
+        str = str.substring(0, str.length - 2)
         return str
     }
 }

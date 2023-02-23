@@ -7,14 +7,28 @@
     android:orientation="vertical"
     android:weightSum="100">
 
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="5"
-        android:text="내 정보 관리"
-        android:textStyle="bold"
-        android:gravity="center"
-        android:textAlignment="center"/>
+        android:weightSum="100"
+        android:layout_weight="5">
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="5" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="95"
+            android:gravity="center|left"
+            android:textStyle="bold"
+            android:textColor="@color/text_color"
+            android:textSize="20dp"
+            android:text="PROFILE" />
+
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -51,30 +65,55 @@
                 <ImageView
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="18"/>
+                    android:layout_weight="18"
+                    android:src="@drawable/man"/>
 
                 <Space
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="5" />
 
-                <TextView
-                    android:id="@+id/txt_name_main"
+                <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:textSize="20dp"
-                    android:textStyle="bold"
-                    android:layout_weight="45"/>
+                    android:weightSum="10"
+                    android:orientation="vertical"
+                    android:layout_weight="72">
 
-                <Button
-                    android:id="@+id/btn_logout"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="27"
-                    android:text="로그아웃"
-                    android:textColor="@android:color/holo_red_dark"
-                    android:background="@drawable/buttonshapewhitebg" />
+                    <Space
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="2.5" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="5">
+                        <TextView
+                            android:id="@+id/txt_name_main"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:textSize="20dp"
+                            android:textColor="@color/text_color"
+                            android:textStyle="bold"
+                            android:layout_weight="45"/>
+
+                        <Button
+                            android:id="@+id/btn_logout"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="27"
+                            android:text="로그아웃"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginBottom="5dp"
+                            android:textColor="@android:color/holo_red_dark"
+                            android:background="@drawable/buttonshapewhitebg" />
+                    </LinearLayout>
+                    <Space
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="2.5" />
+                </LinearLayout>
 
             </LinearLayout>
 
@@ -96,6 +135,9 @@
                     android:layout_height="match_parent"
                     android:layout_weight="46"
                     android:gravity="center"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:textSize="17dp"
                     android:text="회원 정보"/>
 
                 <Button
@@ -103,7 +145,9 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="27"
-                    android:text="회원 정보 수정"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:text="정보 수정"
                     android:textColor="@android:color/holo_red_dark"
                     android:background="@drawable/buttonshapewhitebg" />
 
@@ -127,6 +171,8 @@
                         android:layout_height="match_parent"
                         android:layout_weight="20"
                         android:gravity="center|start"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
                         android:text="회원명:"/>
 
                     <TextView
@@ -134,6 +180,8 @@
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:gravity="center|start"
+                        android:textStyle="bold"
+                        android:textColor="@color/text_color"
                         android:layout_weight="60" />
 
                     <Space
@@ -154,6 +202,8 @@
                         android:layout_height="match_parent"
                         android:layout_weight="20"
                         android:gravity="center|start"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
                         android:text="아이디:"/>
 
                     <TextView
@@ -161,6 +211,8 @@
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:gravity="center|start"
+                        android:textStyle="bold"
+                        android:textColor="@color/text_color"
                         android:layout_weight="60" />
 
                     <Space
@@ -180,6 +232,8 @@
                         android:layout_height="match_parent"
                         android:layout_weight="20"
                         android:gravity="center|start"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
                         android:text="이메일:"/>
 
                     <TextView
@@ -187,6 +241,8 @@
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:gravity="center|start"
+                        android:textColor="@color/text_color"
+                        android:textStyle="bold"
                         android:layout_weight="60" />
 
                     <Space
@@ -207,6 +263,8 @@
                         android:layout_height="match_parent"
                         android:layout_weight="20"
                         android:gravity="center|start"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
                         android:text="성별:"/>
 
                     <TextView
@@ -214,6 +272,8 @@
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:gravity="center|start"
+                        android:textColor="@color/text_color"
+                        android:textStyle="bold"
                         android:layout_weight="60" />
 
                     <Space
@@ -249,6 +309,9 @@
                         android:layout_height="match_parent"
                         android:layout_weight="46"
                         android:gravity="center"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        android:textSize="17dp"
                         android:text="감정별 선호 노래"/>
 
                     <Button
@@ -256,8 +319,10 @@
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="27"
-                        android:text="노래 장르 수정"
+                        android:text="장르 수정"
                         android:textColor="@android:color/holo_red_dark"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="5dp"
                         android:background="@drawable/buttonshapewhitebg" />
 
                 </LinearLayout>
@@ -273,6 +338,8 @@
                         android:layout_height="match_parent"
                         android:layout_weight="20"
                         android:gravity="center|start"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
                         android:text="화났을때:"/>
 
                     <TextView
@@ -280,6 +347,8 @@
                         android:layout_width="0dp"
                         android:gravity="center|start"
                         android:layout_height="match_parent"
+                        android:textColor="@color/text_color"
+                        android:textStyle="bold"
                         android:layout_weight="60" />
 
                     <Space
@@ -300,6 +369,8 @@
                         android:layout_height="match_parent"
                         android:layout_weight="20"
                         android:gravity="center|start"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
                         android:text="무서울때:"/>
 
                     <TextView
@@ -307,6 +378,8 @@
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:gravity="center|start"
+                        android:textColor="@color/text_color"
+                        android:textStyle="bold"
                         android:layout_weight="60" />
 
                     <Space
@@ -327,6 +400,8 @@
                         android:layout_height="match_parent"
                         android:layout_weight="20"
                         android:gravity="center|start"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
                         android:text="행복할때:"/>
 
                     <TextView
@@ -334,6 +409,8 @@
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:gravity="center|start"
+                        android:textColor="@color/text_color"
+                        android:textStyle="bold"
                         android:layout_weight="60" />
 
                     <Space
@@ -354,6 +431,8 @@
                         android:layout_height="match_parent"
                         android:layout_weight="20"
                         android:gravity="center|start"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
                         android:text="슬플때:"/>
 
                     <TextView
@@ -361,6 +440,8 @@
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:gravity="center|start"
+                        android:textColor="@color/text_color"
+                        android:textStyle="bold"
                         android:layout_weight="60" />
 
                     <Space
@@ -381,6 +462,8 @@
                         android:layout_height="match_parent"
                         android:layout_weight="20"
                         android:gravity="center|start"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
                         android:text="놀랐을때:"/>
 
                     <TextView
@@ -388,6 +471,8 @@
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:gravity="center|start"
+                        android:textColor="@color/text_color"
+                        android:textStyle="bold"
                         android:layout_weight="60" />
 
                     <Space

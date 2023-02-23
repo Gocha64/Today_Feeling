@@ -3,7 +3,6 @@ package com.example.todayfeeling.emotion.camerax
 import android.annotation.SuppressLint
 import android.graphics.*
 import android.media.Image
-import android.util.Log
 import androidx.camera.core.ExperimentalGetImage
 import androidx.camera.core.ImageAnalysis
 import androidx.camera.core.ImageProxy
@@ -11,12 +10,17 @@ import com.google.android.gms.tasks.Task
 import com.google.mlkit.vision.common.InputImage
 import com.google.mlkit.vision.face.Face
 import java.io.ByteArrayOutputStream
+import java.nio.ByteBuffer
 
 
 abstract class BaseImageAnalyzer<T> : ImageAnalysis.Analyzer {
 
     companion object {
-        var surprise = false
+        var angerEmotion = 0
+        var fearEmotion = 0
+        var happyEmotion = 0
+        var sadEmotion = 0
+        var surpriseEmotion = 0
     }
 
     abstract val graphicOverlay: GraphicOverlay
@@ -38,16 +42,18 @@ abstract class BaseImageAnalyzer<T> : ImageAnalysis.Analyzer {
                     val bitmapImage = mediaImage.toBitmap()
                     (results as List<Face>).forEach {
                         val image =
-                            Bitmap.createBitmap(
-                                bitmapImage,
-                                it.boundingBox.left,
-                                it.boundingBox.top,
-                                it.boundingBox.width(),
-                                it.boundingBox.height()
-                            )
-                        image.reconfigure(48,48, Bitmap.Config.ARGB_8888)
+                            try {
+                                Bitmap.createBitmap(
+                                    bitmapImage,
+                                    it.boundingBox.left,
+                                    it.boundingBox.top,
+                                    it.boundingBox.width(),
+                                    it.boundingBox.height(),
+                                )
+                            } catch (e: java.lang.IllegalArgumentException) {
+                                return@forEach
+                            }
                         result = classificationEmotion(image)
-                        Log.e("test", "$result")
                     }
                     imageProxy.close()
                         isResultNotBlank(result)

@@ -1,0 +1,27 @@
+{
+  "buildFiles": [
+    "/Users/anseongjun/Project/Today_Feeling/Android/sdk/libcxx_helper/CMakeLists.txt"
+  ],
+  "cleanCommandsComponents": [
+    [
+      "/Users/anseongjun/Library/Android/sdk/cmake/3.22.1/bin/ninja",
+      "-C",
+      "/Users/anseongjun/Project/Today_Feeling/Android/sdk/.cxx/RelWithDebInfo/5r3m1i83/x86",
+      "clean"
+    ]
+  ],
+  "buildTargetsCommandComponents": [
+    "/Users/anseongjun/Library/Android/sdk/cmake/3.22.1/bin/ninja",
+    "-C",
+    "/Users/anseongjun/Project/Today_Feeling/Android/sdk/.cxx/RelWithDebInfo/5r3m1i83/x86",
+    "{LIST_OF_TARGETS_TO_BUILD}"
+  ],
+  "libraries": {
+    "opencv_jni_shared::@6890427a1f51a3e7e1df": {
+      "artifactName": "opencv_jni_shared",
+      "abi": "x86",
+      "output": "/Users/anseongjun/Project/Today_Feeling/Android/sdk/.cxx/RelWithDebInfo/5r3m1i83/x86/libopencv_jni_shared.a",
+      "runtimeFiles": []
+    }
+  }
+}

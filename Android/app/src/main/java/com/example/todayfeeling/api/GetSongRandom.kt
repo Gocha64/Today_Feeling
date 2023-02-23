@@ -4,11 +4,12 @@ import android.util.Log
 import com.example.todayfeeling.data.result
 import com.example.todayfeeling.listener.PostRecommendUrl
 import com.example.todayfeeling.network.RetrofitImpl
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class GetSongRandom(private val listener: PostRecommendUrl) {
+class GetSongRandom(private val listener: PostRecommendUrl, private val view: YouTubePlayerView) {
     fun getSongRandom() {
         val call = RetrofitImpl.service.recommendSong()
 
@@ -16,7 +17,7 @@ class GetSongRandom(private val listener: PostRecommendUrl) {
             override fun onResponse(call: Call<result>, response: Response<result>) {
                 if (response.isSuccessful) {
                     if (response.body()!!.result != "undefined error") {
-                        listener.postRecommendUrlListener(response.body()!!.result)
+                        listener.postRecommendUrlListener(response.body()!!.result, view)
                     } else {
                         Log.e("random", response.body()!!.result)
                     }

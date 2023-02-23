@@ -1,0 +1,7 @@
+[
+{
+  "directory": "/Users/anseongjun/Project/Today_Feeling/Android/app/.cxx/Debug/3i5c1g3c/x86",
+  "command": "/Users/anseongjun/Library/Android/sdk/ndk/23.1.7779620/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang++ --target=i686-none-linux-android26 --sysroot=/Users/anseongjun/Library/Android/sdk/ndk/23.1.7779620/toolchains/llvm/prebuilt/darwin-x86_64/sysroot -Dtodayfeeling_EXPORTS -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security -fexceptions -frtti -stdlib=libc++ -g  -fno-limit-debug-info -fPIC -o CMakeFiles/todayfeeling.dir/todayfeeling.cpp.o -c /Users/anseongjun/Project/Today_Feeling/Android/app/src/main/cpp/todayfeeling.cpp",
+  "file": "/Users/anseongjun/Project/Today_Feeling/Android/app/src/main/cpp/todayfeeling.cpp"
+}
+]

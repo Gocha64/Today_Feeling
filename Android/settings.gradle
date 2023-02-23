@@ -15,3 +15,4 @@ dependencyResolutionManagement {
 }
 rootProject.name = "Today Feeling"
 include ':app'
+include ':sdk'

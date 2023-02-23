@@ -1,0 +1,27 @@
+{
+  "buildFiles": [
+    "/Users/anseongjun/Project/Today_Feeling/Android/app/src/main/cpp/CMakeLists.txt"
+  ],
+  "cleanCommandsComponents": [
+    [
+      "/Users/anseongjun/Library/Android/sdk/cmake/3.22.1/bin/ninja",
+      "-C",
+      "/Users/anseongjun/Project/Today_Feeling/Android/app/.cxx/RelWithDebInfo/1e23j4n2/x86",
+      "clean"
+    ]
+  ],
+  "buildTargetsCommandComponents": [
+    "/Users/anseongjun/Library/Android/sdk/cmake/3.22.1/bin/ninja",
+    "-C",
+    "/Users/anseongjun/Project/Today_Feeling/Android/app/.cxx/RelWithDebInfo/1e23j4n2/x86",
+    "{LIST_OF_TARGETS_TO_BUILD}"
+  ],
+  "libraries": {
+    "todayfeeling::@6890427a1f51a3e7e1df": {
+      "artifactName": "todayfeeling",
+      "abi": "x86",
+      "output": "/Users/anseongjun/Project/Today_Feeling/Android/app/build/intermediates/cxx/RelWithDebInfo/1e23j4n2/obj/x86/libtodayfeeling.so",
+      "runtimeFiles": []
+    }
+  }
+}

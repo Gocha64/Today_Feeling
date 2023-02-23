@@ -14,6 +14,7 @@ import com.example.todayfeeling.data.ResultData
 import com.example.todayfeeling.data.UserData
 import com.example.todayfeeling.network.RetrofitImpl
 import com.example.todayfeeling.sign.LoginActivity
+import org.opencv.android.OpenCVLoader
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

@@ -4,97 +4,135 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:weightSum="100"
-    android:orientation="horizontal"
+    android:orientation="vertical"
+    android:background="@color/background_purple"
     tools:context=".statistic.DayStatisticFragment">
 
-    <Space
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="10" />
-
     <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
         android:weightSum="100"
-        android:layout_weight="80">
+        android:orientation="horizontal"
+        android:background="@color/background_menu"
+        android:layout_weight="5">
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="5" />
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="5"
-            android:text="일일 통계"
-            android:gravity="center" />
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="95"
+            android:gravity="center|left"
+            android:text="통계"
+            android:textColor="@color/text_color"
+            android:textSize="20dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="95">
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="10" />
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="5"
-            android:orientation="horizontal"
-            android:weightSum="80">
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:weightSum="100"
+            android:layout_weight="80">
 
-            <Button
-                android:id="@+id/btn_previous_day"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:text="이전"
-                android:layout_weight="15" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="7"
+                android:orientation="horizontal"
+                android:weightSum="80">
+
+                <Button
+                    android:id="@+id/btn_previous_day"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:text="이전"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/buttonshapewhitebg"
+                    android:layout_weight="15" />
+
+                <TextView
+                    android:id="@+id/txt_day"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="50"
+                    android:gravity="center"
+                    android:textStyle="bold"
+                    android:textColor="@color/text_color"
+                    android:text="02월 15일" />
+
+                <Button
+                    android:id="@+id/btn_next_day"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/buttonshapewhitebg"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:text="다음"
+                    android:layout_weight="15" />
+
+            </LinearLayout>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
 
             <TextView
-                android:id="@+id/txt_day"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="50"
-                android:gravity="center"
-                android:text="02월 15일" />
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="5"
+                android:text="표정 통계"
+                android:textStyle="bold"
+                android:textColor="@color/text_color"
+                android:gravity="center" />
 
-            <Button
-                android:id="@+id/btn_next_day"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:text="다음"
-                android:layout_weight="15" />
+            <com.github.mikephil.charting.charts.BarChart
+                android:id="@+id/chart_statistic"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="30" />
+
+            <TextView
+                android:id="@+id/txt_emotion"
+                android:visibility="invisible"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="5"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:textColor="@color/text_color"
+                android:text="화남" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_view"
+                tools:listitem="@layout/emotion_item_list"
+                android:layout_width="match_parent"
+                android:background="@color/recycle"
+                android:layout_height="0dp"
+                android:layout_weight="52" />
 
         </LinearLayout>
 
         <Space
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="3" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="5"
-            android:text="표정 통계"
-            android:gravity="center" />
-
-        <com.github.mikephil.charting.charts.BarChart
-            android:id="@+id/chart_statistic"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="30" />
-
-        <TextView
-            android:id="@+id/txt_emotion"
-            android:visibility="invisible"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="5"
-            android:gravity="center"
-            android:text="화남" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycler_view"
-            tools:listitem="@layout/emotion_item_list"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="45" />
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="10" />
 
     </LinearLayout>
-
-    <Space
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="10" />
 </LinearLayout>

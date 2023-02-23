@@ -68,6 +68,7 @@ class FixGenreActivity : AppCompatActivity(), AlertUserModifyGenre {
                 str = str.plus("${emotion[i]}, ")
             }
         }
+        str = str.substring(0, str.length-2)
         return str
     }
 

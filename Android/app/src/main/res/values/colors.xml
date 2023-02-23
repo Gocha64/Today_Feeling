@@ -8,4 +8,9 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="textInputLayout">#96ffffff</color>
+    <color name="background_purple">#E9EAF2</color>
+    <color name="background_menu">#D9DDF1</color>
+    <color name="text_color">#4B4F6D</color>
+    <color name="btnpurple">#ADB5E2</color>
+    <color name="recycle">#DCD9EB</color>
 </resources>

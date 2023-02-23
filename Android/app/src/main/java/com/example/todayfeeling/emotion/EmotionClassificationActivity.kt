@@ -106,19 +106,14 @@ class EmotionClassificationActivity : AppCompatActivity() {
         Log.e("destroy", "들어옴")
     }
 
-    override fun onRestart() {
-        super.onRestart()
-        Log.e("restart", "재시작함")
-    }
-
     override fun onStop() {
         super.onStop()
         finish()
         Log.e("stop", "멈춤")
     }
 
-    override fun onPause() {
-        super.onPause()
-        Log.e("pause", "pause")
+    override fun onBackPressed() {
+        super.onBackPressed()
+        finish()
     }
 }

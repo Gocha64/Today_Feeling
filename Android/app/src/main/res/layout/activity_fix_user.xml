@@ -8,13 +8,28 @@
     android:weightSum="100"
     tools:context=".profile.FixUserActivity">
 
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="5"
-        android:gravity="center"
-        android:textStyle="bold"
-        android:text="회원정보 수정" />
+        android:weightSum="100"
+        android:layout_weight="5">
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="5" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="95"
+            android:gravity="center|left"
+            android:textStyle="bold"
+            android:textColor="@color/text_color"
+            android:textSize="20dp"
+            android:text="회원정보 수정" />
+
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -36,7 +51,7 @@
             <Space
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="5" />
+                android:layout_weight="2.5" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -53,7 +68,8 @@
                 <ImageView
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="30" />
+                    android:layout_weight="30"
+                    android:src="@drawable/man"/>
 
                 <Space
                     android:layout_width="0dp"
@@ -62,11 +78,18 @@
 
             </LinearLayout>
 
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="2.5" />
+
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="5"
                 android:background="@drawable/buttonshapewhitebg"
+                android:textColor="@color/text_color"
+                android:textStyle="bold"
                 android:text="사진 변경"/>
 
             <LinearLayout
@@ -86,7 +109,9 @@
                     android:layout_height="match_parent"
                     android:layout_weight="90"
                     android:text="기본 정보"
+                    android:textColor="@color/black"
                     android:textStyle="bold"
+                    android:textSize="17dp"
                     android:gravity="center" />
 
                 <Space
@@ -112,8 +137,9 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="30"
-                    android:text="성별:"
+                    android:text="이름:"
                     android:textStyle="bold"
+                    android:textColor="@color/black"
                     android:gravity="start|center" />
 
                 <TextView
@@ -122,6 +148,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="50"
                     android:textStyle="bold"
+                    android:textColor="@color/text_color"
                     android:gravity="start|center" />
 
                 <Button
@@ -129,6 +156,11 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="15"
+                    android:background="@drawable/buttonshapewhitebg"
+                    android:textColor="@color/text_color"
+                    android:textStyle="bold"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
                     android:textSize="10dp"
                     android:text="수정" />
             </LinearLayout>
@@ -150,6 +182,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="30"
                     android:text="아이디:"
+                    android:textColor="@color/black"
                     android:textStyle="bold"
                     android:gravity="start|center" />
                 <TextView
@@ -157,6 +190,7 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="50"
+                    android:textColor="@color/text_color"
                     android:textStyle="bold"
                     android:gravity="start|center" />
 
@@ -165,6 +199,11 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="15"
+                    android:background="@drawable/buttonshapewhitebg"
+                    android:textColor="@color/text_color"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:textStyle="bold"
                     android:textSize="10dp"
                     android:text="수정" />
             </LinearLayout>
@@ -186,6 +225,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="30"
                     android:text="비밀번호:"
+                    android:textColor="@color/black"
                     android:textStyle="bold"
                     android:gravity="start|center" />
 
@@ -194,6 +234,7 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="50"
+                    android:textColor="@color/text_color"
                     android:textStyle="bold"
                     android:gravity="start|center" />
 
@@ -202,6 +243,11 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="15"
+                    android:background="@drawable/buttonshapewhitebg"
+                    android:textColor="@color/text_color"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:textStyle="bold"
                     android:textSize="10dp"
                     android:text="수정" />
             </LinearLayout>
@@ -223,6 +269,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="30"
                     android:text="이메일:"
+                    android:textColor="@color/black"
                     android:textStyle="bold"
                     android:gravity="start|center" />
 
@@ -231,6 +278,7 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="50"
+                    android:textColor="@color/text_color"
                     android:textStyle="bold"
                     android:gravity="start|center" />
 
@@ -239,6 +287,11 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="15"
+                    android:background="@drawable/buttonshapewhitebg"
+                    android:textColor="@color/text_color"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:textStyle="bold"
                     android:textSize="10dp"
                     android:text="수정" />
             </LinearLayout>
@@ -260,6 +313,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="30"
                     android:text="성별:"
+                    android:textColor="@color/black"
                     android:textStyle="bold"
                     android:gravity="start|center" />
 
@@ -268,6 +322,7 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="50"
+                    android:textColor="@color/text_color"
                     android:textStyle="bold"
                     android:gravity="start|center" />
 
@@ -276,6 +331,11 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="15"
+                    android:background="@drawable/buttonshapewhitebg"
+                    android:textColor="@color/text_color"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:textStyle="bold"
                     android:textSize="10dp"
                     android:text="수정" />
             </LinearLayout>
@@ -284,15 +344,36 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="3" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:orientation="horizontal"
+                android:layout_weight="5"
+                android:weightSum="100">
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="5" />
 
                 <Button
                     android:id="@+id/btn_fixed_check"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
                     android:layout_gravity="center"
+                    android:background="@drawable/buttonshapewhitebg"
                     android:text="확인"
                     android:textSize="13dp"
-                    android:layout_weight="6" />
+                    android:textStyle="bold"
+                    android:textColor="@color/text_color"
+                    android:layout_weight="90" />
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="5" />
+
+            </LinearLayout>
 
         </LinearLayout>
 

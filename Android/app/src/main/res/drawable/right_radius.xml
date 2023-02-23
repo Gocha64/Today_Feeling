@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <layer-list>
+            <item>
+                <shape android:shape="rectangle">
+                    <solid android:color="@color/background_menu" />
+                    <corners android:bottomRightRadius="12dp" android:topRightRadius="12dp" />
+                </shape>
+            </item>
+            <item android:drawable="@drawable/down"
+                android:gravity="center|end"
+                android:width="15dp"
+                android:height="15dp" />
+        </layer-list>
+    </item>
+</selector>

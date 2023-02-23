@@ -9,18 +9,20 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.LinearLayout
 import androidx.fragment.app.Fragment
-import com.example.todayfeeling.MainActivity
 import com.example.todayfeeling.R
 import com.example.todayfeeling.api.GetEmotionStatistic
 import com.example.todayfeeling.api.GetSongRandom
 import com.example.todayfeeling.api.PostRecommend
-import com.example.todayfeeling.data.*
+import com.example.todayfeeling.data.Emotion
+import com.example.todayfeeling.data.EmotionData
+import com.example.todayfeeling.data.EmotionDetail
+import com.example.todayfeeling.data.EmotionRecommend
 import com.example.todayfeeling.databinding.FragmentMainBinding
 import com.example.todayfeeling.emotion.EmotionClassificationActivity
 import com.example.todayfeeling.listener.GetStatistic
 import com.example.todayfeeling.listener.PostRecommendUrl
-import com.example.todayfeeling.profile.FixUserActivity
 import com.github.mikephil.charting.charts.BarChart
 import com.github.mikephil.charting.components.*
 import com.github.mikephil.charting.data.BarData
@@ -28,16 +30,23 @@ import com.github.mikephil.charting.data.BarDataSet
 import com.github.mikephil.charting.data.BarEntry
 import com.github.mikephil.charting.formatter.ValueFormatter
 import com.github.mikephil.charting.interfaces.datasets.IBarDataSet
-import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.PlayerConstants
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.YouTubePlayerListener
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
 import java.time.LocalDate
 import java.time.ZoneId
+
 
 class MainFragment : Fragment(), PostRecommendUrl, GetStatistic {
     private var mBinding: FragmentMainBinding? = null
 
     private val binding get() = mBinding!!
+
+    private var dailyDate = LocalDate.now()
+    private var day = dailyDate.atStartOfDay(ZoneId.of("Asia/Seoul")).toInstant().epochSecond.plus(32400).toString()
+
+    private val lp = LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
 
     inner class MyXaxisFormatter : ValueFormatter() {
         private val emotion = arrayOf("화남", "공포", "행복", "슬픔", "놀람")
@@ -47,8 +56,6 @@ class MainFragment : Fragment(), PostRecommendUrl, GetStatistic {
     }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        var dailyDate = LocalDate.now()
-        var day = dailyDate.atStartOfDay(ZoneId.systemDefault()).toInstant().toEpochMilli().toString()
         GetEmotionStatistic(this).dayEmotionStatistic(day.substring(0 until 10))
     }
 
@@ -64,28 +71,31 @@ class MainFragment : Fragment(), PostRecommendUrl, GetStatistic {
 
         binding.spinner.adapter = myAdapter
 
+        val youTubePlayerView = YouTubePlayerView(requireContext())
+        binding.youtubePlayer.addView(youTubePlayerView, lp)
+
         binding.spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
 
                 //아이템이 클릭 되면 맨 위부터 position 0번부터 순서대로 동작하게 됩니다.
                 when(position) {
                     0   ->  {
-                        recommendUrl(0)
+                        recommendUrl(0,youTubePlayerView)
                     }
                     1   ->  {
-                        recommendUrl(1)
+                        recommendUrl(1,youTubePlayerView)
                     }
                     2   ->  {
-                        recommendUrl(2)
+                        recommendUrl(2,youTubePlayerView)
                     }
                     3   ->  {
-                        recommendUrl(3)
+                        recommendUrl(3,youTubePlayerView)
                     }
                     4   ->  {
-                        recommendUrl(4)
+                        recommendUrl(4,youTubePlayerView)
                     }
                     5   ->  {
-                        recommendUrl(5)
+                        recommendUrl(5,youTubePlayerView)
                     }
                 }
             }
@@ -104,24 +114,27 @@ class MainFragment : Fragment(), PostRecommendUrl, GetStatistic {
         return binding.root
     }
 
-    fun recommendUrl(emotion: Int) {
+    fun recommendUrl(emotion: Int,view: YouTubePlayerView) {
         if (emotion == 0) {
-            GetSongRandom(this).getSongRandom()
+            GetSongRandom(this, view).getSongRandom()
         } else {
-            PostRecommend(this).recommendSong(EmotionRecommend(emotion))
+            Log.e("emotion", emotion.toString())
+            PostRecommend(this,view).recommendSong(EmotionRecommend(emotion))
         }
     }
 
-    override fun postRecommendUrlListener(url: String) {
+    override fun postRecommendUrlListener(url: String, view: YouTubePlayerView) {
         Log.e("testing", url)
-        lifecycle.addObserver(binding.mainYoutubePlayer)
-        binding.mainYoutubePlayer.addYouTubePlayerListener(object :
-            AbstractYouTubePlayerListener() {
+        binding.youtubePlayer.removeAllViews()
+        val youTubePlayerView = YouTubePlayerView(requireContext())
+        binding.youtubePlayer.addView(youTubePlayerView, lp)
+        lifecycle.addObserver(youTubePlayerView)
+        youTubePlayerView.addYouTubePlayerListener(object : AbstractYouTubePlayerListener(){
             override fun onReady(youTubePlayer: YouTubePlayer) {
-                super.onReady(youTubePlayer)
                 youTubePlayer.cueVideo(url, 0f)
             }
         })
+        GetEmotionStatistic(this).dayEmotionStatistic(day.substring(0 until 10))
     }
 
     private fun initBarChart(barChart: BarChart) {
@@ -187,6 +200,7 @@ class MainFragment : Fragment(), PostRecommendUrl, GetStatistic {
 
     private fun setData(barChart: BarChart, data: Emotion) {
 
+        barChart.invalidate()
         // Zoom In / Out 가능 여부 설정
         barChart.setScaleEnabled(false)
 

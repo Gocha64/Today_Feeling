@@ -5,84 +5,158 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:weightSum="100"
+    android:background="@color/background_purple"
     tools:context=".main.MainFragment"
-    android:orientation="horizontal">
-
-    <Space
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="10"/>
+    android:orientation="vertical">
 
     <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
         android:weightSum="100"
-        android:orientation="vertical"
-        android:layout_weight="80">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="5"
-            android:gravity="center"
-            android:text="MAIN" />
-
-        <com.github.mikephil.charting.charts.BarChart
-            android:id="@+id/chart_main"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="30" />
+        android:orientation="horizontal"
+        android:background="@color/background_menu"
+        android:layout_weight="5">
 
         <Space
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="3" />
-
-        <Button
-            android:id="@+id/btn_start_camera"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:text="표정 인식 시작"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
             android:layout_weight="5" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:orientation="horizontal"
-            android:weightSum="80"
-            android:layout_weight="5">
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="30"
-                android:text="지금의 기분은?"
-                android:gravity="center" />
-
-            <Spinner
-                android:id="@+id/spinner"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="30" />
-
-            <Space
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="20" />
-
-        </LinearLayout>
-
-        <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
-            android:id="@+id/main_youtube_player"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="30"/>
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="95"
+            android:gravity="center|left"
+            android:text="MAIN"
+            android:textColor="@color/text_color"
+            android:textSize="20dp" />
 
     </LinearLayout>
 
-    <Space
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="10"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        android:weightSum="100"
+        android:layout_weight="95">
 
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="10"/>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:weightSum="100"
+            android:orientation="vertical"
+            android:layout_weight="80">
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+            <com.github.mikephil.charting.charts.BarChart
+                android:id="@+id/chart_main"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="30" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="5"
+                android:weightSum="80"
+                android:orientation="horizontal">
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="10" />
+
+                <Button
+                    android:id="@+id/btn_start_camera"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:text="표정 인식 시작"
+                    android:textStyle="bold"
+                    android:textColor="@color/text_color"
+                    android:background="@drawable/buttonshapewhitebg"
+                    android:layout_weight="60" />
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="10" />
+
+            </LinearLayout>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:orientation="horizontal"
+                android:weightSum="80"
+                android:layout_weight="5">
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="10" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="30"
+                    android:text="지금의 기분은?"
+                    android:background="@drawable/left_radius"
+                    android:textColor="@color/text_color"
+                    android:gravity="center" />
+
+                <Spinner
+                    android:id="@+id/spinner"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:background="@drawable/right_radius"
+                    android:layout_weight="30" />
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="10" />
+
+            </LinearLayout>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+            <LinearLayout
+                android:id="@+id/youtube_player"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="30"
+                android:orientation="vertical"/>
+
+        </LinearLayout>
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="10"/>
+
+
+    </LinearLayout>
 </LinearLayout>
