@@ -9,4 +9,4 @@ Today_Feeling
 개발환경
 
     언어 : HTML, CSS, JS
-    프레임워크 : React
+    프레임워크 : React1
